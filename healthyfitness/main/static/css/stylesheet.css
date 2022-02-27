@@ -1,0 +1,160 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #CCE0FB;
+    width: 1702px;
+    height: 60px;
+    left: -83px;
+    top: 0px;
+    border: 0px;
+}
+
+.container {
+    width: 1277px;
+    margin: 0 auto;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+section {
+    width: 1277px;
+    margin: 0 auto;
+}
+
+.logo{
+    margin-top: 5px;
+    width: 40px;
+    height: 50px;
+    float: left;
+}
+
+
+.navigation {
+    float: right;
+}
+
+.menu {
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+.menu li a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.text {
+    margin-top: 20px;
+    float: left;
+    display: block;
+    margin-right: 60px;
+}
+
+.iconLK {
+    float: left;
+    display: block;
+    margin-right: 60px;
+    margin-top: 10px;
+}
+
+.imgLK {
+    width: 35px;
+    height: 35px;
+}
+
+.readNewArticles p{
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.readNewArticles .container {
+    margin-top: 33px;
+    float: left;
+    display: block;
+    padding: 0;
+}
+
+
+.containerOfArticles a{
+    text-decoration: none;
+    width: 300px;
+    padding: 10px 10px 10px 10px;
+    color: black;
+    width: 300px;
+    height: 70px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-right: 80px;
+}
+
+.firstArticle{
+    box-shadow: 0px 0px 10px 1px #80B9ED;
+}
+
+.secondArticle{
+    box-shadow: 0px 0px 10px 1px #F3E38D;
+}
+
+.thirdArticle{
+    box-shadow: 0px 0px 10px 1px #98EB88;
+}
+
+.mainPhrase p {
+    font-size: 64px;
+    float: left;
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
+
+.mainImage {
+    float: right;
+    padding: 0;
+    margin: 0;
+    width: 800px;
+    height: 600px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+
+.buttonCalc a{
+    text-decoration: none;
+    color: black;
+    background: #80B9ED;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 20px;
+    float: left;
+    font-size: 24px;
+}
+
+.textAboutReg p{
+    float: left;
+    width: 409px;
+    height: 128px;
+    font-size: 24px;
+    margin-top: 40px;
+}
+
+
+.buttonReg{
+    text-decoration: none;
+    color: black;
+    padding: 20px;
+    float: left;
+    font-size: 24px;
+    background: #A8D2A0;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}

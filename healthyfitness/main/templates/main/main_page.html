@@ -1,10 +1,87 @@
-{% extends 'main/base.html' %}
+{% load static %}
 
-{% block title %}
-Главная страница
-{% endblock %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <link href="{% static 'css/stylesheet.css' %}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class = container>
+            <div class="head">
+                <img src="{% static 'img/logonew.png' %}" alt="" class="logo">
+                <nav class="navigation">
+                    <ul class="menu">
+                        <li class="text">
+                            <a href="#" style="font-weight: bold">Главная</a>
+                        </li>
 
-{% block content %}
-    <h1>Главная страница</h1>
-    <p>Просто текст</p>
-{% endblock %}
+                        <li class="text">
+                            <a href="#">Статьи</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="#">Калькулятор</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="#">Блог</a>
+                        </li>
+
+                        <li class="iconLK">
+                            <a href="#"><img src="{% static 'img/iconLK.png' %}" alt="LK" class="imgLK"></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="readNewArticles">
+            <div class="container">
+                <p>Читайте новые статьи:</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="newArticlec">
+            <div class = container>
+                <nav class="containerOfArticles">
+                    <a href="#" class="firstArticle">Как выбрать умные весы</a>
+                    <a href="#" class="secondArticle">Топ-5 продуктов для здоровой кожи</a>
+                    <a href="#" class="thirdArticle">Почему сон так важен при похудении</a>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="mainPhrase">
+            <p>Ваше здоровье<br>на нашем сайте</p>
+            <img src="{% static 'img/womenImage.jpg' %}" alt="" class="mainImage">
+        </div>
+    </section>
+
+    <section>
+        <div class="buttonCalc">
+            <a href="#">Рассчитать Ваши КБЖУ</a>
+        </div>
+    </section>
+
+    <section>
+        <div class="textAboutReg">
+            <p>А чтобы отслеживать прогресс,<br>получить доступ к блогу и<br>личному кабинету зарегистрируйтесь или войдите</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="buttonRegSec">
+            <a href="#" class="buttonReg">Стать частью коммьюнити</a>
+        </div>
+    </section>
+</body>
+</html>
