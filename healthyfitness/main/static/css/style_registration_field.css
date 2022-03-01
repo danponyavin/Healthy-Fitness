@@ -1,0 +1,136 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #CCE0FB;
+    width: 1702px;
+    height: 60px;
+    left: -83px;
+    top: 0px;
+    border: 0px;
+}
+
+.container {
+    width: 1277px;
+    margin: 0 auto;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+section {
+
+}
+
+.logo{
+    margin-top: 5px;
+    width: 40px;
+    height: 50px;
+    float: left;
+}
+
+
+.navigation {
+    float: right;
+}
+
+.menu {
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+.menu li a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.text {
+    margin-top: 20px;
+    float: left;
+    display: block;
+    margin-right: 60px;
+}
+
+.iconLK {
+    float: left;
+    display: block;
+    margin-right: 60px;
+    margin-top: 10px;
+}
+
+.imgLK {
+    width: 35px;
+    height: 35px;
+}
+
+
+.reg_field {
+    padding: 0;
+    margin: 0;
+    width: 3000px;
+    height: 1000px;
+    overflow: hidden;
+}
+
+.rectangle {
+    width: 364.1px;
+    height: 581px;
+    background: #FFFFFF;
+    border: 1px solid #013036;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin-left: 550px;
+    margin-top: 50px;
+}
+
+.rectangle h4 {
+    margin-top: 22px;
+    margin-left: 100px;
+    font-size: 24px;
+    margin-bottom: 0;
+}
+
+.frstField {
+    margin-top: 42px;
+    margin-left: 30px;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.otherFields {
+    margin-top: 34px;
+    margin-left: 30px;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.field {
+    height: 30px;
+    border-radius: 10px 10px 10px 10px;
+    border: 0.5px solid #A09E9E;
+    box-shadow: 0px 0px 12px 1px #80B9ED;
+    margin-top: 15px;
+    margin-left: 35px;
+    width: 250px;
+}
+
+input{
+    padding: 0 20px;
+}
+
+button {
+    width: 208.06px;
+    height: 56px;
+    background: #CCE0FB;
+    border-radius: 20px;
+    border: 0;
+    font-size: 18px;
+    margin-top: 30px;
+    margin-left: 75px;
+}

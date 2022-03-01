@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link href="{% static 'css/style_registration_field.css' %}" rel="stylesheet">
+</head>
+<body>
+<header>
+        <div class = container>
+            <div class="head">
+                <img src="{% static 'img/logonew.png' %}" alt="" class="logo">
+                <nav class="navigation">
+                    <ul class="menu">
+                        <li class="text">
+                            <a href="#">Главная</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="#">Статьи</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="#">Калькулятор</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="#">Блог</a>
+                        </li>
+
+                        <li class="iconLK">
+                            <a href="#"><img src="{% static 'img/iconLK.png' %}" alt="LK" class="imgLK"></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+</header>
+
+<section>
+    <div class="reg_field" style="background-image:url('{% static 'img/image_pattern_reg.jpg' %}'); background-size: contain;">
+        <div class="rectangle">
+            <h4>Регистрация</h4>
+            <form method="post">
+                <h6 class="frstField">Email</h6>
+                <input type="email" placeholder="Введите email" name="email" class="field" required>
+                <h6 class="otherFields">Пароль</h6>
+                <input type="password" placeholder="Придумайте пароль" name="psw" class="field" required>
+                <h6 class="otherFields">Подтвердите пароль</h6>
+                <input type="password" placeholder="Повторите пароль" name="psw-repeat" class="field" required>
+                <h6 class="otherFields">Логин</h6>
+                <input type="text" placeholder="Придумайте логин" name="login" class="field" required>
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>

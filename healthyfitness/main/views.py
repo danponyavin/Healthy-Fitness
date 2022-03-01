@@ -23,3 +23,7 @@ def food_diary(request):
 
 def personal_area(request):
     return render(request, 'main/personal_area.html')
+
+
+def registration_field(request):
+    return render(request, 'main/registration_field.html')
