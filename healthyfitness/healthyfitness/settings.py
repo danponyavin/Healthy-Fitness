@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ltffys44-(_89wuj8g!pifhvhv%=1cj#i)znxxfy1eui(#c++)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main',
-
+    'main.apps.MainConfig',
+    'registration.apps.RegistrationConfig',
 ]
 
 MIDDLEWARE = [
@@ -121,6 +121,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     'main/static',
+    'registration/static',
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")

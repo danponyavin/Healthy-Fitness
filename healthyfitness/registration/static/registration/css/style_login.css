@@ -6,7 +6,7 @@ body {
 
 header {
     background-color: #CCE0FB;
-    width: 1702px;
+    width: 100%;
     height: 60px;
     left: -83px;
     top: 0px;
@@ -14,7 +14,7 @@ header {
 }
 
 .container {
-    width: 1277px;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -22,8 +22,10 @@ div {
     box-sizing: border-box;
 }
 
-section {
-
+.mainInformation{
+    margin: 0 auto;
+    max-width: 1550px;
+    min-width: 1500px;
 }
 
 .logo{
@@ -73,27 +75,30 @@ section {
 .reg_field {
     padding: 0;
     margin: 0;
-    width: 3000px;
+    width: 100%;
     height: 1000px;
     overflow: hidden;
 }
 
 .rectangle {
-    width: 364.1px;
-    height: 581px;
+    width: 26%;
+    height: 530px;
     background: #FFFFFF;
     border: 1px solid #013036;
     box-sizing: border-box;
     border-radius: 20px;
-    margin-left: 550px;
+    margin-left: 38%;
     margin-top: 50px;
 }
 
 .rectangle h4 {
+    width: 26%;
     margin-top: 22px;
-    margin-left: 100px;
+    margin-left: 37%;
+    text-align: center;
     font-size: 24px;
     margin-bottom: 0;
+    padding: 0;
 }
 
 .frstField {
@@ -104,7 +109,7 @@ section {
 }
 
 .otherFields {
-    margin-top: 34px;
+    margin-top: 15%;
     margin-left: 30px;
     font-size: 20px;
     margin-bottom: 0;
@@ -115,7 +120,7 @@ section {
     border-radius: 10px 10px 10px 10px;
     border: 0.5px solid #A09E9E;
     box-shadow: 0px 0px 12px 1px #80B9ED;
-    margin-top: 15px;
+    margin-top: 5%;
     margin-left: 35px;
     width: 250px;
 }
@@ -125,12 +130,24 @@ input{
 }
 
 button {
-    width: 208.06px;
+    width: 45%;
     height: 56px;
     background: #CCE0FB;
     border-radius: 20px;
     border: 0;
     font-size: 18px;
-    margin-top: 30px;
-    margin-left: 75px;
+    margin-top: 15%;
+    margin-left: 28%;
+    margin-bottom: 0;
 }
+
+.makeAccount{
+    display: inline-block;
+    width: 50%;
+    margin-left: 33%;
+    font-size: 18px;
+    padding: 0;
+    color: black;
+    margin-top: 20%;
+}
+

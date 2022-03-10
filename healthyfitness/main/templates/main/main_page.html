@@ -5,17 +5,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Главная</title>
-    <link href="{% static 'css/stylesheet.css' %}" rel="stylesheet">
+    <link href="{% static 'main/css/style_main.css' %}" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class = container>
             <div class="head">
-                <img src="{% static 'img/logonew.png' %}" alt="" class="logo">
+                <a href="{% url 'home' %}"><img src="{% static 'main/img/iconLogo.png' %}" alt="" class="logo"></a>
                 <nav class="navigation">
                     <ul class="menu">
                         <li class="text">
-                            <a href="#" style="font-weight: bold">Главная</a>
+                            <a href="{% url 'home' %}" style="font-weight: bold">Главная</a>
                         </li>
 
                         <li class="text">
@@ -31,7 +31,7 @@
                         </li>
 
                         <li class="iconLK">
-                            <a href="#"><img src="{% static 'img/iconLK.png' %}" alt="LK" class="imgLK"></a>
+                            <a href="{% url 'login' %}"><img src="{% static 'main/img/iconForPersonalArea.png' %}" alt="LK" class="imgLK"></a>
                         </li>
                     </ul>
                 </nav>
@@ -62,7 +62,7 @@
     <section>
         <div class="mainPhrase">
             <p>Ваше здоровье<br>на нашем сайте</p>
-            <img src="{% static 'img/womenImage.jpg' %}" alt="" class="mainImage">
+            <img src="{% static 'main/img/imgForMainPage.jpg' %}" alt="" class="mainImage">
         </div>
     </section>
 
@@ -80,7 +80,7 @@
 
     <section>
         <div class="buttonRegSec">
-            <a href="#" class="buttonReg">Стать частью коммьюнити</a>
+            <a href="{% url 'registration_field' %}" class="buttonReg">Стать частью коммьюнити</a>
         </div>
     </section>
 </body>

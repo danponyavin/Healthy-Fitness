@@ -28,10 +28,11 @@ section {
 }
 
 .logo{
-    margin-top: 5px;
-    width: 40px;
-    height: 50px;
+    margin-top: 20px;
+    width: 30px;
+    height: 30px;
     float: left;
+    display: block;
 }
 
 

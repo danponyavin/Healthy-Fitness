@@ -26,4 +26,4 @@ def personal_area(request):
 
 
 def registration_field(request):
-    return render(request, 'main/registration_field.html')
+    return render(request, 'registration/registration_field.html')
