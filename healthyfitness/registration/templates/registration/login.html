@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <link href="{% static 'registration/css/style_login.css' %}" rel="stylesheet">
+</head>
+<body>
+<div class="mainInformation">
+<header>
+        <div class = container>
+            <div class="head">
+                <a href="{% url 'home' %}"><img src="{% static 'registration/img/iconLogo.png' %}" alt="" class="logo"></a>
+                <nav class="navigation">
+                    <ul class="menu">
+                        <li class="text">
+                            <a href="{% url 'home' %}">Главная</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="{% url 'articles' %}">Статьи</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="#">Калькулятор</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="#">Блог</a>
+                        </li>
+
+                        <li class="iconLK">
+                            <a href="{% url 'registration_field' %}"><img src="{% static 'registration/img/iconForPersonalArea.png' %}" alt="LK" class="imgLK"></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+</header>
+
+<section>
+    <div class="reg_field" style="background-image:url('{% static 'registration/img/patternSportPeople.jpg' %}'); background-size: contain;">
+        <div class="rectangle">
+            <h4>Вход</h4>
+            <form method="post">
+                <h6 class="frstField">Логин</h6>
+                <input type="text" placeholder="Введите логин" name="login" class="field" required>
+                <h6 class="otherFields">Пароль</h6>
+                <input type="password" placeholder="Введите пароль" name="psw" class="field" required>
+                <button type="submit">Войти</button>
+            </form>
+            <a href="{% url 'registration_field' %}" class="makeAccount">Создать аккаунт</a>
+        </div>
+    </div>
+</section>
+</div>
+</body>
+</html>

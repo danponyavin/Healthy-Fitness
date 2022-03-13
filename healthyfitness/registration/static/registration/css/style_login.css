@@ -1,0 +1,155 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: #CCE0FB;
+    width: 100%;
+    height: 60px;
+    left: -83px;
+    top: 0px;
+    border: 0px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.mainInformation{
+    margin: 0 auto;
+    max-width: 1550px;
+    min-width: 1500px;
+}
+
+.logo{
+    margin-top: 5px;
+    width: 40px;
+    height: 50px;
+    float: left;
+}
+
+
+.navigation {
+    float: right;
+}
+
+.menu {
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+.menu li a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.text {
+    margin-top: 20px;
+    float: left;
+    display: block;
+    margin-right: 60px;
+}
+
+.iconLK {
+    float: left;
+    display: block;
+    margin-right: 60px;
+    margin-top: 10px;
+}
+
+.imgLK {
+    width: 35px;
+    height: 35px;
+}
+
+
+.reg_field {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 1000px;
+    overflow: hidden;
+}
+
+.rectangle {
+    width: 26%;
+    height: 530px;
+    background: #FFFFFF;
+    border: 1px solid #013036;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin-left: 38%;
+    margin-top: 50px;
+}
+
+.rectangle h4 {
+    width: 26%;
+    margin-top: 22px;
+    margin-left: 37%;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.frstField {
+    margin-top: 42px;
+    margin-left: 30px;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.otherFields {
+    margin-top: 15%;
+    margin-left: 30px;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.field {
+    height: 30px;
+    border-radius: 10px 10px 10px 10px;
+    border: 0.5px solid #A09E9E;
+    box-shadow: 0px 0px 12px 1px #80B9ED;
+    margin-top: 5%;
+    margin-left: 35px;
+    width: 250px;
+}
+
+input{
+    padding: 0 20px;
+}
+
+button {
+    width: 45%;
+    height: 56px;
+    background: #CCE0FB;
+    border-radius: 20px;
+    border: 0;
+    font-size: 18px;
+    margin-top: 15%;
+    margin-left: 28%;
+    margin-bottom: 0;
+}
+
+.makeAccount{
+    display: inline-block;
+    width: 50%;
+    margin-left: 33%;
+    font-size: 18px;
+    padding: 0;
+    color: black;
+    margin-top: 20%;
+}
+
