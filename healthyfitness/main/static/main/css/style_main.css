@@ -2,8 +2,6 @@ body {
     padding: 0;
     margin: 0;
     font-family: Arial, sans-serif;
-    overflow-y: hidden;
-    overflow-x: hidden;
 }
 
 header {
@@ -27,7 +25,7 @@ div {
 .mainInformation{
     margin: 0 auto;
     max-width: 1550px;
-    min-width: 1500px;
+    min-width: 1550px;
 }
 
 .logo{
@@ -74,17 +72,8 @@ div {
 }
 
 .readNewArticles p{
-    font-size: 20px;
-    font-weight: lighter;
+    font-size: 18px;
 }
-
-.readNewArticles .container {
-    margin-top: 33px;
-    float: left;
-    display: block;
-    padding: 0;
-}
-
 
 .containerOfArticles a{
     text-decoration: none;
@@ -98,7 +87,7 @@ div {
     box-sizing: border-box;
     border-radius: 10px;
     font-size: 20px;
-    margin-right: 80px;
+    margin-right: 50px;
 }
 
 .firstArticle{
@@ -113,23 +102,21 @@ div {
     box-shadow: 0px 0px 10px 1px #98EB88;
 }
 
-.mainPhrase p {
-    font-size: 64px;
-    float: left;
-    margin-top: 60px;
-    margin-bottom: 50px;
+.mainPhrase p{
+    font-size: 50px;
+    margin-left: 10%;
+    margin-top: 5%;
+    display: block;
 }
 
-.mainImage {
+.mainImage{
     float: right;
     padding: 0;
-    margin: 0;
     width: 800px;
     height: 600px;
-    margin-top: 50px;
-    margin-bottom: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
-
 
 .buttonCalc a{
     text-decoration: none;
@@ -140,6 +127,7 @@ div {
     padding: 20px;
     float: left;
     font-size: 24px;
+    margin-left: 10%;
 }
 
 .textAboutReg p{
@@ -148,6 +136,7 @@ div {
     height: 128px;
     font-size: 24px;
     margin-top: 40px;
+    margin-left: 10%;
 }
 
 
@@ -160,4 +149,5 @@ div {
     background: #A8D2A0;
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
+    margin-left: 10%;
 }
