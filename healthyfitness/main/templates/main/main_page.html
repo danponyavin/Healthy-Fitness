@@ -4,10 +4,11 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Главная</title>
+    <title>{{ title }}</title>
     <link href="{% static 'main/css/style_main.css' %}" rel="stylesheet">
 </head>
 <body>
+<div class="mainInformation">
     <header>
         <div class = container>
             <div class="head">
@@ -19,7 +20,7 @@
                         </li>
 
                         <li class="text">
-                            <a href="#">Статьи</a>
+                            <a href="{% url 'articles' %}">Статьи</a>
                         </li>
 
                         <li class="text">
@@ -83,5 +84,6 @@
             <a href="{% url 'registration_field' %}" class="buttonReg">Стать частью коммьюнити</a>
         </div>
     </section>
+</div>
 </body>
 </html>

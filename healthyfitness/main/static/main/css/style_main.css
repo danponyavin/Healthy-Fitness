@@ -2,11 +2,13 @@ body {
     padding: 0;
     margin: 0;
     font-family: Arial, sans-serif;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 header {
     background-color: #CCE0FB;
-    width: 1702px;
+    width: 100%;
     height: 60px;
     left: -83px;
     top: 0px;
@@ -14,7 +16,7 @@ header {
 }
 
 .container {
-    width: 1277px;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -22,17 +24,17 @@ div {
     box-sizing: border-box;
 }
 
-section {
-    width: 1277px;
+.mainInformation{
     margin: 0 auto;
+    max-width: 1550px;
+    min-width: 1500px;
 }
 
 .logo{
-    margin-top: 20px;
-    width: 30px;
-    height: 30px;
+    margin-top: 5px;
+    width: 40px;
+    height: 50px;
     float: left;
-    display: block;
 }
 
 
