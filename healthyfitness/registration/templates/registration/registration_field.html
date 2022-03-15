@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link href="{% static 'registration/css/style_registration.css' %}" rel="stylesheet">
+</head>
+<body>
+<div class="mainInformation">
+<header>
+        <div class = container>
+            <div class="head">
+                <a href="{% url 'home' %}"><img src="{% static 'registration/img/iconLogo.png' %}" alt="" class="logo"></a>
+                <nav class="navigation">
+                    <ul class="menu">
+                        <li class="text">
+                            <a href="{% url 'home' %}">Главная</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="{% url 'articles' %}">Статьи</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="#">Калькулятор</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="#">Блог</a>
+                        </li>
+
+                        <li class="iconLK">
+                            <a href="{% url 'login' %}"><img src="{% static 'registration/img/iconForPersonalArea.png' %}" alt="LK" class="imgLK"></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+</header>
+
+<section>
+    <div class="reg_field" style="background-image:url('{% static 'registration/img/patternSportPeople.jpg' %}'); background-size: contain;">
+        <div class="rectangle">
+            <h4>Регистрация</h4>
+            <form method="post">
+                <h6 class="frstField">Email</h6>
+                <input type="email" placeholder="Введите email" name="email" class="field" required>
+                <h6 class="otherFields">Пароль</h6>
+                <input type="password" placeholder="Придумайте пароль" name="psw" class="field" required>
+                <h6 class="otherFields">Подтвердите пароль</h6>
+                <input type="password" placeholder="Повторите пароль" name="psw-repeat" class="field" required>
+                <h6 class="otherFields">Логин</h6>
+                <input type="text" placeholder="Придумайте логин" name="login" class="field" required>
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+            <a href="{% url 'login' %}" class="isAccount">Уже есть акаунт</a>
+        </div>
+    </div>
+</section>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link href="{% static 'articles/css/style_articles_health.css' %}" rel="stylesheet">
+</head>
+<body>
+   <div class="mainInformation">
+        <header>
+                <div class = container>
+                    <div class="head">
+                        <a href="{% url 'home' %}"><img src="{% static 'registration/img/iconLogo.png' %}" alt="" class="logo"></a>
+                        <nav class="navigation">
+                            <ul class="menu">
+                                <li class="text">
+                                    <a href="{% url 'home' %}">Главная</a>
+                                </li>
+
+                                <li class="text">
+                                    <a href="{% url 'articles' %}" style="font-weight: bold">Статьи</a>
+                                </li>
+
+                                <li class="text">
+                                    <a href="#">Калькулятор</a>
+                                </li>
+
+                                <li class="text">
+                                    <a href="#">Блог</a>
+                                </li>
+
+                                <li class="iconLK">
+                                    <a href="{% url 'registration_field' %}"><img src="{% static 'registration/img/iconForPersonalArea.png' %}" alt="LK" class="imgLK"></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+        </header>
+       <div class="choiceTopic">
+           <a href="{% url 'articles' %}" class="all">Все</a>
+           <a href="{% url 'articles_health' %}" class="health">Здоровье</a>
+           <a href="{% url 'articles_devices' %}" class="devices">Девайсы</a>
+           <a href="{% url 'articles_food' %}" class="food">Питание</a>
+           <a href="{% url 'articles_sport' %}" class="sport">Спорт</a>
+       </div>
+   </div>
+</body>
+</html>
