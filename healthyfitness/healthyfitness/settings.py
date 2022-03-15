@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'registration.apps.RegistrationConfig',
-    'articles.apps.ArticlesConfig'
+    'articles.apps.ArticlesConfig',
+    'calculator.apps.CalculatorConfig'
 ]
 
 MIDDLEWARE = [
@@ -123,6 +124,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     'main/static',
     'registration/static',
+    'calculator/static'
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
