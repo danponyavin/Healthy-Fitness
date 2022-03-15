@@ -92,7 +92,6 @@ div {
 
 .all{
     background: #AA8CFF;
-    font-weight: bold;
 }
 
 .health {
@@ -101,6 +100,7 @@ div {
 
 .devices {
     background: #80B9ED;
+    font-weight: bold;
 }
 
 .food {

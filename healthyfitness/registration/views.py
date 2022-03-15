@@ -7,4 +7,3 @@ def registration_field(request):
 
 def login(request):
     return render(request, 'registration/login.html')
-

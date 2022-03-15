@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ title }}</title>
-    <link href="{% static 'articles/css/style_articles.css' %}" rel="stylesheet">
+    <link href="{% static 'articles/css/style_articles_sport.css' %}" rel="stylesheet">
 </head>
 <body>
    <div class="mainInformation">
@@ -21,7 +21,6 @@
 
                                 <li class="text">
                                     <a href="{% url 'articles' %}" style="font-weight: bold">Статьи</a>
-
                                 </li>
 
                                 <li class="text">
@@ -40,7 +39,6 @@
                     </div>
                 </div>
         </header>
-
        <div class="choiceTopic">
            <a href="{% url 'articles' %}" class="all">Все</a>
            <a href="{% url 'articles_health' %}" class="health">Здоровье</a>
@@ -48,10 +46,6 @@
            <a href="{% url 'articles_food' %}" class="food">Питание</a>
            <a href="{% url 'articles_sport' %}" class="sport">Спорт</a>
        </div>
-   </div>
-</body>
-</html>
-
    </div>
 </body>
 </html>

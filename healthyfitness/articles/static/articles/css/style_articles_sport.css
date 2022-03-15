@@ -92,7 +92,6 @@ div {
 
 .all{
     background: #AA8CFF;
-    font-weight: bold;
 }
 
 .health {
@@ -109,4 +108,5 @@ div {
 
 .sport {
     background: #EB7272;
+    font-weight: bold;
 }

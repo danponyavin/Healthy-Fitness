@@ -92,11 +92,11 @@ div {
 
 .all{
     background: #AA8CFF;
-    font-weight: bold;
 }
 
 .health {
     background: #98EB88;
+    font-weight: bold;
 }
 
 .devices {
