@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 
+
 def allArticles(request):
     return render(request, 'articles/articles.html', {'title': 'Статьи'})
 
