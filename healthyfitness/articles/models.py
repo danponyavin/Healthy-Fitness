@@ -9,6 +9,11 @@ class Category(models.Model):
         return self.name
 
 
+    class Meta:
+        verbose_name = 'Категории'
+        verbose_name_plural = 'Категории'
+
+
 class Article(models.Model):
     title = models.CharField(max_length=255)
     slag = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
