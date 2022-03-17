@@ -52,9 +52,9 @@
         <div class="newArticles">
             <div class = container>
                 <nav class="containerOfArticles">
-                    <a href="#" class="firstArticle">Как выбрать умные весы</a>
-                    <a href="#" class="secondArticle">Топ-5 продуктов для здоровой кожи</a>
-                    <a href="#" class="thirdArticle">Почему сон так важен при похудении</a>
+                    {% for a in titlesNewArticles %}
+                    <a href="{% url 'certainArticle' a.slag %}" class="firstArticle">{{a.title}}</a>
+                    {% endfor %}
                 </nav>
             </div>
         </div>

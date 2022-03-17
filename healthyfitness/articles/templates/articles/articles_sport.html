@@ -46,6 +46,12 @@
            <a href="{% url 'articles_food' %}" class="food">Питание</a>
            <a href="{% url 'articles_sport' %}" class="sport">Спорт</a>
        </div>
+
+       <div class="listOfTitles">
+           {% for a in titlesOfArticles%}
+               <a href="#">{{a.title}}</a>
+           {% endfor %}
+       </div>
    </div>
 </body>
 </html>

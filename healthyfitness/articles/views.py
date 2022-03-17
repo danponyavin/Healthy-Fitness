@@ -1,22 +1,33 @@
 from django.shortcuts import render
-
+from django.shortcuts import get_object_or_404
+from .models import *
 
 
 def allArticles(request):
-    return render(request, 'articles/articles.html', {'title': 'Статьи'})
+    titlesOfArticles = Article.objects.all()
+    return render(request, 'articles/articles.html', {'titlesOfArticles': titlesOfArticles,'title': 'Статьи'})
 
 
 def healthArticles(request):
-    return render(request, 'articles/articles_health.html', {'title': 'Статьи про здоровье'})
+    titlesOfArticles = Article.objects.filter(category=1)
+    return render(request, 'articles/articles_health.html', {'titlesOfArticles': titlesOfArticles, 'title': 'Статьи про здоровье'})
 
 
 def devicesArticles(request):
-    return render(request, 'articles/articles_devices.html', {'title': 'Статьи про девайсы'})
+    titlesOfArticles = Article.objects.filter(category=3)
+    return render(request, 'articles/articles_devices.html', {'titlesOfArticles': titlesOfArticles, 'title': 'Статьи про девайсы'})
 
 
 def foodArticles(request):
-    return render(request, 'articles/articles_food.html', {'title': 'Статьи про питание'})
+    titlesOfArticles = Article.objects.filter(category=4)
+    return render(request, 'articles/articles_food.html', {'titlesOfArticles': titlesOfArticles, 'title': 'Статьи про питание'})
 
 
 def sportArticles(request):
-    return render(request, 'articles/articles_sport.html', {'title': 'Статьи про спорт'})
+    titlesOfArticles = Article.objects.filter(category=2)
+    return render(request, 'articles/articles_sport.html', {'titlesOfArticles': titlesOfArticles, 'title': 'Статьи про спорт'})
+
+
+def showCertainArticle(request, art_slug):
+    article = get_object_or_404(Article, slag=art_slug)
+    return render(request, 'articles/certain_article.html', {'content': article.content,'title': article.title})
