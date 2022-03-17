@@ -74,3 +74,4 @@ def calculator(request):
             'fats': fats,
             'carbohydrates': carbohydrates,}
     return render(request, 'calculator/calculator.html', cont)
+    
