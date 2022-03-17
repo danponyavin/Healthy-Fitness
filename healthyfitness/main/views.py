@@ -8,11 +8,6 @@ def main_page(request):
 def articles(request):
     return render(request, 'articles/articles.html', {'title': 'Статьи'})
 
-
-def calculator(request):
-    return render(request, 'main/calculator.html', {'title': 'Калькулятор'})
-
-
 def blog(request):
     return render(request, 'main/blog.html', {'title': 'Блог'})
 
