@@ -1,4 +1,7 @@
+from django.conf.urls.static import static
 from django.urls import path
+
+from healthyfitness import settings
 from . import views
 
 urlpatterns = [
@@ -12,3 +15,6 @@ urlpatterns = [
     path('articles/sport', views.sportArticles, name='articles_sport'),
     # path('articles/sport/<slug:art_slug>/', views.showArticle, name='oneArticle'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
