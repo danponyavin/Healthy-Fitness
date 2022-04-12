@@ -32,7 +32,7 @@
                                 </li>
 
                                 <li class="iconLK">
-                                    <a href="{% url 'registration_field' %}"><img src="{% static 'registration/img/iconForPersonalArea.png' %}" alt="LK" class="imgLK"></a>
+                                    <a href="{% url 'login' %}"><img src="{% static 'registration/img/iconForPersonalArea.png' %}" alt="LK" class="imgLK"></a>
                                 </li>
                             </ul>
                         </nav>
@@ -46,6 +46,17 @@
            <a href="{% url 'articles_food' %}" class="food">Питание</a>
            <a href="{% url 'articles_sport' %}" class="sport">Спорт</a>
        </div>
+
+       <div class="listOfTitles">
+           {% for a in titlesOfArticles%}
+               <div class="Article" onclick="location.href='{% url 'certainArticle' a.slag %}';">
+               <a href="{% url 'certainArticle' a.slag %}">{{a.title}}</a>
+               <img class="photoOfArticle" src="{{ a.photo.url }}">
+               <div style="clear: both"></div>
+               </div>
+           {% endfor %}
+       </div>
+
    </div>
 </body>
 </html>

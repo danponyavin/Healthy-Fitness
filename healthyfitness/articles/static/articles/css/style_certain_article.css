@@ -1,0 +1,104 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #F0F3F3;
+}
+
+header {
+    background-color: #CCE0FB;
+    width: 100%;
+    height: 60px;
+    left: -83px;
+    top: 0px;
+    border: 0px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.mainInformation{
+    margin: 0 auto;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.logo{
+    margin-top: 5px;
+    width: 40px;
+    height: 50px;
+    float: left;
+}
+
+
+.navigation {
+    float: right;
+}
+
+.menu {
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+.menu li a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.text {
+    margin-top: 20px;
+    float: left;
+    display: block;
+    margin-right: 60px;
+}
+
+.iconLK {
+    float: left;
+    display: block;
+    margin-right: 60px;
+    margin-top: 10px;
+}
+
+.imgLK {
+    width: 35px;
+    height: 35px;
+}
+
+.titleOfArticle{
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 24px;
+}
+
+.contentOfArticle{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.photoOfArticle{
+    margin-left: 10%;
+    height: 400px;
+
+}
+
+.timeOfArticle{
+    float:right;
+    margin-right: 10%;
+}
+
+.Category {
+    margin-left: 10%;
+    font-size: 18px;
+    padding: 10px;
+    background: #FFFFFF;
+    width: 80%;
+    border-radius: 10px;
+}

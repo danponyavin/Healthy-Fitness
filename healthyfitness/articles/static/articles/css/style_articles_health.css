@@ -25,8 +25,8 @@ div {
 
 .mainInformation{
     margin: 0 auto;
-    max-width: 1550px;
-    min-width: 1500px;
+    max-width: 100%;
+    min-width: 100%;
 }
 
 .logo{
@@ -109,4 +109,36 @@ div {
 
 .sport {
     background: #EB7272;
+}
+
+.listOfTitles{
+margin-left: 14%;
+margin-top: 3%;
+}
+
+.Article {
+cursor: pointer;
+display: block;
+text-decoration: none;
+color: black;
+font-size: 36px;
+margin-top: 2%;
+padding: 10px;
+background: #FFFFFF;
+width: 80%;
+border: 1px solid #000000;
+box-shadow: 0px 0px 10px 3px #98EB88;
+border-radius: 10px;
+}
+
+.Article a{
+    text-decoration: none;
+    color: black;
+}
+
+
+.photoOfArticle{
+    height: 100px;
+    margin-right: 0;
+    float: right;
 }

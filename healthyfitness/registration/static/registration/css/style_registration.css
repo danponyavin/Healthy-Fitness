@@ -2,9 +2,9 @@ body {
     padding: 0;
     margin: 0;
     font-family: Arial, sans-serif;
-    overflow-y: hidden;
     overflow-x: hidden;
 }
+
 
 header {
     background-color: #CCE0FB;
@@ -16,16 +16,11 @@ header {
 }
 
 .container {
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
 }
 
 div {
     box-sizing: border-box;
-}
-
-section {
-
 }
 
 .logo{
@@ -33,11 +28,13 @@ section {
     width: 40px;
     height: 50px;
     float: left;
+    margin-left: 10%;
 }
 
 
 .navigation {
     float: right;
+    margin-right: 10%;
 }
 
 .menu {
@@ -81,8 +78,8 @@ section {
 }
 
 .rectangle {
-    width: 26%;
-    height: 61%;
+    width: 400px;
+    height: 620px;
     background: #FFFFFF;
     border: 1px solid #013036;
     box-sizing: border-box;
@@ -136,14 +133,14 @@ button {
     border-radius: 20px;
     border: 0;
     font-size: 18px;
-    margin-top: 7%;
+    margin-top: 50px;
     margin-left: 75px;
 }
 
 .mainInformation {
     margin: 0 auto;
-    max-width: 1550px;
-    min-width: 1500px;
+    max-width: 100%;
+    min-width: 100%;
 }
 
 .isAccount {
@@ -153,5 +150,5 @@ button {
     font-size: 14px;
     padding: 0;
     color: black;
-    margin-top: 7%;
+    margin-top: 17px;
 }
