@@ -30,4 +30,4 @@ def sportArticles(request):
 
 def showCertainArticle(request, art_slug):
     article = get_object_or_404(Article, slag=art_slug)
-    return render(request, 'articles/certain_article.html', {'content': article.content,'title': article.title})
+    return render(request, 'articles/certain_article.html', {'article': article})

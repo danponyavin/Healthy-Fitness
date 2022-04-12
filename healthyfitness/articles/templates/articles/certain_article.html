@@ -4,7 +4,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>{{ title }}</title>
+    <title>{{ article.title }}</title>
     <link href="{% static 'articles/css/style_certain_article.css' %}" rel="stylesheet">
 </head>
 <body>
@@ -16,11 +16,11 @@
                 <nav class="navigation">
                     <ul class="menu">
                         <li class="text">
-                            <a href="{% url 'home' %}" style="font-weight: bold">Главная</a>
+                            <a href="{% url 'home' %}" >Главная</a>
                         </li>
 
                         <li class="text">
-                            <a href="{% url 'articles' %}">Статьи</a>
+                            <a href="{% url 'articles' %}" style="font-weight: bold">Статьи</a>
                         </li>
 
                         <li class="text">
@@ -40,5 +40,42 @@
         </div>
     </header>
 
+
+    <div class="titleOfArticle">
+        <h1>{{ article.title }}</h1>
+    </div>
+
+    {% if article.category_id == 1 %}
+        <a class="Category" style="background-color: #98EB88">{{ article.category }}</a>
+    {% endif %}
+
+    {% if article.category_id == 2 %}
+        <a class="Category" style="background-color: #EB7272">{{ article.category }}</a>
+    {% endif %}
+
+    {% if article.category_id == 3 %}
+        <a class="Category" style="background-color: #80B9ED">{{ article.category }}</a>
+    {% endif %}
+
+    {% if article.category_id == 4 %}
+        <a class="Category" style="background-color: #F3E38D">{{ article.category }}</a>
+    {% endif %}
+
+    {% if article.photo %}
+        <p><img class="photoOfArticle" src="{{ article.photo.url }}"></p>
+    {% endif %}
+
+
+    <div class="contentOfArticle">
+        {% autoescape off %}
+        {{ article.content }}
+        {% endautoescape %}
+    </div>
+
+    <div class="timeOfArticle">
+        {{ article.time_update }}
+    </div>
+
+</div>
 </body>
 </html>

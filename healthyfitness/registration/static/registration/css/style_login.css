@@ -2,7 +2,6 @@ body {
     padding: 0;
     margin: 0;
     font-family: Arial, sans-serif;
-    overflow-y: hidden;
     overflow-x: hidden;
 }
 
@@ -26,8 +25,8 @@ div {
 
 .mainInformation{
     margin: 0 auto;
-    max-width: 1550px;
-    min-width: 1500px;
+    max-width: 100%;
+    min-width: 100%;
 }
 
 .logo{
@@ -83,8 +82,8 @@ div {
 }
 
 .rectangle {
-    width: 26%;
-    height: 530px;
+    width: 400px;
+    height: 500px;
     background: #FFFFFF;
     border: 1px solid #013036;
     box-sizing: border-box;
@@ -150,6 +149,6 @@ button {
     font-size: 18px;
     padding: 0;
     color: black;
-    margin-top: 20%;
+    margin-top: 40px;
 }
 

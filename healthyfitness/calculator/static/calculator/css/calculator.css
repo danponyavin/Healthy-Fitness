@@ -25,8 +25,8 @@ div {
 
 .mainInformation{
     margin: 0 auto;
-    max-width: 1550px;
-    min-width: 1500px;
+    max-width: 100%;
+    min-width: 100%;
 }
 
 .logo{
@@ -80,7 +80,7 @@ div {
     margin-top: 23px;
     padding-top: 8px;
     border-radius: 25px;
-    margin-left: 200px;
+    margin-left: 18%;
 }
 
 h1 {
@@ -204,7 +204,7 @@ option {
     margin-top: 23px;
     padding-top: 8px;
     border-radius: 16px;
-    margin-left: 200px;
+    margin-left: 18%;
     text-align: center;
     padding: 13px;
 }
@@ -216,7 +216,7 @@ option {
     margin-top: 23px;
     padding-top: 8px;
     border-radius: 16px;
-    margin-left: 200px;
+    margin-left: 18%;
     margin-bottom: 30px;
 
 }

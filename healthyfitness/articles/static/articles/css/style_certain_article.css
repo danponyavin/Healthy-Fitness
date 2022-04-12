@@ -25,8 +25,8 @@ div {
 
 .mainInformation{
     margin: 0 auto;
-    max-width: 1550px;
-    min-width: 1500px;
+    max-width: 100%;
+    min-width: 100%;
 }
 
 .logo{
@@ -70,4 +70,35 @@ div {
 .imgLK {
     width: 35px;
     height: 35px;
+}
+
+.titleOfArticle{
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 24px;
+}
+
+.contentOfArticle{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.photoOfArticle{
+    margin-left: 10%;
+    height: 400px;
+
+}
+
+.timeOfArticle{
+    float:right;
+    margin-right: 10%;
+}
+
+.Category {
+    margin-left: 10%;
+    font-size: 18px;
+    padding: 10px;
+    background: #FFFFFF;
+    width: 80%;
+    border-radius: 10px;
 }
