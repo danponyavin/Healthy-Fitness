@@ -1,9 +1,10 @@
 from django import forms
+from audioop import reverse
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Calculator(models.Model):
-
     age = models.CharField('', max_length=3)
     weight = models.CharField('', max_length=5)
     growth = models.CharField('', max_length=3)
@@ -30,3 +31,23 @@ class Calculator(models.Model):
     )
     user_activity = models.CharField(max_length=100, choices=select_activity)
 
+
+class About_user(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    slag = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
+    age = models.IntegerField(null=True)
+    weight = models.FloatField(null=True)
+    gender = models.CharField(max_length=8, null=True)
+    growth = models.IntegerField(null=True)
+    Activity_level = models.CharField(max_length=100, null=True)
+    user_aim = models.CharField(max_length=30, null=True)
+    needed_kkal = models.FloatField(null=True)
+    needed_proteins = models.FloatField(null=True)
+    needed_fats = models.FloatField(null=True)
+    needed_carbohydrates = models.FloatField(null=True)
+
+    def __str__(self):
+        return self.user
+
+    def get_absolute_url(self):
+        return reverse('post', kwargs={'post_slug': self.slug})
