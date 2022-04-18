@@ -3,7 +3,6 @@ from .models import Calculator
 from django.forms import ModelForm, TextInput
 
 
-
 class CalculatorForm(ModelForm):
     class Meta:
         model = Calculator
