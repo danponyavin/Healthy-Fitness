@@ -46,15 +46,20 @@
         <div class="rectangle">
             <h4>Регистрация</h4>
             <form method="post">
-                <h6 class="frstField">Email</h6>
-                <input type="email" placeholder="Введите email" name="email" class="field" required>
-                <h6 class="otherFields">Пароль</h6>
-                <input type="password" placeholder="Придумайте пароль" name="psw" class="field" required>
-                <h6 class="otherFields">Подтвердите пароль</h6>
-                <input type="password" placeholder="Повторите пароль" name="psw-repeat" class="field" required>
+                {% csrf_token %}
                 <h6 class="otherFields">Логин</h6>
-                <input type="text" placeholder="Придумайте логин" name="login" class="field" required>
-                <button type="submit">Зарегистрироваться</button>
+                {{ form.username }}
+                {{ form.username.errors }}
+                <h6 class="frstField">Email</h6>
+                {{ form.email }}
+                {{ form.email.errors }}
+                <h6 class="otherFields">Пароль</h6>
+                {{ form.password1 }}
+                {{ form.password1.errors }}
+                <h6 class="otherFields">Подтвердите пароль</h6>
+                {{ form.password2 }}
+                {{ form.password2.errors }}
+                 <button type="submit">Зарегистрироваться</button>
             </form>
             <a href="{% url 'login' %}" class="isAccount">Уже есть акаунт</a>
         </div>
