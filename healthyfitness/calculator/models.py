@@ -34,9 +34,8 @@ class Calculator(models.Model):
     user_activity = models.CharField(max_length=100, choices=select_activity)
 
 
-class About_user(models.Model):
+class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    slag = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
     age = models.IntegerField(null=True)
     weight = models.FloatField(null=True)
     gender = models.CharField(max_length=8, null=True)
@@ -49,17 +48,13 @@ class About_user(models.Model):
     needed_carbohydrates = models.FloatField(null=True)
 
     def __str__(self):
-        return self.user
-
-    def get_absolute_url(self):
-        return reverse('post', kwargs={'post_slug': self.slug})
+        return self.user.username
 
     @receiver(post_save, sender=User)
     def update_profile_signal(sender, instance, created, **kwargs):
         if created:
-            About_user.objects.create(user=instance)
-        instance.About_user.save()
+            Profile.objects.create(user=instance)
 
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
-        instance.About_user.save()
+        instance.profile.save()
