@@ -55,7 +55,7 @@ def calculator(request):
                 activity = int(temp["user_activity"])
                 aim = int(temp["user_aim"])
                 gender = int(temp["gender"])
-                if growth > 50 and age > 0 and weight > 1:
+                if 59 < growth < 231 and 9 < age < 101 and 25 < weight < 210:
                     user_data = {'age': age, 'growth': growth, 'weight': weight, 'activity': activity,
                                  'aim': aim, 'gender': gender}
                     user_data_res = calcUserData(user_data)
