@@ -4,10 +4,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Выбор продуктов</title>
-    <link href="{% static 'food_diary/css/style_product_selection.css' %}" rel="stylesheet">
+    <title>Мучные продукты</title>
+    <link href="{% static 'food_diary/css/style_category_products.css' %}" rel="stylesheet">
 </head>
-
+<body>
 
 <header>
         <div class = container>
@@ -42,12 +42,11 @@
         </div>
 </header>
 
-
 <section>
     <div class="selectOption">
         <div class="selectButtons">
             <ul>
-                <li><a href="#" style="font-weight: bold">Выбор продуктов</a></li>
+                <li><a href="{% url 'product_selection' %}">Выбор продуктов</a></li>
                 <li><a href="#" class="foodDiary">Дневник питания</a></li>
             </ul>
         </div>
@@ -55,29 +54,22 @@
 </section>
 
 <section>
-    <div class="columnButtons">
-        <div class="leftButtons">
-            <ul>
-                <li><a href="{% url 'meat' %}">Мясо</a></li>
-                <li><a href="{% url 'seafood' %}">Рыба и морепродукты</a></li>
-                <li><a href="{% url 'cereals' %}">Крупы</a></li>
-                <li><a href="{% url 'bakery' %}">Мучные продукты</a></li>
-            </ul>
+    <div class="rectangle">
+        <h3 class="typeOfProducts">Мучные продукты</h3>
+        <div class="searchProducts">
+            <img src="{% static 'food_diary/img/lupa.png'%}" class="lupa">
+            <a>Введите название продукта</a>
         </div>
-
-        <div class="rightButtons">
-            <ul>
-                <li><a href="{% url 'vegFruit' %}">Овощи и фрукты</a></li>
-                <li><a href="{% url 'sweets' %}">Сладкое и снеки</a></li>
-                <li><a href="{% url 'milk' %}">Молочные продукты</a></li>
-                <li><a href="{% url 'cookedMeals' %}">Готовые блюда</a></li>
-            </ul>
-        </div>
-
+        <ul>
+            <li class="product">
+                <p>Хлеб цельнозерновой</p>
+            </li>
+            <li class="product">
+                <p>Батон</p>
+            </li>
+        </ul>
     </div>
-
 </section>
-
 
 </body>
 </html>
