@@ -1,6 +1,8 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 from calculator.forms import CalculatorForm
+from calculator.models import Profile
 
 
 def calcIMT(growth, weight):
@@ -51,7 +53,6 @@ def calcUserData(data):
     proteins = round(calories * indicators[data["aim"]][0] / 4)
     fats = round(calories * indicators[data["aim"]][1] / 9)
     carbohydrates = round(calories * indicators[data["aim"]][2] / 4)
-    db_user_data = {'calories': calories, 'proteins': proteins, 'fats': fats, 'carbohydrates': carbohydrates}
     result = {'calories': calories, 'proteins': proteins, 'fats': fats, 'carbohydrates': carbohydrates}
     return result
 
@@ -92,10 +93,20 @@ def calculator(request):
                     proteins = str(user_data_res['proteins'])
                     fats = str(user_data_res['fats'])
                     carbohydrates = str(user_data_res['carbohydrates'])
+                    db_user_data['calories'] = float(calories)
+                    db_user_data['proteins'] = float(proteins)
+                    db_user_data['fats'] = float(fats)
+                    db_user_data['carbohydrates'] = float(carbohydrates)
                     is_valid = True
 
     if "save_data" in request.POST:
         print(db_user_data)
+        user_info = Profile(user = request.user, age = db_user_data["age"], weight = db_user_data["weight"],
+                     gender = db_user_data["gender"], growth = db_user_data["growth"], user_aim = db_user_data["user_aim"],
+                     Activity_level = db_user_data["activity_level"], needed_kkal = db_user_data["calories"],
+                     needed_proteins = db_user_data["proteins"], needed_fats = db_user_data["fats"],
+                     needed_carbohydrates = db_user_data["carbohydrates"],)
+        user_info.save()
         return redirect('home')
 
     cont = {'res': is_valid,
