@@ -46,6 +46,7 @@ class Profile(models.Model):
     needed_proteins = models.FloatField(null=True)
     needed_fats = models.FloatField(null=True)
     needed_carbohydrates = models.FloatField(null=True)
+    photo = models.ImageField(upload_to="photos_profile/%Y/%m/%d", null=True)
 
     def __str__(self):
         return self.user.username

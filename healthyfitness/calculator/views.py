@@ -101,12 +101,15 @@ def calculator(request):
 
     if "save_data" in request.POST:
         print(db_user_data)
-        user_info = Profile(user = request.user, age = db_user_data["age"], weight = db_user_data["weight"],
-                     gender = db_user_data["gender"], growth = db_user_data["growth"], user_aim = db_user_data["user_aim"],
-                     Activity_level = db_user_data["activity_level"], needed_kkal = db_user_data["calories"],
-                     needed_proteins = db_user_data["proteins"], needed_fats = db_user_data["fats"],
-                     needed_carbohydrates = db_user_data["carbohydrates"],)
-        user_info.save()
+        Profile.objects.filter(user=request.user).update(age=db_user_data['age'], weight=db_user_data['weight'],
+                                                         growth=db_user_data['growth'],
+                                                         gender=db_user_data['gender'],
+                                                         Activity_level=db_user_data['activity_level'],
+                                                         user_aim=db_user_data['user_aim'],
+                                                         needed_kkal=db_user_data['calories'],
+                                                         needed_proteins=db_user_data['proteins'],
+                                                         needed_fats=db_user_data['fats'],
+                                                         needed_carbohydrates=db_user_data['carbohydrates'])
         return redirect('home')
 
     cont = {'res': is_valid,
