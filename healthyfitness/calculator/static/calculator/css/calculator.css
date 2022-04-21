@@ -292,3 +292,9 @@ h3 {
 select > option:nth-child(1) {
     display: none;
 }
+
+
+.inactive button{
+    cursor: default;
+    color: grey;
+}
