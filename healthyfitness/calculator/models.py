@@ -42,10 +42,10 @@ class Profile(models.Model):
     growth = models.IntegerField(null=True)
     Activity_level = models.CharField(max_length=100, null=True)
     user_aim = models.CharField(max_length=30, null=True)
-    needed_kkal = models.FloatField(null=True)
-    needed_proteins = models.FloatField(null=True)
-    needed_fats = models.FloatField(null=True)
-    needed_carbohydrates = models.FloatField(null=True)
+    needed_kkal = models.IntegerField(null=True)
+    needed_proteins = models.IntegerField(null=True)
+    needed_fats = models.IntegerField(null=True)
+    needed_carbohydrates = models.IntegerField(null=True)
     photo = models.ImageField(upload_to="photos_profile/%Y/%m/%d", null=True)
 
     def __str__(self):

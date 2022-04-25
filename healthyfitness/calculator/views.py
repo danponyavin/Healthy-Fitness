@@ -93,10 +93,10 @@ def calculator(request):
                     proteins = str(user_data_res['proteins'])
                     fats = str(user_data_res['fats'])
                     carbohydrates = str(user_data_res['carbohydrates'])
-                    db_user_data['calories'] = float(calories)
-                    db_user_data['proteins'] = float(proteins)
-                    db_user_data['fats'] = float(fats)
-                    db_user_data['carbohydrates'] = float(carbohydrates)
+                    db_user_data['calories'] = int(calories)
+                    db_user_data['proteins'] = int(proteins)
+                    db_user_data['fats'] = int(fats)
+                    db_user_data['carbohydrates'] = int(carbohydrates)
                     is_valid = True
 
     if "save_data" in request.POST:
