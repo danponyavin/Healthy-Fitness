@@ -130,9 +130,18 @@
                         <h3>Углеводы (граммы)</h3>
                         <h3 class="res">{{ carbohydrates }}</h3>
                     </div>
-                    <div class="save_data">
-                        <button>Сохранить данные</button>
+                    {% if request.user.is_authenticated %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="save_data">
+                            <button type="submit" name="save_data">Сохранить данные</button>
+                        </div>
+                    </form>
+                    {% else %}
+                    <div class="save_data inactive">
+                        <button disabled>Сохранить данные</button>
                     </div>
+                    {% endif %}
                     <div class="info">
                         <h3>Рассчитано рекомендуемое количество потребления КБЖУ в сутки </h3>
                     </div>
