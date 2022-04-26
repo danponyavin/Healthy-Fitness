@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Выбор продуктов</title>
+    <link href="{% static 'food_diary/css/style_product_selection.css' %}" rel="stylesheet">
+</head>
+<body style="background-image:url('{% static 'food_diary/img/food_pattern.jpg' %}'); background-size: contain;">
+<div class="mainInformation">
+<header>
+        <div class = container>
+            <div class="head">
+                <a href="{% url 'home' %}"><img src="{% static 'registration/img/iconLogo.png' %}" alt="" class="logo"></a>
+                <nav class="navigation">
+                    <ul class="menu">
+                        <li class="text">
+                            <a href="{% url 'home' %}">Главная</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="{% url 'articles' %}">Статьи</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="{% url 'calculator' %}">Калькулятор</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="#">Блог</a>
+                        </li>
+
+                        <li class="iconLK">
+
+                            <a href="{% url 'login' %}"><img src="{% static 'registration/img/iconForPersonalArea.png' %}" alt="LK" class="imgLK"></a>
+
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+</header>
+
+
+<section class="selectAndDiary">
+    <div class="selectOption">
+            <ul>
+                <li><a href="#" style="font-weight: bold">Выбор продуктов</a></li>
+                <li><a href="#" class="foodDiary">Дневник питания</a></li>
+            </ul>
+        </div>
+</section>
+
+<section class="typesProducts">
+    <div class="columnButtons">
+        <div class="leftButtons">
+            <ul>
+                <li><a href="{% url 'meat' %}">Мясо</a></li>
+                <li><a href="{% url 'seafood' %}">Рыба и морепродукты</a></li>
+                <li><a href="{% url 'cereals' %}">Крупы</a></li>
+                <li><a href="{% url 'bakery' %}">Мучные продукты</a></li>
+            </ul>
+        </div>
+
+        <div class="rightButtons">
+            <ul>
+                <li><a href="{% url 'vegFruit' %}">Овощи и фрукты</a></li>
+                <li><a href="{% url 'sweets' %}">Сладкое и снеки</a></li>
+                <li><a href="{% url 'milk' %}">Молочные продукты</a></li>
+                <li><a href="{% url 'cookedMeals' %}">Готовые блюда</a></li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+
+</div>
+</body>
+</html>

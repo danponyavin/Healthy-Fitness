@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'registration.apps.RegistrationConfig',
     'articles.apps.ArticlesConfig',
-    'calculator.apps.CalculatorConfig'
+    'calculator.apps.CalculatorConfig',
+    'food_diary.apps.FoodDiaryConfig',
 ]
 
 MIDDLEWARE = [

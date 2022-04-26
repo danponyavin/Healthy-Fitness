@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Сладости и снеки</title>
+    <link href="{% static 'food_diary/css/style_category_products.css' %}" rel="stylesheet">
+</head>
+<body style="background-image:url('{% static 'food_diary/img/food_pattern.jpg' %}'); background-size: contain;">
+
+<header>
+        <div class = container>
+            <div class="head">
+                <a href="{% url 'home' %}"><img src="{% static 'registration/img/iconLogo.png' %}" alt="" class="logo"></a>
+                <nav class="navigation">
+                    <ul class="menu">
+                        <li class="text">
+                            <a href="{% url 'home' %}">Главная</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="{% url 'articles' %}">Статьи</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="{% url 'calculator' %}">Калькулятор</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="#">Блог</a>
+                        </li>
+
+                        <li class="iconLK">
+
+                            <a href="{% url 'login' %}"><img src="{% static 'registration/img/iconForPersonalArea.png' %}" alt="LK" class="imgLK"></a>
+
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+</header>
+
+<section>
+    <div class="selectOption">
+        <div class="selectButtons">
+            <ul>
+                <li><a href="{% url 'product_selection' %}">Выбор продуктов</a></li>
+                <li><a href="#" class="foodDiary">Дневник питания</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="rectangle">
+        <h3 align="center" class="typeOfProducts">Сладости и снеки</h3>
+        <div class="searchProducts">
+            <img src="{% static 'food_diary/img/lupa.png'%}" class="lupa">
+            <a>Введите название продукта</a>
+        </div>
+        <ul>
+            <li class="product">
+                <p>Хлебцы</p>
+            </li>
+            <li class="product">
+                <p>Протеиновый батончик</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+</body>
+</html>
