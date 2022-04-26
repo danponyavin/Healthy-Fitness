@@ -7,7 +7,6 @@ class Type_of_foodAdmin(admin.ModelAdmin):
     list_display = ('id', 'type', 'photo')
     list_display_links = ('id', 'type')
     search_fields = ('type',)
-    prepopulated_fields = {"slag": ("type",)}
 
 
 class FoodAdmin(admin.ModelAdmin):

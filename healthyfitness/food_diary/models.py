@@ -6,16 +6,9 @@ from django.db import models
 
 class Type_of_food(models.Model):
     type = models.CharField(max_length=100)
-    slag = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
     photo = models.ImageField(upload_to="photos/%Y/%m/%d")
-
     def __str__(self):
         return self.type
-
-    def get_absolute_url(self):
-        return reverse('type_food', kwargs={'type_food_slug': self.slug})
-
-
     class Meta:
         verbose_name = 'Категории еды'
         verbose_name_plural = 'Категории еды'
