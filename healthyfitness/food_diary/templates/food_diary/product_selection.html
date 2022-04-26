@@ -7,8 +7,8 @@
     <title>Выбор продуктов</title>
     <link href="{% static 'food_diary/css/style_product_selection.css' %}" rel="stylesheet">
 </head>
-
-
+<body style="background-image:url('{% static 'food_diary/img/food_pattern.jpg' %}'); background-size: contain;">
+<div class="mainInformation">
 <header>
         <div class = container>
             <div class="head">
@@ -43,18 +43,16 @@
 </header>
 
 
-<section>
+<section class="selectAndDiary">
     <div class="selectOption">
-        <div class="selectButtons">
             <ul>
                 <li><a href="#" style="font-weight: bold">Выбор продуктов</a></li>
                 <li><a href="#" class="foodDiary">Дневник питания</a></li>
             </ul>
         </div>
-    </div>
 </section>
 
-<section>
+<section class="typesProducts">
     <div class="columnButtons">
         <div class="leftButtons">
             <ul>
@@ -75,9 +73,9 @@
         </div>
 
     </div>
-
 </section>
 
 
+</div>
 </body>
 </html>

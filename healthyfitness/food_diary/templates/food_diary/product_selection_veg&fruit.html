@@ -7,7 +7,7 @@
     <title>Овощи и фрукты</title>
     <link href="{% static 'food_diary/css/style_category_products.css' %}" rel="stylesheet">
 </head>
-<body>
+<body style="background-image:url('{% static 'food_diary/img/food_pattern.jpg' %}'); background-size: contain;">
 
 <header>
         <div class = container>
@@ -55,7 +55,7 @@
 
 <section>
     <div class="rectangle">
-        <h3 class="typeOfProducts">Овощи и фрукты</h3>
+        <h3 align="center" class="typeOfProducts">Овощи и фрукты</h3>
         <div class="searchProducts">
             <img src="{% static 'food_diary/img/lupa.png'%}" class="lupa">
             <a>Введите название продукта</a>
