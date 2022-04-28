@@ -15,8 +15,7 @@ class Type_of_food(models.Model):
 
 class Food(models.Model):
     name_of_product = models.CharField(max_length=255)
-    slag = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
-    kkal = models.IntegerField(validators=[MaxValueValidator(999)])
+    kkal = models.IntegerField(validators=[MaxValueValidator(2500)])
     proteins = models.FloatField(max_length=6)
     fats = models.FloatField(max_length=6)
     carbohydrates = models.FloatField(max_length=6)
@@ -24,9 +23,6 @@ class Food(models.Model):
 
     def __str__(self):
         return self.name_of_product
-
-    def get_absolute_url(self):
-        return reverse('food', kwargs={'food_slug': self.slug})
 
     class Meta:
         verbose_name = 'Еда'
