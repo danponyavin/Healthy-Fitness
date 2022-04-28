@@ -6,7 +6,6 @@ from django.db import models
 
 class Type_of_food(models.Model):
     type = models.CharField(max_length=100)
-    photo = models.ImageField(upload_to="photos/%Y/%m/%d")
     def __str__(self):
         return self.type
     class Meta:
