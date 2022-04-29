@@ -15,14 +15,14 @@ class RegisterUser(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('home')
+        return redirect('personalArea')
 
 
 class LoginUser(LoginView):
     form_class = LoginUserForm
     template_name = 'registration/login.html'
     def get_success_url(self):
-        return reverse_lazy('home')
+        return reverse_lazy('personalArea')
 
 
 def logout_user(request):
