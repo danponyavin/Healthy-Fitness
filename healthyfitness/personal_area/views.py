@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def PersonalArea(request):
+    return render(request, 'personal_area/personal_area.html')

@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Личный кабинет</title>
+    <link href="{% static 'personal_area/css/style_personal_area.css' %}" rel="stylesheet">
+</head>
+<body>
+
+<header>
+        <div class = container>
+            <div class="head">
+                <a href="{% url 'home' %}"><img src="{% static 'main/img/iconLogo.png' %}" alt="" class="logo"></a>
+                <nav class="navigation">
+                    <ul class="menu">
+                        <li class="text">
+                            <a href="{% url 'home' %}">Главная</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="{% url 'articles' %}">Статьи</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="{% url 'calculator' %}">Калькулятор</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="#">Блог</a>
+                        </li>
+                        {% if request.user.is_authenticated %}
+                            <li class="text">
+                                <a href="{% url 'calculator' %}">{{ user.username }} | Личный кабинет</a>
+                            </li>
+                        {% else %}
+                            <li class="iconLK">
+                                <a href="{% url 'login' %}"><img src="{% static 'main/img/iconForPersonalArea.png' %}" alt="LK" class="imgLK"></a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+</header>
+
+
+<div class="mainInformation" >
+    <div class="rectangle">
+        <div class="user_information">
+            <img src="{% static 'main/img/iconForPersonalArea.png' %}" alt="UserPhoto" class="user_photo">
+            <p class="user_name">Lunatalied</p>
+            <p class="kkal">Норма КБЖУ</p>
+            <p class="user_kkal">1800 / 90 / 60 / 100</p>
+            <p class="weight">Вес</p>
+            <p class="user_weight">59 кг</p>
+            <p class="activity">Уровень активности</p>
+            <p class="user_activity">Средний</p>
+            <div class="bottom">
+                <ul>
+                    <li><a href="#" class="settings">Настройки профиля</a></li>
+                    <li><a href="#" class="logout">Выйти</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="rightSide"  style="background-image:url('{% static 'registration/img/patternSportPeople.jpg' %}'); background-size: contain;">
+        <div class="buttons">
+            <ul>
+                <li><a href="#" class="water_but">Трекер воды</a></li>
+                <li><a href="#" class="food_but">Дневник питания</a></li>
+                <li><a href="#" class="weight_but">Контроль веса</a></li>
+                <li><a href="#" class="sport_but">Дневник тренировок</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
