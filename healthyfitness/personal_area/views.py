@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from calculator.models import Profile
 
 
 def PersonalArea(request):
-    profile = Profile.objects.all().filter(user=request.user)
-    return render(request, 'personal_area/personal_area.html', {'profile': profile})
+    if request.user.is_authenticated:
+        profile = Profile.objects.all().filter(user=request.user)
+        return render(request, 'personal_area/personal_area.html', {'profile': profile})
+    else:
+        return redirect('login')
