@@ -145,12 +145,18 @@
                     </form>
                     {% else %}
                     <div class="save_data inactive">
-                        <button disabled>Сохранить данные</button>
+                        <button disabled>Сохранить данные<span style="color: red;">*</span></button>
                     </div>
                     {% endif %}
                     <div class="info">
                         <h3>Рассчитано рекомендуемое количество потребления КБЖУ в сутки </h3>
                     </div>
+                    {% if not request.user.is_authenticated %}
+                        <div class="save_info">
+                            <h3 style="color: purple;"><span style="color: red;">*</span>Для сохранения результатов
+                                необходимо <a href="{% url 'registration_field' %}">зарегистрироваться</a>/<a href="{% url 'login' %}">авторизоваться</a>.</h3>
+                        </div>
+                    {% endif %}
 
 
                 </div>
