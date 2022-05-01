@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from food_diary.models import Food
+
 
 def UserFood(request):
     return render(request, 'food_diary/user_food.html')
@@ -14,7 +16,8 @@ def Cereals(request):
     return render(request, 'food_diary/product_selection_cereals.html')
 
 def Meat(request):
-    return render(request, 'food_diary/product_selection_meat.html')
+    meat = Food.objects.filter(type_of_food=1)
+    return render(request, 'food_diary/product_selection_meat.html', {'meat': meat})
 
 def VegFruit(request):
     return render(request, 'food_diary/product_selection_veg&fruit.html')
