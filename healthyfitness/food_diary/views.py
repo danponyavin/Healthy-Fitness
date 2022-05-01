@@ -16,8 +16,13 @@ def Cereals(request):
     return render(request, 'food_diary/product_selection_cereals.html')
 
 def Meat(request):
-    meat = Food.objects.filter(type_of_food=1)
-    return render(request, 'food_diary/product_selection_meat.html', {'meat': meat})
+    search_query = request.GET.get('search', '')
+    error = "К сожалению, по Вашему запросу ничего не найдено..."
+    if search_query:
+        meat = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=1)
+    else:
+        meat = Food.objects.filter(type_of_food=1)
+    return render(request, 'food_diary/product_selection_meat.html', {'meat': meat, 'error': error})
 
 def VegFruit(request):
     return render(request, 'food_diary/product_selection_veg&fruit.html')

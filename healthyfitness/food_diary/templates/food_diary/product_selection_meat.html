@@ -60,10 +60,16 @@
 <section>
     <div class="rectangle">
         <h3 align="center" class="typeOfProducts">Мясо</h3>
-        <div class="searchProducts">
-            <img src="{% static 'food_diary/img/lupa.png'%}" class="lupa">
-            <input placeholder="Введите название продукта">
-        </div>
+
+
+        <form action="{% url 'meat' %}">
+            <input class="searchProducts" placeholder="Введите название продукта" name="search">
+            <button class="search_button" type="submit">
+                <img src="{% static 'food_diary/img/lupa.png'%}" class="lupa">Искать
+            </button>
+        </form>
+
+        {% if meat %}
         <table class="table_sort">
             <thead>
             <tr>
@@ -84,6 +90,10 @@
                 </tr>
             {% endfor %}
         </table>
+        {% else %}
+        <h3 style="margin-left: 40px;">{{ error }}</h3>
+        {% endif %}
+
         <script>
             document.addEventListener('DOMContentLoaded', () => {
             const getSort = ({ target }) => {
