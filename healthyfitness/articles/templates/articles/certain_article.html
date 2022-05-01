@@ -31,9 +31,15 @@
                             <a href="#">Блог</a>
                         </li>
 
-                        <li class="iconLK">
-                            <a href="{% url 'login' %}"><img src="{% static 'main/img/iconForPersonalArea.png' %}" alt="LK" class="imgLK"></a>
-                        </li>
+                        {% if request.user.is_authenticated %}
+                            <li class="text">
+                                <a href="{% url 'personalArea' %}">{{ user.username }} | Личный кабинет</a>
+                            </li>
+                        {% else %}
+                            <li class="text">
+                                <a href="{% url 'login' %}">Войти</a> | <a href="{% url 'registration_field' %}">Регистрация</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </nav>
             </div>
