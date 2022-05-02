@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Крупы</title>
+    <title>Орехи и масла</title>
     <link href="{% static 'food_diary/css/style_category_products.css' %}" rel="stylesheet">
 </head>
 <body style="background-image:url('{% static 'food_diary/img/food_pattern.jpg' %}'); background-size: contain;">
@@ -59,8 +59,10 @@
 
 <section>
     <div class="rectangle">
-        <h3 align="center" class="typeOfProducts">Крупы</h3>
-        <form action="{% url 'cereals' %}">
+        <h3 align="center" class="typeOfProducts">Орехи и масла</h3>
+
+
+        <form action="{% url 'nuts_and_oils' %}">
             <input class="searchProducts" placeholder="Введите название продукта" name="search">
             <button class="search_button" type="submit">
                 <img src="{% static 'food_diary/img/lupa.png'%}" class="lupa">Искать

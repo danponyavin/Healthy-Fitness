@@ -69,7 +69,7 @@
             </button>
         </form>
 
-        {% if meat %}
+        {% if data %}
         <table class="table_sort">
             <thead>
             <tr>
@@ -80,7 +80,7 @@
                 <th class="product" style="background-color: #e3e3e3;">Углеводов, г</th>
             </tr>
             </thead>
-            {% for i in meat %}
+            {% for i in data %}
                 <tr>
                     <td class="product">{{ i.name_of_product }}</td>
                     <td class="product" align="center">{{ i.kkal }}</td>
