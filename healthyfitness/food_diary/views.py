@@ -116,3 +116,12 @@ def Fast_food(request):
     else:
         data = Food.objects.filter(type_of_food=12)
     return render(request, 'food_diary/product_selection_fast_food.html', {'data': data, 'error': error})
+
+def Search(request):
+    search_query = request.GET.get('search', '')
+    error = "К сожалению, по Вашему запросу ничего не найдено..."
+    if search_query:
+        data = Food.objects.filter(name_of_product__iregex=search_query)
+        return render(request, 'food_diary/product_search.html', {'data': data, 'error': error})
+    else:
+        return render(request, 'food_diary/product_search.html')

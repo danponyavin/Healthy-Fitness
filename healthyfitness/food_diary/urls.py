@@ -18,6 +18,7 @@ urlpatterns = [
     path('product_selection/nuts_and_oils', views.Nuts_and_oils, name='nuts_and_oils'),
     path('product_selection/herbs_and_spices', views.Herbs_and_spices, name='herbs_and_spices'),
     path('product_selection/fast_food', views.Fast_food, name='fast_food'),
+    path('product_selection/search', views.Search, name='search'),
 ]
 
 if settings.DEBUG:
