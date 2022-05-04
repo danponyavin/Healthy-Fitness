@@ -117,11 +117,32 @@ def Fast_food(request):
         data = Food.objects.filter(type_of_food=12)
     return render(request, 'food_diary/product_selection_fast_food.html', {'data': data, 'error': error})
 
+
 def Search(request):
+
     search_query = request.GET.get('search', '')
     error = "К сожалению, по Вашему запросу ничего не найдено..."
+    if request.POST.get('product_weight'):
+        product_weight = request.POST.get('product_weight')
+        if int(product_weight) > 0:
+            product = request.POST.get('id')
+            info = Food.objects.filter(id=product)
+            product_info = {'product_name': info[0].name_of_product, 'weight': int(product_weight), 'kkal': info[0].kkal,
+                            'proteins': info[0].proteins, 'fats': info[0].fats, 'carbohydrates': info[0].carbohydrates}
+            product_info = calculate_food_data(product_info)
+            print(product_info)
+
     if search_query:
         data = Food.objects.filter(name_of_product__iregex=search_query)
-        return render(request, 'food_diary/product_search.html', {'data': data, 'error': error})
+        return render(request, 'food_diary/product_search.html', {'data': data, 'error': error, 'value': search_query})
     else:
         return render(request, 'food_diary/product_search.html')
+
+
+def calculate_food_data(info):
+    index = info['weight']/100
+    info['kkal'] = round(info['kkal']*index)
+    info['fats'] = round(info['fats']*index, 2)
+    info['proteins'] = round(info['proteins']*index, 2)
+    info['carbohydrates'] = round(info['carbohydrates']*index, 2)
+    return info
