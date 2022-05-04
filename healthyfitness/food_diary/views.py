@@ -16,7 +16,7 @@ def Bakery(request):
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=6)
     else:
         data = Food.objects.filter(type_of_food=6)
-    return render(request, 'food_diary/product_selection_bakery.html', {'data': data, 'error': error})
+    return render(request, 'food_diary/product_selection_bakery.html', {'data': data, 'error': error, 'value': search_query})
 
 def Cereals(request):
     search_query = request.GET.get('search', '')
@@ -25,7 +25,7 @@ def Cereals(request):
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=3)
     else:
         data = Food.objects.filter(type_of_food=3)
-    return render(request, 'food_diary/product_selection_cereals.html', {'data': data, 'error': error})
+    return render(request, 'food_diary/product_selection_cereals.html', {'data': data, 'error': error, 'value': search_query})
 
 def Meat(request):
     search_query = request.GET.get('search', '')
@@ -34,7 +34,7 @@ def Meat(request):
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=1)
     else:
         data = Food.objects.filter(type_of_food=1)
-    return render(request, 'food_diary/product_selection_meat.html', {'data': data, 'error': error})
+    return render(request, 'food_diary/product_selection_meat.html', {'data': data, 'error': error, 'value': search_query})
 
 def VegFruit(request):
     search_query = request.GET.get('search', '')
@@ -43,7 +43,7 @@ def VegFruit(request):
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=7)
     else:
         data = Food.objects.filter(type_of_food=7)
-    return render(request, 'food_diary/product_selection_veg&fruit.html', {'data': data, 'error': error})
+    return render(request, 'food_diary/product_selection_veg&fruit.html', {'data': data, 'error': error, 'value': search_query})
 
 def CookedMeals(request):
     search_query = request.GET.get('search', '')
@@ -52,7 +52,7 @@ def CookedMeals(request):
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=10)
     else:
         data = Food.objects.filter(type_of_food=10)
-    return render(request, 'food_diary/product_selection_cookedMeals.html', {'data': data, 'error': error})
+    return render(request, 'food_diary/product_selection_cookedMeals.html', {'data': data, 'error': error, 'value': search_query})
 
 def Seafood(request):
     search_query = request.GET.get('search', '')
@@ -61,7 +61,7 @@ def Seafood(request):
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=2)
     else:
         data = Food.objects.filter(type_of_food=2)
-    return render(request, 'food_diary/product_selection_seafood.html', {'data': data, 'error': error})
+    return render(request, 'food_diary/product_selection_seafood.html', {'data': data, 'error': error, 'value': search_query})
 
 def Sweets(request):
     search_query = request.GET.get('search', '')
@@ -70,7 +70,7 @@ def Sweets(request):
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=5)
     else:
         data = Food.objects.filter(type_of_food=5)
-    return render(request, 'food_diary/product_selection_sweets.html', {'data': data, 'error': error})
+    return render(request, 'food_diary/product_selection_sweets.html', {'data': data, 'error': error, 'value': search_query})
 
 def Milk(request):
     search_query = request.GET.get('search', '')
@@ -79,7 +79,7 @@ def Milk(request):
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=4)
     else:
         data = Food.objects.filter(type_of_food=4)
-    return render(request, 'food_diary/product_selection_milk.html', {'data': data, 'error': error})
+    return render(request, 'food_diary/product_selection_milk.html', {'data': data, 'error': error, 'value': search_query})
 
 def Drinks(request):
     search_query = request.GET.get('search', '')
@@ -88,7 +88,7 @@ def Drinks(request):
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=8)
     else:
         data = Food.objects.filter(type_of_food=8)
-    return render(request, 'food_diary/product_selection_drinks.html', {'data': data, 'error': error})
+    return render(request, 'food_diary/product_selection_drinks.html', {'data': data, 'error': error, 'value': search_query})
 
 def Nuts_and_oils(request):
     search_query = request.GET.get('search', '')
@@ -97,7 +97,7 @@ def Nuts_and_oils(request):
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=9)
     else:
         data = Food.objects.filter(type_of_food=9)
-    return render(request, 'food_diary/product_selection_nuts&oils.html', {'data': data, 'error': error})
+    return render(request, 'food_diary/product_selection_nuts&oils.html', {'data': data, 'error': error, 'value': search_query})
 
 def Herbs_and_spices(request):
     search_query = request.GET.get('search', '')
@@ -106,7 +106,7 @@ def Herbs_and_spices(request):
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=11)
     else:
         data = Food.objects.filter(type_of_food=11)
-    return render(request, 'food_diary/product_selection_herbs&spices.html', {'data': data, 'error': error})
+    return render(request, 'food_diary/product_selection_herbs&spices.html', {'data': data, 'error': error, 'value': search_query})
 
 def Fast_food(request):
     search_query = request.GET.get('search', '')
@@ -115,7 +115,7 @@ def Fast_food(request):
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=12)
     else:
         data = Food.objects.filter(type_of_food=12)
-    return render(request, 'food_diary/product_selection_fast_food.html', {'data': data, 'error': error})
+    return render(request, 'food_diary/product_selection_fast_food.html', {'data': data, 'error': error, 'value': search_query})
 
 
 def Search(request):

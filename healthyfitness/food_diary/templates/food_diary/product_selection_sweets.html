@@ -61,13 +61,14 @@
     <div class="rectangle">
         <h3 align="center" class="typeOfProducts">Сладости и снеки</h3>
         <form action="{% url 'sweets' %}">
-            <input class="searchProducts" placeholder="Введите название продукта" name="search">
+            <input class="searchProducts" placeholder="Введите название продукта" name="search" value="{{ value }}">
             <button class="search_button" type="submit">
                 <img src="{% static 'food_diary/img/lupa.png'%}" class="lupa">Искать
             </button>
         </form>
 
         {% if data %}
+        <h3 style="float: right; margin-right: 30px;">Представлена калорийность продуктов и готовых блюд на 100 грамм</h3>
         <table class="table_sort">
             <thead>
             <tr>
