@@ -46,7 +46,7 @@ class Profile(models.Model):
     needed_proteins = models.IntegerField(null=True)
     needed_fats = models.IntegerField(null=True)
     needed_carbohydrates = models.IntegerField(null=True)
-    photo = models.ImageField(upload_to="photos_profile/%Y/%m/%d", null=True)
+    photo = models.ImageField(upload_to="photos_profile/%Y/%m/%d", null=True, blank=True, default="iconForPersonalarea.png")
 
     def __str__(self):
         return self.user.username

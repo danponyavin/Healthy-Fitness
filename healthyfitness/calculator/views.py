@@ -110,7 +110,7 @@ def calculator(request):
                                                          needed_proteins=db_user_data['proteins'],
                                                          needed_fats=db_user_data['fats'],
                                                          needed_carbohydrates=db_user_data['carbohydrates'])
-        return redirect('home')
+        return redirect('personalArea')
 
     cont = {'res': is_valid,
             'error': error_info,

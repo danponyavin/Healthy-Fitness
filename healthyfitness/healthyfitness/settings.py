@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'calculator.apps.CalculatorConfig',
     'food_diary.apps.FoodDiaryConfig',
     'personal_area.apps.PersonalAreaConfig',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [
@@ -126,7 +127,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     'main/static',
     'registration/static',
-    'calculator/static'
+    'calculator/static',
+    'articles/static',
+    'food_diary/static',
+    'personal_area/static',
+    'registration/static',
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
@@ -138,5 +143,3 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
