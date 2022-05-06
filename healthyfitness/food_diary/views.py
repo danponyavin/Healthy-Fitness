@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
-from food_diary.models import Food
+from calculator.models import Profile
+from food_diary.models import Food, Diary_of_food
 
 
 def UserFood(request):
@@ -127,11 +128,17 @@ def Search(request):
         if int(product_weight) > 0:
             product = request.POST.get('id')
             info = Food.objects.filter(id=product)
-            product_info = {'product_name': info[0].name_of_product, 'weight': int(product_weight), 'kkal': info[0].kkal,
-                            'proteins': info[0].proteins, 'fats': info[0].fats, 'carbohydrates': info[0].carbohydrates}
+            product_info = {'id': product, 'product_name': info[0].name_of_product, 'weight': int(product_weight),
+                            'kkal': info[0].kkal, 'proteins': info[0].proteins, 'fats': info[0].fats, 'carbohydrates': info[0].carbohydrates}
             product_info = calculate_food_data(product_info)
-            print(product_info)
-
+            user_id = Profile.objects.get(user=request.user)
+            food_id = Food.objects.get(id=product_info["id"])
+            user_choice = Diary_of_food(id_users=user_id, id_food=food_id, grams=product_info['weight'],
+                                                                       consumed_kkal=product_info['kkal'],
+                                                                       consumed_proteins=product_info['proteins'],
+                                                                       consumed_fats=product_info['fats'],
+                                                                       consumed_carbohydrates=product_info['carbohydrates'])
+            user_choice.save()
     if search_query:
         data = Food.objects.filter(name_of_product__iregex=search_query)
         return render(request, 'food_diary/product_search.html', {'data': data, 'error': error, 'value': search_query})
@@ -141,8 +148,10 @@ def Search(request):
 
 def calculate_food_data(info):
     index = info['weight']/100
-    info['kkal'] = round(info['kkal']*index)
+    info['kkal'] = round(info['kkal']*index, 2)
     info['fats'] = round(info['fats']*index, 2)
     info['proteins'] = round(info['proteins']*index, 2)
     info['carbohydrates'] = round(info['carbohydrates']*index, 2)
     return info
+
+
