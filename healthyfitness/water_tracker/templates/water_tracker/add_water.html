@@ -50,15 +50,30 @@
     <div class="selectOption">
             <ul>
                 <li><a href="{% url 'add_water' %}" style="font-weight: bold">Добавление воды</a></li>
-                <li><a href="{% url 'water_tracker' %}">Трекер воды</a></li>
+                <li><a href="{% url 'water_tracker' %}" class="tracker">Трекер воды</a></li>
             </ul>
         </div>
 </section>
 
 
-<div>
+<div class="rectangle">
+    <div class="formImg">
+        <div class="leftInf">
+            <p class="todayDrink">Сегодня выпито:</p>
+            <p class="todayGlasses">6 стаканов</p>
+            <form action="{% url 'add_water' %}" method="post">
+                {% csrf_token %}
+                <p class="chooseGlasses">Укажите количество стаканов</p>
+                {{ form.number_of_glasses }}
+                <button type="submit">Добавить</button>
+            </form>
+        </div>
 
+<img src="{% static 'water_tracker/img/glass.png' %}" class="imgGlass">
+    </div>
+    <p class="advice">Рекомендуемая норма потребления воды - 2 литра (8 стаканов) в сутки</p>
 </div>
+
 
 </body>
 </html>
