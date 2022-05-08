@@ -60,12 +60,12 @@
     <div class="formImg">
         <div class="leftInf">
             <p class="todayDrink">Сегодня выпито:</p>
-            <p class="todayGlasses">6 стаканов</p>
+            <p class="todayGlasses">{{ glasses }}</p>
             <form method="post">
                 {% csrf_token %}
                 <p class="chooseGlasses">Укажите количество стаканов</p>
-                <input class="form-input" type="number" placeholder="Количество стаканов" name="add_water_inp">
-                <button type="submit">Добавить</button>
+                <input class="form-input" type="number" placeholder="Количество стаканов" name="add_water_inp" id="add_water_inp">
+                <button type="submit" onclick="getdetails(this)">Добавить</button>
             </form>
         </div>
 
@@ -74,6 +74,13 @@
     <p class="advice">Рекомендуемая норма потребления воды - 2 литра (8 стаканов) в сутки</p>
 </div>
 
-
+        <script>
+        function getdetails(clicked_object) {
+            if (document.getElementById("add_water_inp").value > 0)
+                alert("Результат успешно записан")
+            else
+                alert("Некорректно введено количество стаканов")
+        }
+        </script>
 </body>
 </html>
