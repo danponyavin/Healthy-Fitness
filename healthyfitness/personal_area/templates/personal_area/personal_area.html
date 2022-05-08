@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +51,7 @@
 <div class="mainInformation" >
     <div class="rectangle">
         <div class="user_information">
-            <img src="{% static 'main/img/iconForPersonalArea.png' %}" alt="UserPhoto" class="user_photo">
+            <img src="{{ user.profile.photo.url }}" alt="UserPhoto" class="user_photo">
             <p class="user_name">{{ user.username}}</p>
             <p class="kkal">Норма КБЖУ</p>
             {% for i in profile %}
@@ -62,7 +63,7 @@
             {% endfor %}
             <div class="bottom">
                 <ul>
-                    <li><a href="#" class="settings">Настройки профиля</a></li>
+                    <li><a href="{% url 'change_information' %}" class="settings">Обновить фотографию</a></li>
                     <li><a href="{% url 'logout' %}" class="logout">Выйти</a></li>
                 </ul>
             </div>
@@ -71,8 +72,8 @@
     <div class="rightSide"  style="background-image:url('{% static 'registration/img/patternSportPeople.jpg' %}'); background-size: contain;">
         <div class="buttons">
             <ul>
-                <li><a href="#" class="water_but">Трекер воды</a></li>
-                <li><a href="#" class="food_but">Дневник питания</a></li>
+                <li><a href="{% url 'add_water' %}" class="water_but">Трекер воды</a></li>
+                <li><a href="{% url 'product_selection' %}" class="food_but">Дневник питания</a></li>
                 <li><a href="#" class="weight_but">Контроль веса</a></li>
                 <li><a href="#" class="sport_but">Дневник тренировок</a></li>
             </ul>
