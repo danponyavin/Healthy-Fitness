@@ -161,5 +161,6 @@ button {
     border: #FFFFFF;
     border-radius: 5px;
     background-color: #98EB88;
+    cursor: pointer;
 }
 

@@ -61,10 +61,10 @@
         <div class="leftInf">
             <p class="todayDrink">Сегодня выпито:</p>
             <p class="todayGlasses">6 стаканов</p>
-            <form action="{% url 'add_water' %}" method="post">
+            <form method="post">
                 {% csrf_token %}
                 <p class="chooseGlasses">Укажите количество стаканов</p>
-                {{ form.number_of_glasses }}
+                <input class="form-input" type="number" placeholder="Количество стаканов" name="add_water_inp">
                 <button type="submit">Добавить</button>
             </form>
         </div>

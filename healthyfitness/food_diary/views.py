@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from calculator.models import Profile
@@ -139,6 +140,7 @@ def Search(request):
                                                                        consumed_fats=product_info['fats'],
                                                                        consumed_carbohydrates=product_info['carbohydrates'])
             user_choice.save()
+            return HttpResponseRedirect('search')
     if search_query:
         data = Food.objects.filter(name_of_product__iregex=search_query)
         return render(request, 'food_diary/product_search.html', {'data': data, 'error': error, 'value': search_query})

@@ -1,19 +1,19 @@
-from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
 
-from water_tracker.forms import WaterForm
+from calculator.models import Profile
+from water_tracker.models import Water_tracker
 
 
 def AddWater(request):
-
-    if request.method == 'POST':
-        form = WaterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('add_water')
-    else:
-        form = WaterForm
-
-    return render(request, 'water_tracker/add_water.html', {'form': form,})
+    if request.POST.get('add_water_inp'):
+        add_water_inp = request.POST.get('add_water_inp')
+        if int(add_water_inp) > 0:
+            user_id = Profile.objects.get(user=request.user)
+            user_water = Water_tracker(id_users=user_id, number_of_glasses=int(add_water_inp))
+            user_water.save()
+            return HttpResponseRedirect('water_tracker')
+    return render(request, 'water_tracker/add_water.html')
 
 
 def WaterTracker(request):
