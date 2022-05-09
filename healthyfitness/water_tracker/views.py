@@ -12,10 +12,16 @@ def AddWater(request):
     user_id = Profile.objects.get(user=request.user)
     if request.POST.get('add_water_inp'):
         add_water_inp = request.POST.get('add_water_inp')
-        if int(add_water_inp) > 0:
-            user_water = Water_tracker(id_users=user_id, number_of_glasses=int(add_water_inp))
-            user_water.save()
-            return HttpResponseRedirect('water_tracker')
+        if int(add_water_inp) >= 0:
+            if Water_tracker.objects.filter(id_users=user_id, day_create=date.today()):
+                user_water = Water_tracker.objects.filter(id_users=user_id, day_create=date.today())
+                current_amount = user_water[0]
+                current_amount.number_of_glasses = int(add_water_inp)
+                current_amount.save()
+            else:
+                user_water = Water_tracker(id_users=user_id, number_of_glasses=int(add_water_inp))
+                user_water.save()
+            return HttpResponseRedirect('add_water')
     if Water_tracker.objects.filter(id_users=user_id, day_create=date.today()):
         info = Water_tracker.objects.filter(id_users=user_id, day_create=date.today())
         glasses = print_amount_of_glasses(info[0])
