@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'food_diary.apps.FoodDiaryConfig',
     'personal_area.apps.PersonalAreaConfig',
     'water_tracker.apps.WaterTrackerConfig',
+    'googlecharts',
 ]
 
 MIDDLEWARE = [

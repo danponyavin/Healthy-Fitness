@@ -57,6 +57,30 @@
 
 
 <div class="rectangle">
+    {% load googlecharts %}
+    <div id="count_graph"></div>
+    {% googlecharts %}
+        {% data values "count" %}
+            {% col "string" "Name" %}"{{ val }}"{% endcol %}
+            {% col "number" "Value" %}{{ val }}{% endcol %}
+        {% enddata %}
+
+        {% options %}
+            kind: "ColumnChart",
+            options: {
+                width: 600,
+                height: 240
+            }
+        {% endoptions %}
+
+        {% graph "count_graph" "count" %}
+
+
+    {% endgooglecharts %}
+
+
+
+
     <p class="advice">Рекомендуемая норма потребления воды - 2 литра (8 стаканов) в сутки</p>
 </div>
 

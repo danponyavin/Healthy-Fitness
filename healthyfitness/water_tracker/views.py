@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, timedelta
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -29,7 +29,12 @@ def AddWater(request):
 
 
 def WaterTracker(request):
-    return render(request, 'water_tracker/water_tracker.html')
+    values = [['foo', 32], ['bar', 64], ['baz', 96]]
+    list_with_dates = []
+    for i in range(0, 7):
+        list_with_dates.append(date.today() - timedelta(days=i))
+
+    return render(request, 'water_tracker/water_tracker.html', {'values': values})
 
 
 def print_amount_of_glasses(info):
