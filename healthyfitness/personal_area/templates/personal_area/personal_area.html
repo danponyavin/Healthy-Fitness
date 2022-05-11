@@ -29,7 +29,7 @@
                         </li>
 
                         <li class="text">
-                            <a href="#">Блог</a>
+                            <a href="#">Еда</a>
                         </li>
 
                         {% if request.user.is_authenticated %}
@@ -73,7 +73,7 @@
         <div class="buttons">
             <ul>
                 <li><a href="{% url 'add_water' %}" class="water_but">Трекер воды</a></li>
-                <li><a href="{% url 'product_selection' %}" class="food_but">Дневник питания</a></li>
+                <li><a href="{% url 'search' %}" class="food_but">Дневник питания</a></li>
                 <li><a href="#" class="weight_but">Контроль веса</a></li>
                 <li><a href="#" class="sport_but">Дневник тренировок</a></li>
             </ul>

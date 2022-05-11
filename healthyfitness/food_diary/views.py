@@ -1,3 +1,5 @@
+import datetime
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -6,7 +8,11 @@ from food_diary.models import Food, Diary_of_food
 
 
 def UserFood(request):
-    return render(request, 'food_diary/user_food.html')
+    today = datetime.date.today()
+    meals = Diary_of_food.objects.all()
+    current_user = request.user
+    meals_today = meals.filter(day_create=today, id_users=current_user.id)
+    return render(request, 'food_diary/user_food.html', {'meals': meals_today})
 
 def ProductSelection(request):
     return render(request, 'food_diary/product_selection.html')

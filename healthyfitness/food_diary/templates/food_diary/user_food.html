@@ -4,9 +4,88 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Дневник питания</title>
+    <link href="{% static 'food_diary/css/style_user_food.css' %}" rel="stylesheet">
 </head>
-<body>
+<body style="background-image:url('{% static 'food_diary/img/food_pattern.jpg' %}'); background-size: cover;">
+
+    <header>
+        <div class = container>
+            <div class="head">
+                <a href="{% url 'home' %}"><img src="{% static 'registration/img/iconLogo.png' %}" alt="" class="logo"></a>
+                <nav class="navigation">
+                    <ul class="menu">
+                        <li class="text">
+                            <a href="{% url 'home' %}">Главная</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="{% url 'articles' %}">Статьи</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="{% url 'calculator' %}">Калькулятор</a>
+                        </li>
+
+                        <li class="text">
+                            <a href="{% url 'product_selection' %}">Еда</a>
+                        </li>
+
+                        {% if request.user.is_authenticated %}
+                            <li class="text">
+                                <a href="{% url 'personalArea' %}">{{ user.username }} | Личный кабинет</a>
+                            </li>
+                        {% else %}
+                            <li class="text">
+                                <a href="{% url 'login' %}">Войти</a> | <a href="{% url 'registration_field' %}">Регистрация</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+</header>
+
+<section>
+    <div class="selectOption">
+        <div class="selectButtons">
+            <ul>
+                <li><a href="{% url 'search' %}" >Выбор продуктов</a></li>
+                <li><a href="{% url 'food_diary' %}" class="foodDiary" style="font-weight: bold">Дневник питания</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="rectangle">
+
+    <table>
+        <tr>
+            <th class="product" style="background-color: #F3E38D; border: none;">Продукт</th>
+            <th class="product" style="background-color: #F3E38D;border: none;">Вес, г</th>
+            <th class="product" style="background-color: #F3E38D;border: none;">Ккал</th>
+            <th class="product" style="background-color: #F3E38D;border: none;">Белков, г</th>
+            <th class="product" style="background-color: #F3E38D;border: none;">Жиров, г</th>
+            <th class="product" style="background-color: #F3E38D;border: none;">Углеводов, г</th>
+        </tr>
+        {% for m in meals %}
+            <tr>
+                <td class="product">{{m.id_food.name_of_product}}</td>
+                <td class="product" align="center">{{ m.grams }}</td>
+                <td class="product" align="center">{{ m.consumed_kkal }}</td>
+                <td class="product" align="center">{{ m.consumed_proteins }}</td>
+                <td class="product" align="center">{{ m.consumed_fats }}</td>
+                <td class="product" align="center">{{ m.consumed_carbohydrates }}</td>
+                <td class="product" style="border: none">
+                    <button class="delete_button"><img src="{% static 'food_diary/img/delete.png' %}" style="height: 10px"></button>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+</section>
 
 </body>
 </html>
