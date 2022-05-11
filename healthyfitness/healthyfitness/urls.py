@@ -13,6 +13,7 @@ urlpatterns = [
     path('', include('calculator.urls')),
     path('', include('personal_area.urls')),
     path('', include('food_diary.urls')),
+    path('', include('water_tracker.urls'))
 ]
 
 if settings.DEBUG:

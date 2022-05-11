@@ -100,7 +100,6 @@ def calculator(request):
                     is_valid = True
 
     if "save_data" in request.POST:
-        print(db_user_data)
         Profile.objects.filter(user=request.user).update(age=db_user_data['age'], weight=db_user_data['weight'],
                                                          growth=db_user_data['growth'],
                                                          gender=db_user_data['gender'],
