@@ -61,18 +61,35 @@
         <div class="leftInf">
             <p class="todayDrink">Сегодня выпито:</p>
             <p class="todayGlasses">{{ glasses }}</p>
+            <p class="chooseGlasses">Укажите количество стаканов</p>
+
             <form method="post">
                 {% csrf_token %}
-                <p class="chooseGlasses">Укажите количество стаканов</p>
-                <input class="form-input" type="number" placeholder="Количество стаканов" name="add_water_inp" id="add_water_inp">
-                <button type="submit" onclick="getdetails(this)">Добавить</button>
+                <button id="minus" style="background-color: transparent; font-weight: bold; font-size: 120px; float: left; margin-top: 55px; display:inline-block; line-height:0; margin-left: 15px;"><font face="COURIER">–</font></button>
+                <input class="form-input" type="number" placeholder="Количество стаканов" name="add_water_inp" id="add_water_inp" value="{{ amount }}"
+                       style="text-align: end; background: white; font-size: 24px; margin-top: 55px; margin-left: 84px; background-color: #98EB88;" readonly>
+                <button id="plus" style="background-color: transparent; font-weight: bold; font-size: 120px; float: right; margin-top: 55px; display:inline-block; line-height:0;"><font face="COURIER">+</font></button>
+
             </form>
         </div>
 
-<img src="{% static 'water_tracker/img/glass.png' %}" class="imgGlass">
+    <img src="{% static 'water_tracker/img/glass.png' %}" class="imgGlass">
     </div>
     <p class="advice">Рекомендуемая норма потребления воды - 2 литра (8 стаканов) в сутки</p>
 </div>
+
+        <script>
+          var inp = document.getElementById('add_water_inp'),
+          plus = document.getElementById("plus");
+          plus.addEventListener("click", function() {
+            inp.valueAsNumber = inp.valueAsNumber + 1;
+          });
+          var minus = document.getElementById("minus");
+          minus.addEventListener("click", function() {
+            if (inp.valueAsNumber > 0)
+            inp.valueAsNumber = inp.valueAsNumber - 1;
+          });
+        </script>
 
         <script>
         function getdetails(clicked_object) {

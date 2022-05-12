@@ -125,7 +125,7 @@ div {
 }
 
 .todayDrink {
-    padding-top: 2vh;
+    margin-top: 15px;
     margin-left: 1vw;
     font-size: 40px;
     margin-bottom: 0;
@@ -134,25 +134,26 @@ div {
 .todayGlasses {
     margin-left: 1vw;
     font-size: 30px;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .imgGlass {
     height: 30vh;
-    margin-left: 10vh;
-    margin-top: 50px;
+    margin-top: 30px;
+    float:right;
 }
 
 .chooseGlasses {
     margin-left: 1vw;
-    padding-top: 50px;
+    padding-top: 20px;
     font-size: 20px;
 }
 
 .form-input {
     margin-left: 1vw;
     border: #FFFFFF;
-    height: 4vh;
+    height: 5vh;
+    width: 43px;
     border-radius: 5px;
 }
 
