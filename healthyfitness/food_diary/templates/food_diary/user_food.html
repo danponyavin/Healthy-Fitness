@@ -60,32 +60,68 @@
 
 <section>
     <div class="rectangle">
+    <h3 style="text-align: center;">Выберите дату</h3>
+        <center>
+    <form action="{% url 'food_diary' %}">
+        <input type="date" placeholder="Выберите дату" name="search" value="{{ value }}" id="date-search">
+        <button class="search_button" type="submit" onclick="getdetails(this)">Искать</button>
+    </form>
+    </center>
+    <center>
+    {% if data %}
 
-    <table>
-        <tr>
-            <th class="product" style="background-color: #F3E38D; border: none;">Продукт</th>
-            <th class="product" style="background-color: #F3E38D;border: none;">Вес, г</th>
-            <th class="product" style="background-color: #F3E38D;border: none;">Ккал</th>
-            <th class="product" style="background-color: #F3E38D;border: none;">Белков, г</th>
-            <th class="product" style="background-color: #F3E38D;border: none;">Жиров, г</th>
-            <th class="product" style="background-color: #F3E38D;border: none;">Углеводов, г</th>
-        </tr>
-        {% for m in meals %}
+        <table>
             <tr>
-                <td class="product">{{m.id_food.name_of_product}}</td>
-                <td class="product" align="center">{{ m.grams }}</td>
-                <td class="product" align="center">{{ m.consumed_kkal }}</td>
-                <td class="product" align="center">{{ m.consumed_proteins }}</td>
-                <td class="product" align="center">{{ m.consumed_fats }}</td>
-                <td class="product" align="center">{{ m.consumed_carbohydrates }}</td>
-                <td class="product" style="border: none">
-                    <button class="delete_button"><img src="{% static 'food_diary/img/delete.png' %}" style="height: 10px"></button>
-                </td>
+                <th class="product" style="background-color: #F3E38D; display: none;">id</th>
+                <th class="product" style="background-color: #F3E38D; border: none;">Продукт</th>
+                <th class="product" style="background-color: #F3E38D;border: none;">Вес, г</th>
+                <th class="product" style="background-color: #F3E38D;border: none;">Ккал</th>
+                <th class="product" style="background-color: #F3E38D;border: none;">Белков, г</th>
+                <th class="product" style="background-color: #F3E38D;border: none;">Жиров, г</th>
+                <th class="product" style="background-color: #F3E38D;border: none;">Углеводов, г</th>
             </tr>
-        {% endfor %}
-    </table>
-    </div>
-</section>
+            {% for m in data %}
+            <form id="form" method="post">
+                {% csrf_token %}
+                <tr>
+                    <td style="display: none;" class="product"><input name="id" value="{{ m.id }}"></td>
+                    <td class="product">{{m.id_food.name_of_product}}</td>
+                    <td class="product" align="center">{{ m.grams }}</td>
+                    <td class="product" align="center">{{ m.consumed_kkal }}</td>
+                    <td class="product" align="center">{{ m.consumed_proteins }}</td>
+                    <td class="product" align="center">{{ m.consumed_fats }}</td>
+                    <td class="product" align="center">{{ m.consumed_carbohydrates }}</td>
+                    <td class="product" style="border: none">
+                        <button class="delete_button"><img src="{% static 'food_diary/img/delete.png' %}" style="height: 10px; cursor: pointer;"></button>
+                    </td>
+                </tr>
+            </form>
+            {% endfor %}
+            <tr>
+                <td class="product" style="background-color: #98EB88;">Всего</td>
+                <td class="product" align="center" style="background-color: #98EB88;">{{ total.weight }}</td>
+                <td class="product" align="center" style="background-color: #98EB88;">{{ total.calories }}</td>
+                <td class="product" align="center" style="background-color: #98EB88;">{{ total.proteins }}</td>
+                <td class="product" align="center" style="background-color: #98EB88;">{{ total.fats }}</td>
+                <td class="product" align="center" style="background-color: #98EB88;">{{ total.carbohydrates }}</td>
+            </tr>
+        </table>
+    {% else %}
+        <h3>{{ error }}</h3>
+    {% endif %}
 
+
+    </center>
+
+
+
+    </div>
+
+    <script>
+        if (document.getElementById("date-search").valueAsDate == null)
+            document.getElementById("date-search").valueAsDate = new Date();
+    </script>
+
+</section>
 </body>
 </html>

@@ -50,8 +50,13 @@
     <div class="selectOption">
         <div class="selectButtons">
             <ul>
+                {% if request.user.is_authenticated %}
                 <li><a href="{% url 'search' %}" style="font-weight: bold">Выбор продуктов</a></li>
                 <li><a href="{% url 'food_diary' %}" class="foodDiary">Дневник питания</a></li>
+                {% else %}
+                <li><a href="{% url 'product_selection' %}">Категории продуктов</a></li>
+                <li><a href="{% url 'search' %}" class="foodDiary" style="font-weight: bold">Поиск</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
