@@ -57,22 +57,31 @@
 
 
 <div class="rectangle">
+    <h3 style="text-align: center;">Количество выпитых стаканов за неделю</h3>
     {% load googlecharts %}
-    <div id="count_graph"></div>
+    <div id="count_graph" style="margin-left: -25px; margin-top: -30px;"></div>
     {% googlecharts %}
         {% data values "count" %}
-            {% col "string" "Name" %}"{{ val }}"{% endcol %}
-            {% col "number" "Value" %}{{ val }}{% endcol %}
+            {% col "string" "current_date" %}"{{ val }}"{% endcol %}
+            {% col "number" "Стаканы" %}{{ val }}{% endcol %}
         {% enddata %}
 
         {% options %}
             kind: "ColumnChart",
             options: {
-                width: 600,
-                height: 240
+                backgroundColor: "transparent",
+                width: 740,
+                height: 300,
+                min: 0,
+                max: 20,
+                'legend': { position: 'bottom', textStyle: {color: 'black', bold: 'True', fontSize : 16}},
+                'bar' : { groupWidth: '80%' },
+                chartArea:{backgroundColor: "white"},
+                vAxis: { ticks: [0,5,10,15,20], textStyle: {color: 'black', fontSize: 14}},
+                hAxis: { textStyle: {color: 'black', bold: 'True', fontSize: 13}}
             }
-        {% endoptions %}
 
+        {% endoptions %}
         {% graph "count_graph" "count" %}
 
 

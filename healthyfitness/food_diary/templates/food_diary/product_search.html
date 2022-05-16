@@ -7,7 +7,7 @@
     <title>Поиск продуктов</title>
     <link href="{% static 'food_diary/css/style_search_products.css' %}" rel="stylesheet">
 </head>
-<body style="background-image:url('{% static 'food_diary/img/food_pattern.jpg' %}'); background-size: contain;">
+<body style="background-image:url('{% static 'food_diary/img/food_pattern.jpg' %}'); background-size: cover;">
 
 <header>
         <div class = container>
@@ -28,7 +28,7 @@
                         </li>
 
                         <li class="text">
-                            <a href="#">Блог</a>
+                            <a href="{% url 'product_selection' %}">Еда</a>
                         </li>
 
                         {% if request.user.is_authenticated %}
@@ -50,8 +50,13 @@
     <div class="selectOption">
         <div class="selectButtons">
             <ul>
-                <li><a href="{% url 'product_selection' %}">Выбор продуктов</a></li>
-                <li><a href="#" class="foodDiary">Дневник питания</a></li>
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'search' %}" style="font-weight: bold">Выбор продуктов</a></li>
+                <li><a href="{% url 'food_diary' %}" class="foodDiary">Дневник питания</a></li>
+                {% else %}
+                <li><a href="{% url 'product_selection' %}">Категории продуктов</a></li>
+                <li><a href="{% url 'search' %}" class="foodDiary" style="font-weight: bold">Поиск</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -73,14 +78,14 @@
                 <table class="table_sort">
                     <thead>
                     <tr>
-                        <th class="product" style="background-color: #e3e3e3; display: none;">id</th>
-                        <th class="product" style="background-color: #e3e3e3;">Продукт</th>
-                        <th class="product" style="background-color: #e3e3e3;">Вес, г</th>
-                        <th class="product" style="background-color: #e3e3e3;">Ккал</th>
-                        <th class="product" style="background-color: #e3e3e3;">Белков, г</th>
-                        <th class="product" style="background-color: #e3e3e3;">Жиров, г</th>
-                        <th class="product" style="background-color: #e3e3e3;">Углеводов, г</th>
-                        <th class="product" style="background-color: #e3e3e3;">Действие</th>
+                        <th class="product" style="background-color: #F3E38D; display: none;">id</th>
+                        <th class="product" style="background-color: #F3E38D; border: none;">Продукт</th>
+                        <th class="product" style="background-color: #F3E38D;border: none;">Вес, г</th>
+                        <th class="product" style="background-color: #F3E38D;border: none;">Ккал</th>
+                        <th class="product" style="background-color: #F3E38D;border: none;">Белков, г</th>
+                        <th class="product" style="background-color: #F3E38D;border: none;">Жиров, г</th>
+                        <th class="product" style="background-color: #F3E38D;border: none;">Углеводов, г</th>
+                        <th class="product" style="background-color: #F3E38D;border: none;">Действие</th>
                     </tr>
                     </thead>
                     {% for i in data %}
@@ -88,13 +93,13 @@
                         {% csrf_token %}
                         <tr>
                             <td style="display: none;" class="product"><input name="id" value="{{ i.id }}"></td>
-                            <td class="product">{{ i.name_of_product }}</td>
-                            <td class="product"><input id="{{ i.id }}" type="number" value="100" name="product_weight"></td>
-                            <td class="product" align="center">{{ i.kkal }}</td>
-                            <td class="product" align="center">{{ i.proteins }}</td>
-                            <td class="product" align="center">{{ i.fats }}</td>
-                            <td class="product" align="center">{{ i.carbohydrates }}</td>
-                            <td class="product" align="center">
+                            <td class="product" style="border: 1px solid #F3E38D;">{{ i.name_of_product }}</td>
+                            <td class="product" style="border: 1px solid #F3E38D;"><input id="{{ i.id }}" type="number" value="100" name="product_weight"></td>
+                            <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.kkal }}</td>
+                            <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.proteins }}</td>
+                            <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.fats }}</td>
+                            <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.carbohydrates }}</td>
+                            <td class="product" align="center" style="border: none;">
                                 <button name="{{ i.id }}" class="add_button" onclick="getdetails(this)">Добавить</button></td>
                         </tr>
                     </form>
@@ -104,22 +109,22 @@
                 <table class="table_sort">
                     <thead>
                     <tr>
-                        <th class="product" style="background-color: #e3e3e3; display: none;">id</th>
-                        <th class="product" style="background-color: #e3e3e3;">Продукт</th>
-                        <th class="product" style="background-color: #e3e3e3;">Ккал</th>
-                        <th class="product" style="background-color: #e3e3e3;">Белков, г</th>
-                        <th class="product" style="background-color: #e3e3e3;">Жиров, г</th>
-                        <th class="product" style="background-color: #e3e3e3;">Углеводов, г</th>
+                        <th class="product" style="background-color: #F3E38D; display: none; border: none;">id</th>
+                        <th class="product" style="background-color: #F3E38D; border: none">Продукт</th>
+                        <th class="product" style="background-color: #F3E38D; border: none;">Ккал</th>
+                        <th class="product" style="background-color: #F3E38D; border: none;">Белков, г</th>
+                        <th class="product" style="background-color: #F3E38D; border: none;">Жиров, г</th>
+                        <th class="product" style="background-color: #F3E38D; border: none;">Углеводов, г</th>
                     </tr>
                     </thead>
                     {% for i in data %}
                         <tr>
-                            <td style="display: none;" class="product"><input name="id" value="{{ i.id }}"></td>
-                            <td class="product">{{ i.name_of_product }}</td>
-                            <td class="product" align="center">{{ i.kkal }}</td>
-                            <td class="product" align="center">{{ i.proteins }}</td>
-                            <td class="product" align="center">{{ i.fats }}</td>
-                            <td class="product" align="center">{{ i.carbohydrates }}</td>
+                            <td style="display: none; " class="product"><input name="id" value="{{ i.id }}"></td>
+                            <td class="product" style="border: 1px solid #F3E38D;">{{ i.name_of_product }}</td>
+                            <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.kkal }}</td>
+                            <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.proteins }}</td>
+                            <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.fats }}</td>
+                            <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.carbohydrates }}</td>
                         </tr>
                     {% endfor %}
                 </table>

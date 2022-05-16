@@ -1,3 +1,5 @@
+import datetime
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -6,7 +8,32 @@ from food_diary.models import Food, Diary_of_food
 
 
 def UserFood(request):
-    return render(request, 'food_diary/user_food.html')
+    error = "У Вас нет записей по выбранной дате!"
+    total_amount = {'weight': 0, 'calories': 0, 'proteins': 0, 'fats': 0, 'carbohydrates': 0}
+    current_user = Profile.objects.get(user=request.user)
+    meals_today = ''
+
+    if request.POST.get('id'):
+        record_id = request.POST.get('id')
+        record = Diary_of_food.objects.get(id=record_id)
+        record.delete()
+
+
+
+    search_query = request.GET.get('search', '')
+    if search_query:
+        meals_today = Diary_of_food.objects.filter(day_create=search_query, id_users=current_user)
+    else:
+        today = datetime.date.today()
+        meals_today = Diary_of_food.objects.filter(day_create=today, id_users=current_user)
+    for i in range(len(meals_today)):
+        total_amount['weight'] += meals_today[i].grams
+        total_amount['calories'] += meals_today[i].consumed_kkal
+        total_amount['proteins'] += meals_today[i].consumed_proteins
+        total_amount['fats'] += meals_today[i].consumed_fats
+        total_amount['carbohydrates'] += meals_today[i].consumed_carbohydrates
+    return render(request, 'food_diary/user_food.html', {'data': meals_today, 'value': search_query, 'total': total_amount,
+                                                         'error': error})
 
 def ProductSelection(request):
     return render(request, 'food_diary/product_selection.html')
@@ -121,7 +148,6 @@ def Fast_food(request):
 
 
 def Search(request):
-
     search_query = request.GET.get('search', '')
     error = "К сожалению, по Вашему запросу ничего не найдено..."
     if request.POST.get('product_weight'):
