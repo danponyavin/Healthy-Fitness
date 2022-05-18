@@ -1,7 +1,12 @@
+@font-face {
+    font-family: "Raleway";
+    src: local('Raleway-Regular'), url("../fonts/Raleway-Regular.ttf") format('truetype');
+}
+
 body {
     padding: 0;
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Raleway", sans-serif;
     overflow-x: hidden;
 }
 
@@ -10,13 +15,6 @@ header {
     background-color: #CCE0FB;
     width: 100%;
     height: 60px;
-    left: -83px;
-    top: 0px;
-    border: 0px;
-}
-
-.container {
-    width: 100%;
 }
 
 div {
@@ -49,6 +47,10 @@ div {
     font-size: 18px;
 }
 
+.menu li a:hover {
+    font-weight: bold;
+}
+
 .text {
     margin-top: 20px;
     float: left;
@@ -56,26 +58,6 @@ div {
     margin-right: 60px;
 }
 
-.iconLK {
-    float: left;
-    display: block;
-    margin-right: 60px;
-    margin-top: 10px;
-}
-
-.imgLK {
-    width: 35px;
-    height: 35px;
-}
-
-
-.reg_field {
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    height: 1000px;
-    overflow: hidden;
-}
 
 .rectangle {
     width: 400px;
@@ -83,8 +65,7 @@ div {
     border: 1px solid #013036;
     box-sizing: border-box;
     border-radius: 20px;
-    margin-left: 38%;
-    margin-top: 2%;
+    margin: 50px auto;
 
 }
 

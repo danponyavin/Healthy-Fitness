@@ -8,7 +8,6 @@
     <link href="{% static 'articles/css/style_articles_food.css' %}" rel="stylesheet">
 </head>
 <body>
-   <div class="mainInformation">
         <header>
                 <div class = container>
                     <div class="head">
@@ -45,12 +44,13 @@
                     </div>
                 </div>
         </header>
-       <div class="choiceTopic">
-           <a href="{% url 'articles' %}" class="all">Все</a>
-           <a href="{% url 'articles_health' %}" class="health">Здоровье</a>
-           <a href="{% url 'articles_devices' %}" class="devices">Девайсы</a>
-           <a href="{% url 'articles_food' %}" class="food">Питание</a>
-           <a href="{% url 'articles_sport' %}" class="sport">Спорт</a>
+<div id="wrapper">
+      <div class="choiceTopic">
+           <div class="all" onclick="location.href='{% url 'articles' %}';"><a href="{% url 'articles' %}">Все</a></div>
+           <div class="health" onclick="location.href='{% url 'articles_health' %}';"><a href="{% url 'articles_health' %}">Здоровье</a></div>
+           <div class="devices" onclick="location.href='{% url 'articles_devices' %}';"><a href="{% url 'articles_devices' %}">Девайсы</a></div>
+           <div class="food" onclick="location.href='{% url 'articles_food' %}';"><a href="{% url 'articles_food' %}">Питание</a></div>
+           <div class="sport" onclick="location.href='{% url 'articles_sport' %}';"><a href="{% url 'articles_sport' %}">Спорт</a></div>
        </div>
 
        <div class="listOfTitles">
@@ -62,7 +62,6 @@
                </div>
            {% endfor %}
        </div>
-
-   </div>
+</div>
 </body>
 </html>

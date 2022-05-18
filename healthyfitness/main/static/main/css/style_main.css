@@ -1,10 +1,13 @@
+@font-face {
+    font-family: "Raleway";
+    src: local('Raleway-Regular'), url("../fonts/Raleway-Regular.ttf") format('truetype');
+}
+
 body {
     padding: 0;
     margin: 0;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
+    font-family: "Raleway", sans-serif;
     background-color: #FFFFFF;
-
 }
 
 header {
@@ -12,24 +15,24 @@ header {
     width: 100%;
     height: 60px;
     left: -83px;
-    top: 0px;
-    border: 0px;
 }
 
-
+.head {
+    width: 1200px;
+    margin: 0 auto;
+}
 
 div {
     box-sizing: border-box;
 }
 
-.mainInformation{
-    margin: 0 auto;
-    max-width: 100%;
-    min-width: 100%;
+#wrapper {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .logo{
-    margin-left: 10%;
     margin-top: 5px;
     width: 40px;
     height: 50px;
@@ -38,7 +41,6 @@ div {
 
 
 .navigation {
-    margin-right: 10%;
     float: right;
 }
 
@@ -54,6 +56,10 @@ div {
     font-size: 18px;
 }
 
+.menu li a:hover {
+    font-weight: bold;
+}
+
 .text {
     margin-top: 20px;
     float: left;
@@ -61,66 +67,65 @@ div {
     margin-right: 60px;
 }
 
-.iconLK {
-    float: left;
-    display: block;
-    margin-right: 60px;
-    margin-top: 10px;
-}
-
-.imgLK {
-    width: 35px;
-    height: 35px;
-}
-
 .readNewArticles p{
     font-size: 18px;
-    margin-left: 10%;
+    padding-top: 20px;
+}
+
+.containerOfArticles{
+    list-style-type: none;
+    width: 100%;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.containerOfArticles li{
+    float: left;
+    width: 400px;
 }
 
 .containerOfArticles a{
     text-decoration: none;
-    width: 300px;
     padding: 10px 10px 10px 10px;
     color: black;
     height: 70px;
     background: #FFFFFF;
-    border: 1px solid #000000;
     box-sizing: border-box;
     border-radius: 10px;
     font-size: 20px;
-    margin-right: 50px;
 }
+
+
 
 .firstArticle{
-    margin-left: 10%;
-    box-shadow: 0px 0px 10px 1px #80B9ED;
+    box-shadow: 0px 0px 10px 1px #A09E9E;
 }
 
-.secondArticle{
-    box-shadow: 0px 0px 10px 1px #F3E38D;
-}
 
-.thirdArticle{
-    box-shadow: 0px 0px 10px 1px #98EB88;
+.firstArticle:hover{
+    box-shadow: 0px 0px 25px 1px #80B9ED;
 }
 
 .mainPhrase p{
-    font-size: 55px;
-    margin-left: 10%;
-    margin-top: 5%;
+    font-size: 60px;
+    padding-top: 50px;
     display: block;
 }
 
 .mainImage{
     float: right;
     padding: 0;
-    width: 800px;
-    height: 600px;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-right: 10%;
+    margin-left: 500px;
+    height: 60vh;
+    width: auto;
+    position: fixed;
+    bottom: 0;
 }
+
+.buttonCalc{
+    margin-top: 15vh;
+}
+
 
 .buttonCalc a{
     text-decoration: none;
@@ -131,15 +136,23 @@ div {
     padding: 20px;
     float: left;
     font-size: 24px;
-    margin-left: 10%;
+    position: fixed;
+    bottom: 40vh;
+}
+
+.textAboutCalc p{
+    font-size: 24px;
+    position: fixed;
+    bottom: 50vh;
 }
 
 .textAboutReg p{
-    width: 409px;
+    width: 420px;
     height: 128px;
     font-size: 24px;
-    margin-top: 9%;
-    margin-left: 10%;
+    margin: 0;
+    position: fixed;
+    bottom: 15vh;
 }
 
 
@@ -147,10 +160,13 @@ div {
     text-decoration: none;
     color: black;
     padding: 20px;
-    float: left;
     font-size: 24px;
     background: #A8D2A0;
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-    margin-left: 10%;
+    margin-bottom: 5vh;
+    position: fixed;
+    bottom: 0;
 }
+
+

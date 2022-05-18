@@ -8,7 +8,7 @@
     <title>Личный кабинет</title>
     <link href="{% static 'personal_area/css/style_personal_area.css' %}" rel="stylesheet">
 </head>
-<body>
+<body style="background-image:url('{% static 'registration/img/patternSportPeople.jpg' %}'); background-size: cover;">
 
 <header>
         <div class = container>
@@ -48,7 +48,7 @@
 </header>
 
 
-<div class="mainInformation" >
+<div id="wrapper">
     <div class="rectangle">
         <div class="user_information">
             <img src="{{ user.profile.photo.url }}" alt="UserPhoto" class="user_photo">
@@ -69,7 +69,7 @@
             </div>
         </div>
     </div>
-    <div class="rightSide"  style="background-image:url('{% static 'registration/img/patternSportPeople.jpg' %}'); background-size: contain;">
+    <div class="rightSide">
         <div class="buttons">
             <ul>
                 <li><a href="{% url 'add_water' %}" class="water_but">Трекер воды</a></li>

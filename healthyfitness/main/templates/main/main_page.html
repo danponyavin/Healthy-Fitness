@@ -9,7 +9,6 @@
     <link rel="icon" href="{% static 'main/img/favicon.ico' %}" type="image/x-icon">
 </head>
 <body>
-<div class="mainInformation">
     <header>
         <div class = container>
             <div class="head">
@@ -47,6 +46,7 @@
         </div>
     </header>
 
+<div id="wrapper">
     <section>
         <div class="readNewArticles">
             <div class="container">
@@ -58,11 +58,11 @@
     <section>
         <div class="newArticles">
             <div class = container>
-                <nav class="containerOfArticles">
+                <ul class="containerOfArticles">
                     {% for a in titlesNewArticles %}
-                    <a href="{% url 'certainArticle' a.slag %}" class="firstArticle">{{a.title}}</a>
+                        <li><a href="{% url 'certainArticle' a.slag %}" class="firstArticle">{{a.title}}</a></li>
                     {% endfor %}
-                </nav>
+                </ul>
             </div>
         </div>
     </section>
@@ -70,7 +70,13 @@
     <section>
         <div class="mainPhrase">
             <img src="{% static 'main/img/imgForMainPage.jpg' %}" alt="" class="mainImage">
-            <p>Ваше здоровье<br>на нашем сайте</p>
+            <p>Ваше здоровье на нашем сайте</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="textAboutCalc">
+            <p>Узнайте Ваши суточные нормы</p>
         </div>
     </section>
 
@@ -82,7 +88,7 @@
 
     <section>
         <div class="textAboutReg">
-            <p>А чтобы отслеживать прогресс,<br>получить доступ к блогу и<br>личному кабинету зарегистрируйтесь или войдите</p>
+            <p>А чтобы отслеживать прогресс<br>и получить доступ личному кабинету<br>зарегистрируйтесь или войдите</p>
         </div>
     </section>
 
