@@ -7,8 +7,8 @@
     <title>Вход</title>
     <link href="{% static 'registration/css/style_login.css' %}" rel="stylesheet">
 </head>
-<body>
-<div class="mainInformation">
+<body style="background-image:url('{% static 'registration/img/patternSportPeople.jpg' %}'); background-size: cover;">
+
 <header>
         <div class = container>
             <div class="head">
@@ -46,8 +46,9 @@
         </div>
 </header>
 
+<div id="wrapper">
 <section>
-    <div class="reg_field" style="background-image:url('{% static 'registration/img/patternSportPeople.jpg' %}'); background-size: contain;">
+    <div class="reg_field">
         <div class="rectangle">
             <h4>Вход</h4>
             <form method="post">

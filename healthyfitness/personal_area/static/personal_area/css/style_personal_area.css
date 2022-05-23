@@ -1,7 +1,13 @@
+@font-face {
+    font-family: "Raleway";
+    src: local('Raleway-Regular'), url("../fonts/Raleway-Regular.ttf") format('truetype');
+}
+
+
 body {
     padding: 0;
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Raleway", sans-serif;
     overflow-x: hidden;
     background-color: #FFFFFF;
 }
@@ -10,25 +16,26 @@ header {
     background-color: #CCE0FB;
     width: 100%;
     height: 60px;
-    left: -83px;
-    top: 0px;
-    border: 0px;
 }
-
-
 
 div {
     box-sizing: border-box;
 }
 
-.mainInformation{
+#wrapper {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #A09E9E;
+    margin-top: 30px;
+}
+
+.head {
     margin: 0 auto;
-    max-width: 100%;
-    min-width: 100%;
+    width: 1200px;
 }
 
 .logo{
-    margin-left: 10%;
     margin-top: 5px;
     width: 40px;
     height: 50px;
@@ -37,7 +44,6 @@ div {
 
 
 .navigation {
-    margin-right: 10%;
     float: right;
 }
 
@@ -53,142 +59,141 @@ div {
     font-size: 18px;
 }
 
+.menu li a:hover {
+    font-weight: bold;
+}
+
 .text {
     margin-top: 20px;
     float: left;
     display: block;
-    margin-right: 60px;
+    margin-left: 60px;
+}
+
+.leftSide{
+    float: left;
 }
 
 
-
-
-
-.rectangle {
-    height: 93.6vh;
-    width: 25vw;
-    border: 1px solid #FFFFFF;
-    box-shadow: 4px 4px 10px 1px #80B9ED;
-    position: absolute;
-    z-index: 100;
-    background-color: #F1F6FA;
-}
-
-.user_information{
-    margin-left: 20px;
-
-}
-
-.user_name {
-    margin-top: 30px;
-    margin-bottom: 0;
-    margin-right: 0;
-    padding: 0;
-    font-size: 40px;
-}
-
-.user_photo {
-    height: 100px;
-    margin-top: 30px;
-}
-
-.kkal{
-    margin-top: 30px;
-    font-size: 27px;
-}
-
-.user_kkal{
-    margin-left: 10px;
-    font-size: 22px;
-}
-
-.weight{
-    margin-top: 50px;
-    font-size: 27px;
-}
-
-.user_weight{
-    margin-left: 10px;
-    font-size: 22px;
-}
-
-.activity{
-    margin-top: 50px;
-    font-size: 27px;
-}
-
-.user_activity{
-    margin-left: 10px;
-    font-size: 22px;
-}
-
-.bottom{
-    position:absolute;
-	bottom:0;
-}
-
-.bottom ul{
-    margin: 0;
-    padding: 0;
-}
-
-.bottom ul li{
+.leftSide div{
     list-style-type: none;
-
+    margin-bottom: 50px;
+    display: block;
+    width: 250px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-.bottom ul li a{
+.leftSide div a{
     color: black;
+    text-decoration: none;
+    text-align: center;
+    padding-right: 0;
+    padding-left: 20px;
     font-size: 20px;
 }
 
-.rightSide{
-    width: 75vw;
-    height: 93.6vh;
-    margin-left: 25vw;
-}
-
-.buttons{
-    margin-left: 18vw;
-    padding-top: 35vh;
-    column-count: 2;
-    width: 700px;
-}
-
-.buttons ul{
-    padding: 0;
-    margin: 0;
-    width: 300px;
-}
-
-.buttons li{
-    list-style-type: none;
-    margin-bottom: 10px;
-}
-
-.buttons a{
-    color: black;
-    display: block;
-    text-decoration: none;
-    width: 300px;
-    padding: 25px;
-    border-radius: 20px;
-    font-size: 25px;
-    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.25);
-}
-
-.water_but{
+.water{
     background-color: #80B9ED;
+
 }
 
-.food_but{
+.food{
     background-color: #F3E38D;
 }
 
-.weight_but{
+.weightControl{
     background-color: #98EB88;
 }
 
-.sport_but{
+.sport{
     background-color: #EB7272;
+}
+
+.water:hover{
+    box-shadow: 0px 0px 25px 3px #80B9ED;
+}
+
+.food:hover{
+    box-shadow: 0px 0px 25px 3px #F3E38D;
+}
+
+.weightControl:hover{
+    box-shadow: 0px 0px 25px 3px #98EB88;
+}
+
+.sport:hover{
+    box-shadow: 0px 0px 25px 3px #EB7272;
+}
+
+.rightSide{
+    float: right;
+    background-color: #FFFFFF;
+    width: 900px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 25px 3px #80B9ED;
+}
+
+.userInformation{
+    padding: 25px;
+}
+
+.userInformation ul li{
+    list-style-type: none;
+}
+
+.userPhoto{
+    height: 100px;
+    border-radius: 10px;
+}
+
+.inf{
+    display: flex;
+    justify-content: space-between;
+}
+
+.growth{
+    font-size: 20px;
+}
+
+.userGrowth{
+    font-size: 20px;
+}
+
+.weight{
+    font-size: 20px;
+}
+
+.userWeight{
+    font-size: 20px;
+}
+
+.activity{
+    font-size: 20px;
+}
+
+.userActivity{
+    font-size: 20px;
+}
+
+.call{
+    font-size: 20px;
+}
+
+.userCall{
+    font-size: 20px;
+}
+
+.settingsDiv{
+    margin-top: 30px;
+}
+
+.settings{
+    color: black;
+}
+
+.logout{
+    color: black;
 }
