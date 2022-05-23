@@ -46,37 +46,43 @@
         </div>
 </header>
 
-<section class="addingAndTracker">
-    <div class="selectOption">
-            <ul>
-                <li><a href="{% url 'add_water' %}" style="font-weight: bold">Добавление воды</a></li>
-                <li><a href="{% url 'water_tracker' %}" class="tracker">Трекер воды</a></li>
-            </ul>
-        </div>
-</section>
+<div id="wrapper">
 
-
-<div class="rectangle">
-    <div class="formImg">
-        <div class="leftInf">
-            <p class="todayDrink">Сегодня выпито:</p>
-            <p class="todayGlasses">{{ glasses }}</p>
-            <p class="chooseGlasses">Укажите количество стаканов</p>
-
-            <form method="post">
-                {% csrf_token %}
-                <button id="minus" style="float: left; margin-top: 38px; margin-left: 15px;"><img src="{% static 'water_tracker/img/minus.png' %}"></button>
-                <input class="form-input" type="number" placeholder="Количество стаканов" name="add_water_inp" id="add_water_inp" value="{{ amount }}"
-                       style="text-align: end; font-size: 24px; margin-top: 55px; margin-left: 84px; background-color: #98EB88;" readonly>
-                <button id="plus" style="float: right; margin-top: 38px; margin-left: 15px;"><img src="{% static 'water_tracker/img/plus.png' %}"></button>
-
-            </form>
-        </div>
-
-    <img src="{% static 'water_tracker/img/glass.png' %}" class="imgGlass">
+    <div class="leftSide">
+            <div onclick="location.href='{% url 'add_water' %}'" class="water"><a href="{% url 'add_water' %}" class="water_but">Трекер воды</a></div>
+            <div onclick="location.href='{% url 'search' %}'" class="food"><a href="{% url 'search' %}" class="food_but">Дневник питания</a></div>
+            <div onclick="location.href='{% url 'search' %}'" class="weightControl"><a href="#" class="weight_but">Контроль веса</a></div>
+            <div onclick="location.href='{% url 'search' %}'" class="sport"><a href="#" class="sport_but">Дневник тренировок</a></div>
     </div>
-    <p class="advice">Рекомендуемая норма потребления воды - 2 литра (8 стаканов) в сутки</p>
-</div>
+
+    <div class="rightSide">
+        <div class="selectOption">
+                <ul>
+                    <li><a href="{% url 'add_water' %}" style="font-weight: bold">Добавление воды</a></li>
+                    <li><a href="{% url 'water_tracker' %}" class="tracker">Трекер воды</a></li>
+                </ul>
+            </div>
+        <div class="rectangle">
+            <div class="formImg">
+                <div class="leftInf">
+                    <p class="todayDrink">Сегодня выпито:</p>
+                    <p class="todayGlasses">{{ glasses }}</p>
+                    <p class="chooseGlasses">Укажите количество стаканов</p>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <button id="minus" style="float: left; margin-top: 38px; margin-left: 15px;"><img src="{% static 'water_tracker/img/minus.png' %}"></button>
+                        <input class="form-input" type="number" placeholder="Количество стаканов" name="add_water_inp" id="add_water_inp" value="{{ amount }}"
+                               style="text-align: end; font-size: 24px; margin-top: 55px; margin-left: 84px; background-color: #98EB88;" readonly>
+                        <button id="plus" style="float: right; margin-top: 38px; margin-left: 15px;"><img src="{% static 'water_tracker/img/plus.png' %}"></button>
+
+                    </form>
+                </div>
+
+            <img src="{% static 'water_tracker/img/glass.png' %}" class="imgGlass">
+            </div>
+            <p class="advice">Рекомендуемая норма потребления воды - 2 литра (8 стаканов) в сутки</p>
+        </div>
 
         <script>
           var inp = document.getElementById('add_water_inp'),
@@ -99,5 +105,7 @@
                 alert("Некорректно введено количество стаканов")
         }
         </script>
+        </div>
+</div>
 </body>
 </html>

@@ -11,7 +11,6 @@
 <body style="background-image:url('{% static 'registration/img/patternSportPeople.jpg' %}'); background-size: cover;">
 
 <header>
-        <div class = container>
             <div class="head">
                 <a href="{% url 'home' %}"><img src="{% static 'main/img/iconLogo.png' %}" alt="" class="logo"></a>
                 <nav class="navigation">
@@ -49,34 +48,44 @@
 
 
 <div id="wrapper">
-    <div class="rectangle">
-        <div class="user_information">
-            <img src="{{ user.profile.photo.url }}" alt="UserPhoto" class="user_photo">
-            <p class="user_name">{{ user.username}}</p>
-            <p class="kkal">Норма КБЖУ</p>
-            {% for i in profile %}
-            <p class="user_kkal">{{ i.needed_kkal }} / {{ i.needed_proteins }} / {{ i.needed_fats }} / {{ i.needed_carbohydrates }}</p>
-            <p class="weight">Вес</p>
-            <p class="user_weight">{{ i.weight }} кг</p>
-            <p class="activity">Уровень активности</p>
-            <p class="user_activity">{{ i.Activity_level }}</p>
-            {% endfor %}
-            <div class="bottom">
-                <ul>
-                    <li><a href="{% url 'change_information' %}" class="settings">Обновить фотографию</a></li>
-                    <li><a href="{% url 'logout' %}" class="logout">Выйти</a></li>
-                </ul>
-            </div>
-        </div>
+    <div class="leftSide">
+            <div onclick="location.href='{% url 'add_water' %}'" class="water"><a href="{% url 'add_water' %}" class="water_but">Трекер воды</a></div>
+            <div onclick="location.href='{% url 'search' %}'" class="food"><a href="{% url 'search' %}" class="food_but">Дневник питания</a></div>
+            <div onclick="location.href='{% url 'search' %}'" class="weightControl"><a href="#" class="weight_but">Контроль веса</a></div>
+            <div onclick="location.href='{% url 'search' %}'" class="sport"><a href="#" class="sport_but">Дневник тренировок</a></div>
     </div>
+
     <div class="rightSide">
-        <div class="buttons">
-            <ul>
-                <li><a href="{% url 'add_water' %}" class="water_but">Трекер воды</a></li>
-                <li><a href="{% url 'search' %}" class="food_but">Дневник питания</a></li>
-                <li><a href="#" class="weight_but">Контроль веса</a></li>
-                <li><a href="#" class="sport_but">Дневник тренировок</a></li>
-            </ul>
+        <div class="userInformation">
+            <div><img src="{{ user.profile.photo.url }}" class="userPhoto"></div>
+            <h1>{{ user.username }}</h1>
+            <div class="inf">
+                <p class="growth">Рост</p>
+                <p class="userGrowth">169 см</p>
+            </div>
+            <hr noshade size="1px" color="black">
+
+
+            <div class="inf">
+                <p class="weight">Вес</p>
+                <p class="userWeight">60 кг</p>
+            </div>
+            <hr noshade size="1px" color="black">
+
+            <div class="inf">
+                <p class="activity">Уровень активности</p>
+                <p class="userActivity">Умеренный</p>
+            </div>
+            <hr noshade size="1px" color="black">
+
+            <div class="inf">
+                <p class="call">К/Б/Ж/У</p>
+                <p class="userCall">2000/90/70/110</p>
+            </div>
+            <hr noshade size="1px" color="black">
+
+            <div class="settingsDiv"><a href="{% url 'change_information' %}" class="settings">Обновить фотографию</a></div>
+            <div><a href="{% url 'logout' %}" class="logout">Выйти</a></div>
         </div>
     </div>
 </div>

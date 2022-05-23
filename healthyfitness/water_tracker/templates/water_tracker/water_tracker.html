@@ -46,51 +46,62 @@
         </div>
 </header>
 
-<section class="addingAndTracker">
-    <div class="selectOption">
-            <ul>
-                <li><a href="{% url 'add_water' %}" >Добавление воды</a></li>
-                <li><a href="{% url 'water_tracker' %}" style="font-weight: bold" class="tracker">Трекер воды</a></li>
-            </ul>
+
+<div id="wrapper">
+
+    <div class="leftSide">
+                <div onclick="location.href='{% url 'add_water' %}'" class="water"><a href="{% url 'add_water' %}" class="water_but">Трекер воды</a></div>
+                <div onclick="location.href='{% url 'search' %}'" class="food"><a href="{% url 'search' %}" class="food_but">Дневник питания</a></div>
+                <div onclick="location.href='{% url 'search' %}'" class="weightControl"><a href="#" class="weight_but">Контроль веса</a></div>
+                <div onclick="location.href='{% url 'search' %}'" class="sport"><a href="#" class="sport_but">Дневник тренировок</a></div>
         </div>
-</section>
+
+    <div class="rightSide">
+            <div class="selectOption">
+                    <ul>
+                        <li><a href="{% url 'add_water' %}" >Добавление воды</a></li>
+                        <li><a href="{% url 'water_tracker' %}" style="font-weight: bold" class="tracker">Трекер воды</a></li>
+                    </ul>
+                </div>
 
 
-<div class="rectangle">
-    <h3 style="text-align: center;">Количество выпитых стаканов за неделю</h3>
-    {% load googlecharts %}
-    <div id="count_graph" style="margin-left: -25px; margin-top: -30px;"></div>
-    {% googlecharts %}
-        {% data values "count" %}
-            {% col "string" "current_date" %}"{{ val }}"{% endcol %}
-            {% col "number" "Стаканы" %}{{ val }}{% endcol %}
-        {% enddata %}
+        <div class="rectangle">
+            <h3 style="text-align: center;">Количество выпитых стаканов за неделю</h3>
+            {% load googlecharts %}
+            <div id="count_graph" style="margin-left: -25px; margin-top: -30px;"></div>
+            {% googlecharts %}
+                {% data values "count" %}
+                    {% col "string" "current_date" %}"{{ val }}"{% endcol %}
+                    {% col "number" "Стаканы" %}{{ val }}{% endcol %}
+                {% enddata %}
 
-        {% options %}
-            kind: "ColumnChart",
-            options: {
-                backgroundColor: "transparent",
-                width: 740,
-                height: 300,
-                min: 0,
-                max: 20,
-                'legend': { position: 'bottom', textStyle: {color: 'black', bold: 'True', fontSize : 16}},
-                'bar' : { groupWidth: '80%' },
-                chartArea:{backgroundColor: "white"},
-                vAxis: { ticks: [0,5,10,15,20], textStyle: {color: 'black', fontSize: 14}},
-                hAxis: { textStyle: {color: 'black', bold: 'True', fontSize: 13}}
-            }
+                {% options %}
+                    kind: "ColumnChart",
+                    options: {
+                        backgroundColor: "transparent",
+                        width: 740,
+                        height: 300,
+                        min: 0,
+                        max: 20,
+                        'legend': { position: 'bottom', textStyle: {color: 'black', bold: 'True', fontSize : 16}},
+                        'bar' : { groupWidth: '80%' },
+                        chartArea:{backgroundColor: "white"},
+                        vAxis: { ticks: [0,5,10,15,20], textStyle: {color: 'black', fontSize: 14}},
+                        hAxis: { textStyle: {color: 'black', bold: 'True', fontSize: 13}}
+                    }
 
-        {% endoptions %}
-        {% graph "count_graph" "count" %}
-
-
-    {% endgooglecharts %}
+                {% endoptions %}
+                {% graph "count_graph" "count" %}
 
 
+            {% endgooglecharts %}
 
 
-    <p class="advice">Рекомендуемая норма потребления воды - 2 литра (8 стаканов) в сутки</p>
+
+
+            <p class="advice">Рекомендуемая норма потребления воды - 2 литра (8 стаканов) в сутки</p>
+        </div>
+    </div>
 </div>
 
 </body>
