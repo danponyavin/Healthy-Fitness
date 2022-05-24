@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'personal_area.apps.PersonalAreaConfig',
     'water_tracker.apps.WaterTrackerConfig',
     'googlecharts',
+    'weight.apps.WeightConfig',
 ]
 
 MIDDLEWARE = [

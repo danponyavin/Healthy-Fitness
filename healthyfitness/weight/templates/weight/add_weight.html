@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Запись веса</title>
+    <link href="{% static 'weight/css/style_add_weight.css' %}" rel="stylesheet">
+</head>
+<body style="background-image:url('{% static 'weight/img/weight_pattern.png' %}'); background-size: auto;">
+
+<header>
+    <div class="head">
+        <a href="{% url 'home' %}"><img src="{% static 'main/img/iconLogo.png' %}" alt="" class="logo"></a>
+        <nav class="navigation">
+            <ul class="menu">
+                <li class="text">
+                    <a href="{% url 'home' %}">Главная</a>
+                </li>
+                <li class="text">
+                    <a href="{% url 'articles' %}">Статьи</a>
+                </li>
+                <li class="text">
+                    <a href="{% url 'calculator' %}">Калькулятор</a>
+                </li>
+                <li class="text">
+                    <a href="#">Блог</a>
+                </li>
+                {% if request.user.is_authenticated %}
+                    <li class="text">
+                        <a href="{% url 'personalArea' %}">{{ user.username }} | Личный кабинет</a>
+                    </li>
+                {% else %}
+                    <li class="text">
+                        <a href="{% url 'login' %}">Войти</a> | <a href="{% url 'registration_field' %}">Регистрация</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<div id="wrapper">
+    <div class="leftSide">
+        <div onclick="location.href='{% url 'add_water' %}'" class="water"><a href="{% url 'add_water' %}" class="water_but">Трекер воды</a></div>
+            <div onclick="location.href='{% url 'search' %}'" class="food"><a href="{% url 'search' %}" class="food_but">Дневник питания</a></div>
+            <div onclick="location.href='{% url 'weight_tracker' %}'" class="weightControl"><a href="{% url 'weight_tracker' %}" class="weight_but">Контроль веса</a></div>
+            <div onclick="location.href='{% url 'search' %}'" class="sport"><a href="#" class="sport_but">Дневник тренировок</a></div>
+    </div>
+
+    <div class="rightSide">
+        <div class="selectOption">
+            <ul>
+                <li><a href="{% url 'add_weight' %}" style="font-weight: bold">Записать вес</a></li>
+                <li><a href="{% url 'weight_tracker' %}" class="tracker">Трекер веса</a></li>
+            </ul>
+        </div>
+
+        <div class="rectangle">
+            <p class="currentWeight">Текущий вес:</p>
+            <p class="userCurrentWeight">60 кг</p>
+            <p class="updateWeight">Обновите данные о весе</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
