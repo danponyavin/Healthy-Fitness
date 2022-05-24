@@ -11,9 +11,10 @@ class Type_of_foodAdmin(admin.ModelAdmin):
 
 
 class FoodAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name_of_product', 'kkal', 'proteins', 'fats', 'carbohydrates')
+    list_display = ('id', 'name_of_product', 'kkal', 'proteins', 'fats', 'carbohydrates', 'type_of_food')
     list_display_links = ('id', 'name_of_product')
     search_fields = ('name_of_product',)
+    list_filter = ('type_of_food',)
 
 
 class Diary_of_foodAdmin(admin.ModelAdmin):
