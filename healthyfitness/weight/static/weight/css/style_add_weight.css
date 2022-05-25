@@ -195,3 +195,26 @@ div {
     margin-top: 0;
     font-size: 25px;
 }
+
+
+input {
+    width: 140px;
+    background-color: #faf0de;
+    border: 3px solid #98EB88;
+    border-radius: 14px;
+    text-align: center;
+    margin-left: 15px;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.save_weight {
+    width: 140px;
+    background-color: #98EB88;
+    border: 3px solid #98EB88;
+    border-radius: 14px;
+    text-align: center;
+    margin-left: 15px;
+    font-size: 25px;
+    cursor: pointer;
+}

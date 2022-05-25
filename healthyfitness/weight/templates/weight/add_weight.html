@@ -59,8 +59,13 @@
 
         <div class="rectangle">
             <p class="currentWeight">Текущий вес:</p>
-            <p class="userCurrentWeight">60 кг</p>
+            <p class="userCurrentWeight">{{ current_weight }} кг</p>
             <p class="updateWeight">Обновите данные о весе</p>
+            <form method="post">
+                {% csrf_token %}
+                <input name="weight_inp" type="number" min="25" max="210" value="{{ current_weight }}" step="0.1">
+                <button class="save_weight" type="submit">Сохранить</button>
+            </form>
         </div>
     </div>
 </div>
