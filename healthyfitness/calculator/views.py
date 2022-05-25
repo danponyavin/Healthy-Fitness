@@ -1,6 +1,9 @@
+from datetime import date
+
 from django.shortcuts import render, redirect
 from calculator.forms import CalculatorForm
 from calculator.models import Profile
+from weight.models import Weight_trecker
 
 
 def calcIMT(growth, weight):
@@ -89,6 +92,14 @@ def calculator(request):
                                                          needed_proteins=dbUserData['proteins'],
                                                          needed_fats=dbUserData['fats'],
                                                          needed_carbohydrates=dbUserData['carbohydrates'])
+        user_id = Profile.objects.get(user=request.user)
+        if Weight_trecker.objects.filter(id_users=user_id, day_create=date.today()):
+            user_weight = Weight_trecker.objects.filter(id_users=user_id, day_create=date.today())[0]
+            user_weight.weight = dbUserData['weight']
+            user_weight.save()
+        else:
+            user_weight = Weight_trecker(id_users=user_id, weight=dbUserData['weight'])
+            user_weight.save()
         return redirect('personalArea')
     cont = {'res': is_valid,
             'error': error_info,

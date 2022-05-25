@@ -51,7 +51,7 @@
     <div class="leftSide">
             <div onclick="location.href='{% url 'add_water' %}'" class="water"><a href="{% url 'add_water' %}" class="water_but">Трекер воды</a></div>
             <div onclick="location.href='{% url 'search' %}'" class="food"><a href="{% url 'search' %}" class="food_but">Дневник питания</a></div>
-            <div onclick="location.href='{% url 'weight_tracker' %}'" class="weightControl"><a href='{% url 'weight_tracker' %}' class="weight_but">Контроль веса</a></div>
+            <div onclick="location.href='{% url 'add_weight' %}'" class="weightControl"><a href="{% url 'add_weight' %}" class="weight_but">Контроль веса</a></div>
             <div onclick="location.href='{% url 'search' %}'" class="sport"><a href="#" class="sport_but">Дневник тренировок</a></div>
     </div>
 
@@ -85,7 +85,8 @@
             </div>
             <hr noshade size="1px" color="black">
             {% endfor %}
-            <div class="settingsDiv"><a href="{% url 'change_information' %}" class="settings">Обновить фотографию</a></div>
+            <div class="settingsDiv"><a href="{% url 'calculator' %}" class="settings">Редактировать данные</a></div>
+            <div><a href="{% url 'change_information' %}" class="settings">Обновить фотографию</a></div>
             <div><a href="{% url 'logout' %}" class="logout">Выйти</a></div>
         </div>
     </div>
