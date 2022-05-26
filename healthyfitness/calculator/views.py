@@ -83,23 +83,15 @@ def calculator(request):
                                 'IMT': calcIMT(dbUserData['growth'], dbUserData['weight'])}
                     is_valid = True
     if "save_data" in request.POST:
-        Profile.objects.filter(user=request.user).update(age=dbUserData['age'], weight=dbUserData['weight'],
-                                                         growth=dbUserData['growth'],
-                                                         gender=dbUserData['gender'],
-                                                         Activity_level=dbUserData['activity_level'],
-                                                         user_aim=dbUserData['user_aim'],
-                                                         needed_kkal=dbUserData['calories'],
-                                                         needed_proteins=dbUserData['proteins'],
-                                                         needed_fats=dbUserData['fats'],
-                                                         needed_carbohydrates=dbUserData['carbohydrates'])
-        user_id = Profile.objects.get(user=request.user)
-        if Weight_trecker.objects.filter(id_users=user_id, day_create=date.today()):
-            user_weight = Weight_trecker.objects.filter(id_users=user_id, day_create=date.today())[0]
-            user_weight.weight = dbUserData['weight']
-            user_weight.save()
-        else:
-            user_weight = Weight_trecker(id_users=user_id, weight=dbUserData['weight'])
-            user_weight.save()
+        # Profile.objects.filter(user=request.user).update(age=dbUserData['age'], weight=dbUserData['weight'],
+        #                                                  growth=dbUserData['growth'],
+        #                                                  gender=dbUserData['gender'],
+        #                                                  Activity_level=dbUserData['activity_level'],
+        #                                                  user_aim=dbUserData['user_aim'],
+        #                                                  needed_kkal=dbUserData['calories'],
+        #                                                  needed_proteins=dbUserData['proteins'],
+        #                                                  needed_fats=dbUserData['fats'],
+        #                                                  needed_carbohydrates=dbUserData['carbohydrates'])
         return redirect('personalArea')
     cont = {'res': is_valid,
             'error': error_info,
