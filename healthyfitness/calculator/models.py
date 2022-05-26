@@ -2,7 +2,7 @@ from django import forms
 from audioop import reverse
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 
 
@@ -59,3 +59,8 @@ class Profile(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
+
+    @receiver(pre_save, sender='weight.Weight_trecker')
+    def update_profile_weight(sender, instance, **kwargs):
+        if Profile.objects.get(user=instance.id_users).weight != instance.weight:
+            Profile.objects.filter(user=instance.id_users).update(weight=instance.weight)

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'personal_area.apps.PersonalAreaConfig',
     'water_tracker.apps.WaterTrackerConfig',
     'googlecharts',
+    'weight.apps.WeightConfig',
 ]
 
 MIDDLEWARE = [
@@ -116,7 +117,7 @@ LANGUAGE_CODE = 'ru'
 TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
-
+USE_L10N = False
 USE_TZ = True
 
 

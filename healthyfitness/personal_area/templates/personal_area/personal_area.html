@@ -28,7 +28,7 @@
                         </li>
 
                         <li class="text">
-                            <a href="#">Еда</a>
+                            <a href="{% url 'product_selection' %}">Еда</a>
                         </li>
 
                         {% if request.user.is_authenticated %}
@@ -51,7 +51,7 @@
     <div class="leftSide">
             <div onclick="location.href='{% url 'add_water' %}'" class="water"><a href="{% url 'add_water' %}" class="water_but">Трекер воды</a></div>
             <div onclick="location.href='{% url 'search' %}'" class="food"><a href="{% url 'search' %}" class="food_but">Дневник питания</a></div>
-            <div onclick="location.href='{% url 'search' %}'" class="weightControl"><a href="#" class="weight_but">Контроль веса</a></div>
+            <div onclick="location.href='{% url 'add_weight' %}'" class="weightControl"><a href="{% url 'add_weight' %}" class="weight_but">Контроль веса</a></div>
             <div onclick="location.href='{% url 'search' %}'" class="sport"><a href="#" class="sport_but">Дневник тренировок</a></div>
     </div>
 
@@ -59,32 +59,34 @@
         <div class="userInformation">
             <div><img src="{{ user.profile.photo.url }}" class="userPhoto"></div>
             <h1>{{ user.username }}</h1>
+            {% for i in profile %}
             <div class="inf">
                 <p class="growth">Рост</p>
-                <p class="userGrowth">169 см</p>
+                <p class="userGrowth">{{ i.growth }} см</p>
             </div>
             <hr noshade size="1px" color="black">
 
 
             <div class="inf">
                 <p class="weight">Вес</p>
-                <p class="userWeight">60 кг</p>
+                <p class="userWeight">{{ i.weight }} кг</p>
             </div>
             <hr noshade size="1px" color="black">
 
             <div class="inf">
                 <p class="activity">Уровень активности</p>
-                <p class="userActivity">Умеренный</p>
+                <p class="userActivity">{{ i.Activity_level }}</p>
             </div>
             <hr noshade size="1px" color="black">
 
             <div class="inf">
                 <p class="call">К/Б/Ж/У</p>
-                <p class="userCall">2000/90/70/110</p>
+                <p class="userCall">{{ i.needed_kkal }} / {{ i.needed_proteins }} / {{ i.needed_fats }} / {{ i.needed_carbohydrates }}</p>
             </div>
             <hr noshade size="1px" color="black">
-
-            <div class="settingsDiv"><a href="{% url 'change_information' %}" class="settings">Обновить фотографию</a></div>
+            {% endfor %}
+            <div class="settingsDiv"><a href="{% url 'calculator' %}" class="settings">Редактировать данные</a></div>
+            <div><a href="{% url 'change_information' %}" class="settings">Обновить фотографию</a></div>
             <div><a href="{% url 'logout' %}" class="logout">Выйти</a></div>
         </div>
     </div>
