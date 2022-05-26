@@ -10,9 +10,17 @@ from weight.models import Weight_trecker
 def AddWeight(request):
     if request.user.is_authenticated:
         current_user = Profile.objects.filter(user=request.user)[0]
+        user_id = Profile.objects.get(user=request.user)
         current_weight = current_user.weight
         if request.POST.get('weight_inp'):
             new_weight = float(request.POST.get('weight_inp'))
+            if Weight_trecker.objects.filter(id_users=user_id, day_create=date.today()):
+                user_weight = Weight_trecker.objects.filter(id_users=user_id, day_create=date.today())[0]
+                user_weight.weight = new_weight
+                user_weight.save()
+            else:
+                user_weight = Weight_trecker(id_users=user_id, weight=new_weight)
+                user_weight.save()
             if Profile.objects.filter(user=request.user)[0].needed_kkal:
                 user_info = Profile.objects.filter(user=request.user)[0]
                 data = {'weight': new_weight, 'growth': user_info.growth, 'age': user_info.age, 'gender': user_info.gender,
