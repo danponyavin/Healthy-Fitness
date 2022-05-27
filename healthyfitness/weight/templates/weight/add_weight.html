@@ -28,7 +28,7 @@
                 </li>
                 {% if request.user.is_authenticated %}
                     <li class="text">
-                        <a href="{% url 'personalArea' %}">{{ user.username }} | Личный кабинет</a>
+                        <a href="{% url 'personalArea' %}" style="font-weight: bold">{{ user.username }} | Личный кабинет</a>
                     </li>
                 {% else %}
                     <li class="text">
@@ -46,7 +46,7 @@
         <div onclick="location.href='{% url 'add_water' %}'" class="water"><a href="{% url 'add_water' %}" class="water_but">Трекер воды</a></div>
             <div onclick="location.href='{% url 'search' %}'" class="food"><a href="{% url 'search' %}" class="food_but">Дневник питания</a></div>
             <div onclick="location.href='{% url 'weight_tracker' %}'" class="weightControl"><a href="{% url 'weight_tracker' %}" class="weight_but">Контроль веса</a></div>
-            <div onclick="location.href='{% url 'search' %}'" class="sport"><a href="#" class="sport_but">Дневник тренировок</a></div>
+            <div onclick="location.href='{% url 'add_sport' %}'" class="sport"><a href="{% url 'add_sport' %}" class="sport_but">Дневник тренировок</a></div>
     </div>
 
     <div class="rightSide">

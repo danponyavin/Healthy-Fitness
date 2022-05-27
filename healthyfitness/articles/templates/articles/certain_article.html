@@ -7,7 +7,7 @@
     <title>{{ article.title }}</title>
     <link href="{% static 'articles/css/style_certain_article.css' %}" rel="stylesheet">
 </head>
-<body>
+<body style="background-image: url('{% static 'articles/img/pattern_article.jpg' %}'); background-size: auto;">
     <header>
         <div class = container>
             <div class="head">
@@ -46,39 +46,41 @@
     </header>
 
 <div id="wrapper">
-    <div class="titleOfArticle">
-        <h1>{{ article.title }}</h1>
-    </div>
+    <div class="rectangle">
+        <div class="titleOfArticle">
+            <h1>{{ article.title }}</h1>
+        </div>
 
-    {% if article.category_id == 1 %}
-        <a class="Category" style="background-color: #98EB88">{{ article.category }}</a>
-    {% endif %}
+        {% if article.category_id == 1 %}
+            <a class="Category" style="background-color: #98EB88">{{ article.category }}</a>
+        {% endif %}
 
-    {% if article.category_id == 2 %}
-        <a class="Category" style="background-color: #EB7272">{{ article.category }}</a>
-    {% endif %}
+        {% if article.category_id == 2 %}
+            <a class="Category" style="background-color: #EB7272">{{ article.category }}</a>
+        {% endif %}
 
-    {% if article.category_id == 3 %}
-        <a class="Category" style="background-color: #80B9ED">{{ article.category }}</a>
-    {% endif %}
+        {% if article.category_id == 3 %}
+            <a class="Category" style="background-color: #80B9ED">{{ article.category }}</a>
+        {% endif %}
 
-    {% if article.category_id == 4 %}
-        <a class="Category" style="background-color: #F3E38D">{{ article.category }}</a>
-    {% endif %}
+        {% if article.category_id == 4 %}
+            <a class="Category" style="background-color: #F3E38D">{{ article.category }}</a>
+        {% endif %}
 
-    {% if article.photo %}
-        <p><img class="photoOfArticle" src="{{ article.photo.url }}"></p>
-    {% endif %}
+        {% if article.photo %}
+            <p><img class="photoOfArticle" src="{{ article.photo.url }}"></p>
+        {% endif %}
 
 
-    <div class="contentOfArticle">
-        {% autoescape off %}
-        {{ article.content }}
-        {% endautoescape %}
-    </div>
+        <div class="contentOfArticle">
+            {% autoescape off %}
+            {{ article.content }}
+            {% endautoescape %}
+        </div>
 
-    <div class="timeOfArticle">
-        {{ article.time_update }}
+        <div class="timeOfArticle">
+            {{ article.time_update }}
+        </div>
     </div>
 
 </div>

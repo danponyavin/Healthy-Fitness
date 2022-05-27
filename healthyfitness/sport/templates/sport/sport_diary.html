@@ -1,18 +1,18 @@
 {% load static %}
 
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Личный кабинет</title>
-    <link href="{% static 'personal_area/css/style_personal_area.css' %}" rel="stylesheet">
+    <title>Дневник тренировок</title>
+    <link href="{% static 'sport/css/style_sport_diary.css' %}" rel="stylesheet">
 </head>
-<body style="background-image:url('{% static 'registration/img/patternSportPeople.jpg' %}'); background-size: cover;">
+<body style="background-image:url('{% static 'sport/img/sport_pattern_red_people.jpg' %}'); background-size: auto;">
 
 <header>
+        <div class = container>
             <div class="head">
-                <a href="{% url 'home' %}"><img src="{% static 'main/img/iconLogo.png' %}" alt="" class="logo"></a>
+                <a href="{% url 'home' %}"><img src="{% static 'registration/img/iconLogo.png' %}" alt="" class="logo"></a>
                 <nav class="navigation">
                     <ul class="menu">
                         <li class="text">
@@ -46,50 +46,29 @@
         </div>
 </header>
 
-
 <div id="wrapper">
+
     <div class="leftSide">
             <div onclick="location.href='{% url 'add_water' %}'" class="water"><a href="{% url 'add_water' %}" class="water_but">Трекер воды</a></div>
             <div onclick="location.href='{% url 'search' %}'" class="food"><a href="{% url 'search' %}" class="food_but">Дневник питания</a></div>
-            <div onclick="location.href='{% url 'add_weight' %}'" class="weightControl"><a href="{% url 'add_weight' %}" class="weight_but">Контроль веса</a></div>
+            <div onclick="location.href='{% url 'weight_tracker' %}'" class="weightControl"><a href="{% url 'weight_tracker' %}" class="weight_but">Контроль веса</a></div>
             <div onclick="location.href='{% url 'add_sport' %}'" class="sport"><a href="{% url 'add_sport' %}" class="sport_but">Дневник тренировок</a></div>
     </div>
 
+
     <div class="rightSide">
-        <div class="userInformation">
-            <div><img src="{{ user.profile.photo.url }}" class="userPhoto"></div>
-            <h1>{{ user.username }}</h1>
-            {% for i in profile %}
-            <div class="inf">
-                <p class="growth">Рост</p>
-                <p class="userGrowth">{{ i.growth }} см</p>
-            </div>
-            <hr noshade size="1px" color="black">
+        <div class="selectOption">
+            <ul>
+                <li><a href="{% url 'add_sport' %}" >Добавить тренировку</a></li>
+                <li><a href="{% url 'sport_diary' %}" class="diary" style="font-weight: bold">Дневник тренировок</a></li>
+            </ul>
+        </div>
 
+        <div class="rectangle">
 
-            <div class="inf">
-                <p class="weight">Вес</p>
-                <p class="userWeight">{{ i.weight }} кг</p>
-            </div>
-            <hr noshade size="1px" color="black">
-
-            <div class="inf">
-                <p class="activity">Уровень активности</p>
-                <p class="userActivity">{{ i.Activity_level }}</p>
-            </div>
-            <hr noshade size="1px" color="black">
-
-            <div class="inf">
-                <p class="call">К/Б/Ж/У</p>
-                <p class="userCall">{{ i.needed_kkal }} / {{ i.needed_proteins }} / {{ i.needed_fats }} / {{ i.needed_carbohydrates }}</p>
-            </div>
-            <hr noshade size="1px" color="black">
-            {% endfor %}
-            <div class="settingsDiv"><a href="{% url 'calculator' %}" class="settings">Редактировать данные</a></div>
-            <div><a href="{% url 'change_information' %}" class="settings">Обновить фотографию</a></div>
-            <div><a href="{% url 'logout' %}" class="logout">Выйти</a></div>
         </div>
     </div>
+
 </div>
 
 </body>
