@@ -65,8 +65,52 @@
         </div>
 
         <div class="rectangle">
+        <h3 style="text-align: center;">Выберите дату</h3>
+        <center>
+            <form action="{% url 'food_diary' %}">
+                <input type="date" placeholder="Выберите дату" name="search" value="{{ value }}" id="date-search">
+                <button class="search_button" type="submit" onclick="getdetails(this)">Искать</button>
+            </form>
+        </center>
+        <center>
+            <table>
+            <thead>
+                <tr>
+                    <th style="display: none;">id</th>
+                    <th>Упражнение</th>
+                    <th>Время, мин</th>
+                    <th>Ккал</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <form id="form" method="post">
+                {% csrf_token %}
+                <tr>
+                    <td style="display: none;"><input name="id" value="{{ i.id }}"></td>
+                    <td align="center">Бег</td>
+                    <td align="center"><input id="{{ i.id }}" type="number" value="60"></td>
+                    <td align="center">600</td>
+                    <td align="center">
+                        <button name="{{ i.id }}" class="add_button" onclick="getdetails(this)">Добавить</button></td>
+                </tr>
+                <tr>
+                    <td style="display: none;"><input name="id" value="{{ i.id }}"></td>
+                    <td align="center">Всего</td>
+                    <td align="center"><input id="{{ i.id2 }}" type="number" value="60"></td>
+                    <td align="center">600</td>
+                    <td align="center">
+                        <button name="{{ i.id }}" class="add_button" onclick="getdetails(this)">Добавить</button></td>
+                </tr>
+            </form>
+            </table>
+        </center>
+
+
+
+
 
         </div>
+
     </div>
 
 </div>

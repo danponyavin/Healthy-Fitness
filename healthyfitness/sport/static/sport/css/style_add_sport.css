@@ -171,3 +171,10 @@ header {
     margin-top: 50px;
     border: 3px solid #EB7272;
 }
+
+.lupa{
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    float: left;
+}
