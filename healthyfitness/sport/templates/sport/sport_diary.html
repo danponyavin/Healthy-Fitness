@@ -67,12 +67,13 @@
         <div class="rectangle">
         <h3 style="text-align: center;">Выберите дату</h3>
         <center>
-            <form action="{% url 'food_diary' %}">
+            <form action="{% url 'sport_diary' %}">
                 <input type="date" placeholder="Выберите дату" name="search" value="{{ value }}" id="date-search">
                 <button class="search_button" type="submit" onclick="getdetails(this)">Искать</button>
             </form>
         </center>
         <center>
+            {% if data %}
             <table>
             <thead>
                 <tr>
@@ -83,26 +84,29 @@
                     <th>Действие</th>
                 </tr>
             </thead>
+            {% for i in data %}
             <form id="form" method="post">
                 {% csrf_token %}
                 <tr>
                     <td style="display: none;"><input name="id" value="{{ i.id }}"></td>
-                    <td align="center">Бег</td>
-                    <td align="center"><input id="{{ i.id }}" type="number" value="60"></td>
-                    <td align="center">600</td>
-                    <td align="center">
-                        <button name="{{ i.id }}" class="add_button" onclick="getdetails(this)">Добавить</button></td>
-                </tr>
-                <tr>
-                    <td style="display: none;"><input name="id" value="{{ i.id }}"></td>
-                    <td align="center">Всего</td>
-                    <td align="center"><input id="{{ i.id2 }}" type="number" value="60"></td>
-                    <td align="center">600</td>
-                    <td align="center">
-                        <button name="{{ i.id }}" class="add_button" onclick="getdetails(this)">Добавить</button></td>
+                    <td align="center">{{ i.id_training }}</td>
+                    <td align="center">{{ i.duration_training_min }}</td>
+                    <td align="center">{{ i.burned_kkal }}</td>
+                    <td class="product" style="border: none">
+                        <button style="cursor: pointer;"><img src="{% static 'food_diary/img/delete.png' %}" style="height: 10px;"></button>
+                    </td>
                 </tr>
             </form>
+            {% endfor %}
+            <tr>
+                <td style="background-color: #98EB88;">Всего</td>
+                <td align="center" style="background-color: #98EB88;">{{ total.training_time }}</td>
+                <td align="center" style="background-color: #98EB88;">{{ total.kkal }}</td>
+            </tr>
             </table>
+        {% else %}
+            <h3>{{ error }}</h3>
+        {% endif %}
         </center>
 
 
@@ -112,6 +116,11 @@
         </div>
 
     </div>
+
+    <script>
+        if (document.getElementById("date-search").valueAsDate == null)
+            document.getElementById("date-search").valueAsDate = new Date();
+    </script>
 
 </div>
 

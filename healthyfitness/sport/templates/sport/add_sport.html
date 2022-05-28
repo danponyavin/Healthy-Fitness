@@ -68,12 +68,13 @@
             <h3 align="center">Поиск тренировки</h3>
             <center>
                 <form action="{% url 'add_sport' %}">
-                    <input class="searchProducts" minlength="2" placeholder="Введите название продукта" name="search" value="{{ value }}">
+                    <input class="searchProducts" minlength="2" placeholder="Введите название тренировки" name="search" value="{{ value }}">
                     <button class="search_button" type="submit">
                         <img src="{% static 'food_diary/img/lupa.png'%}" class="lupa">Искать
                     </button>
                 </form>
             </center>
+            {% if data %}
             <center>
                 <table class="table_sort">
                     <thead>
@@ -85,19 +86,24 @@
                             <th>Действие</th>
                         </tr>
                     </thead>
+                    {% for i in data %}
                     <form id="form" method="post">
                         {% csrf_token %}
                         <tr>
                             <td style="display: none;"><input name="id" value="{{ i.id }}"></td>
-                            <td align="center">Бег</td>
-                            <td align="center"><input id="{{ i.id }}" type="number" value="60"></td>
-                            <td align="center">600</td>
+                            <td align="center">{{ i.type_training }}</td>
+                            <td align="center"><input id="{{ i.id }}"  min="0" type="number" value="60" name="training_time"></td>
+                            <td align="center">{{ i.kkal_in_hour }}</td>
                             <td align="center">
-                                <button name="{{ i.id }}" class="add_button" onclick="getdetails(this)">Добавить</button></td>
+                                <button name="{{ i.id }}" class="add_button" onclick="getdetails(this)" style="cursor: pointer;">Добавить</button></td>
                         </tr>
                     </form>
+                    {% endfor %}
                 </table>
             </center>
+            {% else %}
+                <h3 style="text-align: center; ">{{ error }}</h3>
+            {% endif %}
 
         </div>
         <script>
