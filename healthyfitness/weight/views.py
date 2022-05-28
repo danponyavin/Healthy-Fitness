@@ -74,13 +74,12 @@ def WeightTracker(request):
         values = []
         user_weight = Weight_trecker.objects.filter(id_users=user_id)
         if user_weight.count() == 1:
-            values.append([user_weight[0].day_create, user_weight[0].weight])
             values.append([user_weight[0].day_create - timedelta(days=1), user_weight[0].weight])
+            values.append([user_weight[0].day_create, user_weight[0].weight])
         else:
             for i in range(0, 7):
                 if i < user_weight.count():
                     values.append([user_weight[i].day_create, user_weight[i].weight])
-        values = values[::-1]
         return render(request, 'weight/weight_tracker.html', {'values': values})
     else:
         return redirect('login')
