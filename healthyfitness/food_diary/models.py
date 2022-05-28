@@ -34,7 +34,7 @@ class Food(models.Model):
 
 
 class Diary_of_food(models.Model):
-    id_users = models.ForeignKey('calculator.Profile', on_delete=models.PROTECT)
+    id_users = models.ForeignKey('calculator.Profile', on_delete=models.CASCADE)
     id_food = models.ForeignKey(Food, on_delete=models.PROTECT)
     day_create = models.DateField(auto_now_add=True)
     grams = models.IntegerField(validators=[MaxValueValidator(3000)])
