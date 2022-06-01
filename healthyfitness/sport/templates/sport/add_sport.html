@@ -68,9 +68,9 @@
             <h3 align="center">Поиск тренировки</h3>
             <center>
                 <form action="{% url 'add_sport' %}">
-                    <input class="searchProducts" minlength="2" placeholder="Введите название тренировки" name="search" value="{{ value }}">
-                    <button class="search_button" type="submit">
-                        <img src="{% static 'food_diary/img/lupa.png'%}" class="lupa">Искать
+                    <input class="searchProducts" minlength="2" placeholder="Введите название тренировки" name="search" value="{{ value }}" style="width: 300px; padding: 5px; border: 1px solid #EB7272; border-radius: 5px">
+                    <button class="search_button" type="submit" style="background-color: #EB7272; cursor: pointer; border: none; border-radius: 5px; padding: 6px">
+                        <img src="{% static 'food_diary/img/lupa.png'%}" class="lupa" style="height: 20px; width: auto">Искать
                     </button>
                 </form>
             </center>
@@ -80,10 +80,10 @@
                     <thead>
                         <tr>
                             <th style="display: none;">id</th>
-                            <th>Упражнение</th>
-                            <th>Время, мин</th>
-                            <th>Ккал</th>
-                            <th>Действие</th>
+                            <th style="background-color: #EB7272; border: none; border-radius: 5px;">Упражнение</th>
+                            <th style="background-color: #EB7272; border: none; border-radius: 5px;">Время, мин</th>
+                            <th style="background-color: #EB7272; border: none; border-radius: 5px;">Ккал</th>
+                            <th style="background-color: #EB7272; border: none; border-radius: 5px;">Действие</th>
                         </tr>
                     </thead>
                     {% for i in data %}
@@ -91,11 +91,11 @@
                         {% csrf_token %}
                         <tr>
                             <td style="display: none;"><input name="id" value="{{ i.id }}"></td>
-                            <td align="center">{{ i.type_training }}</td>
-                            <td align="center"><input id="{{ i.id }}"  min="0" type="number" value="60" name="training_time"></td>
-                            <td align="center">{{ i.kkal_in_hour }}</td>
+                            <td align="center" style="border: 1px solid #EB7272; border-radius: 5px;">{{ i.type_training }}</td>
+                            <td align="center" style="border: 1px solid #EB7272; border-radius: 5px;"><input id="{{ i.id }}"  min="0" type="number" value="60" name="training_time" style="width: 32px; border: 1px solid #EB7272; border-radius: 5px"></td>
+                            <td align="center" style="border: 1px solid #EB7272; border-radius: 5px;">{{ i.kkal_in_hour }}</td>
                             <td align="center">
-                                <button name="{{ i.id }}" class="add_button" onclick="getdetails(this)" style="cursor: pointer;">Добавить</button></td>
+                                <button name="{{ i.id }}" class="add_button" onclick="getdetails(this)" style="cursor: pointer; background-color: #EB7272; border: none; border-radius: 5px; padding: 10px;">Добавить</button></td>
                         </tr>
                     </form>
                     {% endfor %}
