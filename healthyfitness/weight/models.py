@@ -9,7 +9,7 @@ from calculator.models import Profile
 
 
 class Weight_trecker(models.Model):
-    id_users = models.ForeignKey('calculator.Profile', on_delete=models.PROTECT)
+    id_users = models.ForeignKey('calculator.Profile', on_delete=models.CASCADE)
     day_create = models.DateField(auto_now_add=True)
     weight = models.FloatField(null=True, validators=[MaxValueValidator(400)])
 
@@ -26,10 +26,10 @@ class Weight_trecker(models.Model):
             else:
                 Weight_trecker.objects.create(id_users=instance, weight=instance.weight)
 
-    @receiver(pre_delete, sender=Profile)
-    def del_weight_profile(sender, instance, **kwargs):
-        if Weight_trecker.objects.filter(id_users=instance):
-            Weight_trecker.objects.filter(id_users=instance).delite()
+    # @receiver(pre_delete, sender=Profile)
+    # def del_weight_profile(sender, instance, **kwargs):
+    #     if Weight_trecker.objects.filter(id_users=instance):
+    #         Weight_trecker.objects.filter(id_users=instance).delite()
 
     class Meta:
         verbose_name = 'Трекер веса'

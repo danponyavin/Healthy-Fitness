@@ -62,7 +62,8 @@
                 <div class="form-error">{{ form.non_field_errors }}</div>
                 <button type="submit">Войти</button>
             </form>
-            <a href="{% url 'registration_field' %}" class="makeAccount">Создать аккаунт</a>
+            <a href="{% url 'password_reset' %}" class="makeAccount" style="margin-bottom: 2px;">Забыли пароль?</a>
+            <a href="{% url 'registration_field' %}" class="makeAccount" style="margin-top: 0px;">Создать аккаунт</a>
         </div>
     </div>
 </section>

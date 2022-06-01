@@ -33,7 +33,7 @@
 
                         {% if request.user.is_authenticated %}
                             <li class="text">
-                                <a href="{% url 'personalArea' %}">{{ user.username }} | Личный кабинет</a>
+                                <a href="{% url 'personalArea' %}" style="font-weight: bold">{{ user.username }} | Личный кабинет</a>
                             </li>
                         {% else %}
                             <li class="text">
@@ -51,8 +51,8 @@
     <div class="leftSide">
             <div onclick="location.href='{% url 'add_water' %}'" class="water"><a href="{% url 'add_water' %}" class="water_but">Трекер воды</a></div>
             <div onclick="location.href='{% url 'search' %}'" class="food"><a href="{% url 'search' %}" class="food_but">Дневник питания</a></div>
-            <div onclick="location.href='{% url 'search' %}'" class="weightControl"><a href="#" class="weight_but">Контроль веса</a></div>
-            <div onclick="location.href='{% url 'search' %}'" class="sport"><a href="#" class="sport_but">Дневник тренировок</a></div>
+            <div onclick="location.href='{% url 'weight_tracker' %}'" class="weightControl"><a href="{% url 'weight_tracker' %}" class="weight_but">Контроль веса</a></div>
+            <div onclick="location.href='{% url 'add_sport' %}'" class="sport"><a href="{% url 'add_sport' %}" class="sport_but">Дневник тренировок</a></div>
     </div>
 
     <div class="rightSide">
@@ -82,61 +82,36 @@
 
             {% if data %}
                 <h3 style="float: right; margin-right: 30px;">Представлена калорийность продуктов и готовых блюд на 100 грамм</h3>
-                {% if request.user.is_authenticated %}
-                    <table class="table_sort">
-                        <thead>
+                <table class="table_sort">
+                    <thead>
+                    <tr>
+                        <th class="product" style="background-color: #F3E38D; display: none;">id</th>
+                        <th class="product" style="background-color: #F3E38D; border: none;">Продукт</th>
+                        <th class="product" style="background-color: #F3E38D;border: none;">Вес, г</th>
+                        <th class="product" style="background-color: #F3E38D;border: none;">Ккал</th>
+                        <th class="product" style="background-color: #F3E38D;border: none;">Белков, г</th>
+                        <th class="product" style="background-color: #F3E38D;border: none;">Жиров, г</th>
+                        <th class="product" style="background-color: #F3E38D;border: none;">Углеводов, г</th>
+                        <th class="product" style="background-color: #F3E38D;border: none;">Действие</th>
+                    </tr>
+                    </thead>
+                    {% for i in data %}
+                    <form id="form" method="post">
+                        {% csrf_token %}
                         <tr>
-                            <th class="product" style="background-color: #F3E38D; display: none;">id</th>
-                            <th class="product" style="background-color: #F3E38D; border: none;">Продукт</th>
-                            <th class="product" style="background-color: #F3E38D;border: none;">Вес, г</th>
-                            <th class="product" style="background-color: #F3E38D;border: none;">Ккал</th>
-                            <th class="product" style="background-color: #F3E38D;border: none;">Белков, г</th>
-                            <th class="product" style="background-color: #F3E38D;border: none;">Жиров, г</th>
-                            <th class="product" style="background-color: #F3E38D;border: none;">Углеводов, г</th>
-                            <th class="product" style="background-color: #F3E38D;border: none;">Действие</th>
+                            <td style="display: none;" class="product"><input name="id" value="{{ i.id }}"></td>
+                            <td class="product" style="border: 1px solid #F3E38D;">{{ i.name_of_product }}</td>
+                            <td class="product" style="border: 1px solid #F3E38D;"><input id="{{ i.id }}" type="number" value="100" name="product_weight"></td>
+                            <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.kkal }}</td>
+                            <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.proteins }}</td>
+                            <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.fats }}</td>
+                            <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.carbohydrates }}</td>
+                            <td class="product" align="center" style="border: none;">
+                                <button name="{{ i.id }}" class="add_button" onclick="getdetails(this)">Добавить</button></td>
                         </tr>
-                        </thead>
-                        {% for i in data %}
-                        <form id="form" method="post">
-                            {% csrf_token %}
-                            <tr>
-                                <td style="display: none;" class="product"><input name="id" value="{{ i.id }}"></td>
-                                <td class="product" style="border: 1px solid #F3E38D;">{{ i.name_of_product }}</td>
-                                <td class="product" style="border: 1px solid #F3E38D;"><input id="{{ i.id }}" type="number" value="100" name="product_weight"></td>
-                                <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.kkal }}</td>
-                                <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.proteins }}</td>
-                                <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.fats }}</td>
-                                <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.carbohydrates }}</td>
-                                <td class="product" align="center" style="border: none;">
-                                    <button name="{{ i.id }}" class="add_button" onclick="getdetails(this)">Добавить</button></td>
-                            </tr>
-                        </form>
-                        {% endfor %}
-                    </table>
-                {% else %}
-                    <table class="table_sort">
-                        <thead>
-                        <tr>
-                            <th class="product" style="background-color: #F3E38D; display: none; border: none;">id</th>
-                            <th class="product" style="background-color: #F3E38D; border: none">Продукт</th>
-                            <th class="product" style="background-color: #F3E38D; border: none;">Ккал</th>
-                            <th class="product" style="background-color: #F3E38D; border: none;">Белков, г</th>
-                            <th class="product" style="background-color: #F3E38D; border: none;">Жиров, г</th>
-                            <th class="product" style="background-color: #F3E38D; border: none;">Углеводов, г</th>
-                        </tr>
-                        </thead>
-                        {% for i in data %}
-                            <tr>
-                                <td style="display: none; " class="product"><input name="id" value="{{ i.id }}"></td>
-                                <td class="product" style="border: 1px solid #F3E38D;">{{ i.name_of_product }}</td>
-                                <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.kkal }}</td>
-                                <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.proteins }}</td>
-                                <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.fats }}</td>
-                                <td class="product" align="center" style="border: 1px solid #F3E38D;">{{ i.carbohydrates }}</td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                {% endif %}
+                    </form>
+                    {% endfor %}
+                </table>
             {% else %}
             <h3 style="margin-left: 40px;">{{ error }}</h3>
             {% endif %}

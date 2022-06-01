@@ -7,10 +7,9 @@
     <title>Обновить фотографию</title>
     <link href="{% static 'personal_area/css/style_change_information.css' %}" rel="stylesheet">
 </head>
-<body>
+<body style="background-image:url('{% static 'registration/img/patternSportPeople.jpg' %}'); background-size: cover;">
 
 <header>
-        <div class = container>
             <div class="head">
                 <a href="{% url 'home' %}"><img src="{% static 'main/img/iconLogo.png' %}" alt="" class="logo"></a>
                 <nav class="navigation">
@@ -28,12 +27,12 @@
                         </li>
 
                         <li class="text">
-                            <a href="#">Блог</a>
+                            <a href="{% url 'product_selection' %}">Еда</a>
                         </li>
 
                         {% if request.user.is_authenticated %}
                             <li class="text">
-                                <a href="{% url 'personalArea' %}">{{ user.username }} | Личный кабинет</a>
+                                <a href="{% url 'personalArea' %}" style="font-weight: bold">{{ user.username }} | Личный кабинет</a>
                             </li>
                         {% else %}
                             <li class="text">
@@ -46,15 +45,16 @@
         </div>
 </header>
 
-
-<div class="changePhoto">
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-      <button type="submit" name="Upload">Загрузить</button>
-    </form>
-</div>
-
+<center>
+    <div class="rectangle">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h3 style="margin-bottom: 20px; padding-top: 10px;">Выберите фото:</h3>
+            {{ form.as_p }}
+          <button type="submit" name="Upload">Загрузить</button>
+        </form>
+    </div>
+</center>
 
 
 </body>

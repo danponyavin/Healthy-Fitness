@@ -15,6 +15,7 @@ urlpatterns = [
     path('', include('food_diary.urls')),
     path('', include('water_tracker.urls')),
     path('', include('weight.urls')),
+    path('', include('sport.urls')),
 ]
 
 if settings.DEBUG:
