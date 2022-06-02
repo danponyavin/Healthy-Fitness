@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>Добавление воды</title>
     <link href="{% static 'water_tracker/css/style_add_water.css' %}" rel="stylesheet">
+    <link rel="icon" href="{% static 'main/img/favicon.ico' %}" type="image/x-icon">
 </head>
 <body style="background-image:url('{% static 'water_tracker/img/water_pattern.jpg' %}'); background-size: auto;">
 
@@ -51,8 +52,8 @@
     <div class="leftSide">
             <div onclick="location.href='{% url 'add_water' %}'" class="water"><a href="{% url 'add_water' %}" class="water_but">Трекер воды</a></div>
             <div onclick="location.href='{% url 'search' %}'" class="food"><a href="{% url 'search' %}" class="food_but">Дневник питания</a></div>
-            <div onclick="location.href='{% url 'weight_tracker' %}'" class="weightControl"><a href="{% url 'weight_tracker' %}" class="weight_but">Контроль веса</a></div>
-            <div onclick="location.href='{% url 'sport_diary' %}'" class="sport"><a href="{% url 'sport_diary' %}" class="sport_but">Дневник тренировок</a></div>
+            <div onclick="location.href='{% url 'add_weight' %}'" class="weightControl"><a href="{% url 'add_weight' %}" class="weight_but">Контроль веса</a></div>
+            <div onclick="location.href='{% url 'add_sport' %}'" class="sport"><a href="{% url 'add_sport' %}" class="sport_but">Дневник тренировок</a></div>
     </div>
 
     <div class="rightSide">

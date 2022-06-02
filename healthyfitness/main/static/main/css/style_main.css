@@ -126,6 +126,9 @@ div {
     margin-top: 15vh;
 }
 
+.buttonCalc a:hover{
+    box-shadow: 0px 0px 20px 4px #80B9ED;
+}
 
 .buttonCalc a{
     text-decoration: none;
@@ -169,4 +172,6 @@ div {
     bottom: 0;
 }
 
-
+.buttonReg:hover{
+    box-shadow: 0px 0px 20px 4px #A8D2A0;
+}

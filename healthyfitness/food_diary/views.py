@@ -21,11 +21,11 @@ def UserFood(request):
             today = datetime.date.today()
             mealsToday = Diary_of_food.objects.filter(day_create=today, id_users=currentUser)
         for i in range(len(mealsToday)):
-            totalAmount['weight'] += mealsToday[i].grams
-            totalAmount['calories'] += mealsToday[i].consumed_kkal
-            totalAmount['proteins'] += mealsToday[i].consumed_proteins
-            totalAmount['fats'] += mealsToday[i].consumed_fats
-            totalAmount['carbohydrates'] += mealsToday[i].consumed_carbohydrates
+            totalAmount['weight'] = round(totalAmount['weight'] + mealsToday[i].grams, 2)
+            totalAmount['calories'] = round(totalAmount['calories'] + mealsToday[i].consumed_kkal, 2)
+            totalAmount['proteins'] = round(totalAmount['proteins'] + mealsToday[i].consumed_proteins, 2)
+            totalAmount['fats'] = round(totalAmount['fats'] + mealsToday[i].consumed_fats, 2)
+            totalAmount['carbohydrates'] = round(totalAmount['carbohydrates'] + mealsToday[i].consumed_carbohydrates, 2)
         return render(request, 'food_diary/user_food.html',
                       {'data': mealsToday, 'value': search_query, 'total': totalAmount, 'error': error})
     else:

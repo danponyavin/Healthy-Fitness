@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>Личный кабинет</title>
     <link href="{% static 'personal_area/css/style_personal_area.css' %}" rel="stylesheet">
+    <link rel="icon" href="{% static 'main/img/favicon.ico' %}" type="image/x-icon">
 </head>
 <body style="background-image:url('{% static 'registration/img/patternSportPeople.jpg' %}'); background-size: cover;">
 
@@ -59,35 +60,52 @@
         <div class="userInformation">
             <div><img src="{{ user.profile.photo.url }}" class="userPhoto"></div>
             <h1>{{ user.username }}</h1>
+
             {% for i in profile %}
             <div class="inf">
                 <p class="growth">Рост</p>
-                <p class="userGrowth">{{ i.growth }} см</p>
+                {% if i.growth %}
+                    <p class="userGrowth">{{ i.growth }} см</p>
+                {% else %}
+                    <p class="userGrowth">--- см</p>
+                {% endif %}
             </div>
             <hr noshade size="1px" color="black">
 
-
             <div class="inf">
                 <p class="weight">Вес</p>
-                <p class="userWeight">{{ i.weight }} кг</p>
+                {% if i.weight %}
+                    <p class="userWeight">{{ i.weight }} кг</p>
+                {% else %}
+                    <p class="userWeight">--- кг</p>
+                {% endif %}
             </div>
             <hr noshade size="1px" color="black">
 
             <div class="inf">
                 <p class="activity">Уровень активности</p>
-                <p class="userActivity">{{ i.Activity_level }}</p>
+                {% if i.Activity_level %}
+                    <p class="userActivity">{{ i.Activity_level }}</p>
+                {% else %}
+                    <p class="userActivity">---</p>
+                {% endif %}
             </div>
             <hr noshade size="1px" color="black">
 
             <div class="inf">
                 <p class="call">К/Б/Ж/У</p>
-                <p class="userCall">{{ i.needed_kkal }} / {{ i.needed_proteins }} / {{ i.needed_fats }} / {{ i.needed_carbohydrates }}</p>
+                {% if i.needed_kkal %}
+                    <p class="userCall">{{ i.needed_kkal }} / {{ i.needed_proteins }} / {{ i.needed_fats }} / {{ i.needed_carbohydrates }}</p>
+                {% else %}
+                    <p class="userCall"> --- / --- / --- / ---</p>
+                {% endif %}
             </div>
             <hr noshade size="1px" color="black">
             {% endfor %}
+
             <div class="settingsDiv"><a href="{% url 'calculator' %}" class="settings">Редактировать данные</a></div>
-            <div><a href="{% url 'password_change' %}" class="settings">Сменить пароль</a></div>
             <div><a href="{% url 'change_information' %}" class="settings">Обновить фотографию</a></div>
+            <div><a href="{% url 'password_change' %}" class="settings">Сменить пароль</a></div>
             <div><a href="{% url 'logout' %}" class="logout">Выйти</a></div>
         </div>
     </div>

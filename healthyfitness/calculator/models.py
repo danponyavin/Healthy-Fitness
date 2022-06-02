@@ -6,6 +6,8 @@ from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 
 
+User._meta.get_field('email')._unique = True
+
 class Calculator(models.Model):
     age = models.CharField('', max_length=3)
     weight = models.CharField('', max_length=5)

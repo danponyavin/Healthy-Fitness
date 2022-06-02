@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>Дневник питания</title>
     <link href="{% static 'food_diary/css/style_user_food.css' %}" rel="stylesheet">
+    <link rel="icon" href="{% static 'main/img/favicon.ico' %}" type="image/x-icon">
 </head>
 <body style="background-image:url('{% static 'food_diary/img/food_pattern.jpg' %}'); background-size: cover;">
 
@@ -51,7 +52,7 @@
     <div class="leftSide">
             <div onclick="location.href='{% url 'add_water' %}'" class="water"><a href="{% url 'add_water' %}" class="water_but">Трекер воды</a></div>
             <div onclick="location.href='{% url 'search' %}'" class="food"><a href="{% url 'search' %}" class="food_but">Дневник питания</a></div>
-            <div onclick="location.href='{% url 'weight_tracker' %}'" class="weightControl"><a href="{% url 'weight_tracker' %}" class="weight_but">Контроль веса</a></div>
+            <div onclick="location.href='{% url 'add_weight' %}'" class="weightControl"><a href="{% url 'add_weight' %}" class="weight_but">Контроль веса</a></div>
             <div onclick="location.href='{% url 'add_sport' %}'" class="sport"><a href="{% url 'add_sport' %}" class="sport_but">Дневник тренировок</a></div>
     </div>
 
