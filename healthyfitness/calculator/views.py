@@ -83,12 +83,13 @@ def calculator(request):
                                 'IMT': calcIMT(dbUserData['growth'], dbUserData['weight'])}
                     is_valid = True
     if "save_data" in request.POST:
+        user_photo = Profile.objects.filter(user=request.user)[0].photo
         user_info = Profile(user=request.user, age=dbUserData["age"], weight=dbUserData["weight"],
                             gender=dbUserData["gender"], growth=dbUserData["growth"],
                             user_aim=dbUserData["user_aim"],
                             Activity_level=dbUserData["activity_level"], needed_kkal=dbUserData["calories"],
                             needed_proteins=dbUserData["proteins"], needed_fats=dbUserData["fats"],
-                            needed_carbohydrates=dbUserData["carbohydrates"], )
+                            needed_carbohydrates=dbUserData["carbohydrates"], photo=user_photo)
         user_info.save()
         return redirect('personalArea')
     cont = {'res': is_valid,
