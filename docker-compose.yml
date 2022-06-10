@@ -1,0 +1,9 @@
+version: "3.9"
+   
+services:
+  web:
+    environment:
+      - DB_URL=${DB_URL}
+    build: .
+    ports:
+      - "8000:8000"
