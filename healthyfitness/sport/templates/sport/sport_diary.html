@@ -69,8 +69,10 @@
         <h3 style="text-align: center;">Выберите дату</h3>
         <center>
             <form action="{% url 'sport_diary' %}">
-                <input type="date" placeholder="Выберите дату" name="search" value="{{ value }}" id="date-search" style="border-radius: 5px; padding: 6px; border: 1px solid #EB7272;">
-                <button class="search_button" type="submit" onclick="getdetails(this)" style="background-color: #EB7272; border-radius: 5px; border: none; padding: 8px">Искать</button>
+                <input type="date" placeholder="Выберите дату" name="search" value="{{ value }}" id="date-search"
+                       style="border-radius: 5px; padding: 6px; border: 1px solid #EB7272; cursor: pointer;">
+                <button class="search_button" type="submit" onclick="getdetails(this)"
+                        style="background-color: #EB7272; border-radius: 5px; border: none; padding: 8px; cursor: pointer;">Искать</button>
             </form>
         </center>
         <center>

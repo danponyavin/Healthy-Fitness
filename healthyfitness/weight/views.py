@@ -14,20 +14,21 @@ def AddWeight(request):
         current_weight = current_user.weight
         if request.POST.get('weight_inp'):
             new_weight = float(request.POST.get('weight_inp'))
-            if Weight_trecker.objects.filter(id_users=user_id, day_create=date.today()):
-                user_weight = Weight_trecker.objects.filter(id_users=user_id, day_create=date.today())[0]
-                user_weight.weight = new_weight
-                user_weight.save()
-            else:
-                user_weight = Weight_trecker(id_users=user_id, weight=new_weight)
-                user_weight.save()
-            if Profile.objects.filter(user=request.user)[0].needed_kkal:
-                user_info = Profile.objects.filter(user=request.user)[0]
-                data = {'weight': new_weight, 'growth': user_info.growth, 'age': user_info.age, 'gender': user_info.gender,
-                        'activity': user_info.Activity_level, 'aim': user_info.user_aim}
-                data = calcUserData(getUserData(data))
-                Profile.objects.filter(user=request.user).update(needed_kkal=data['calories'], needed_proteins=data['proteins'],
-                                                                 needed_fats=data['fats'], needed_carbohydrates=data['carbohydrates'])
+            if 25 <= new_weight <= 210:
+                if Weight_trecker.objects.filter(id_users=user_id, day_create=date.today()):
+                    user_weight = Weight_trecker.objects.filter(id_users=user_id, day_create=date.today())[0]
+                    user_weight.weight = new_weight
+                    user_weight.save()
+                else:
+                    user_weight = Weight_trecker(id_users=user_id, weight=new_weight)
+                    user_weight.save()
+                if Profile.objects.filter(user=request.user)[0].needed_kkal:
+                    user_info = Profile.objects.filter(user=request.user)[0]
+                    data = {'weight': new_weight, 'growth': user_info.growth, 'age': user_info.age, 'gender': user_info.gender,
+                            'activity': user_info.Activity_level, 'aim': user_info.user_aim}
+                    data = calcUserData(getUserData(data))
+                    Profile.objects.filter(user=request.user).update(needed_kkal=data['calories'], needed_proteins=data['proteins'],
+                                                                     needed_fats=data['fats'], needed_carbohydrates=data['carbohydrates'])
             return HttpResponseRedirect('add_weight')
         cont = {'current_weight': current_weight}
         return render(request, 'weight/add_weight.html', cont)

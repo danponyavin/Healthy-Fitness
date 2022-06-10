@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 import datetime
 from calculator.models import Profile
+from food_diary.views import valid_data
 from sport.models import Type_of_training, Training_trecker
 
 
@@ -16,7 +17,7 @@ def AddSport(request):
         error = "К сожалению, по Вашему запросу ничего не найдено..."
         if request.POST.get('training_time'):
             training_time = request.POST.get('training_time')
-            if int(training_time) > 0:
+            if 0 < int(training_time) < 721:
                 training = request.POST.get('id')
                 info = Type_of_training.objects.filter(id=training)
                 training_info = {'id': training, 'type_training': info[0].type_training, 'kkal': info[0].kkal_in_hour,
@@ -31,10 +32,12 @@ def AddSport(request):
     else:
         return redirect('login')
 
-    if search_query:
+    if search_query and '*' not in search_query:
         data = Type_of_training.objects.filter(type_training__iregex=search_query)
         return render(request, 'sport/add_sport.html', {'data': data, 'error': error, 'value': search_query})
-    else:
+    elif search_query and '*' in search_query:
+        return render(request, 'sport/add_sport.html', {'error': error, 'value': search_query})
+    elif not search_query:
         data = Type_of_training.objects.all()
         return render(request, 'sport/add_sport.html', {'data': data, })
 
@@ -49,15 +52,22 @@ def SportDiary(request):
             record = Training_trecker.objects.get(id=record_id)
             record.delete()
         search_query = request.GET.get('search', '')
-        if search_query:
+        flag = 0
+        if search_query and valid_data(search_query):
             TrainedToday = Training_trecker.objects.filter(day_create=search_query, id_users=user_id)
-        else:
+            flag = 1
+        elif search_query and not valid_data(search_query):
+            error = "Некорректно указана дата!"
+        elif not search_query:
             today = datetime.date.today()
             TrainedToday = Training_trecker.objects.filter(day_create=today, id_users=user_id)
-        for i in range(len(TrainedToday)):
-            totalAmount['training_time'] += TrainedToday[i].duration_training_min
-            totalAmount['kkal'] += TrainedToday[i].burned_kkal
-        return render(request, 'sport/sport_diary.html',
-                      {'data': TrainedToday, 'value': search_query, 'total': totalAmount, 'error': error})
+            flag = 1
+        if flag == 1:
+            for i in range(len(TrainedToday)):
+                totalAmount['training_time'] += TrainedToday[i].duration_training_min
+                totalAmount['kkal'] += TrainedToday[i].burned_kkal
+            return render(request, 'sport/sport_diary.html',
+                          {'data': TrainedToday, 'value': search_query, 'total': totalAmount, 'error': error})
+        return render(request, 'sport/sport_diary.html', {'value': search_query, 'error': error})
     else:
         return redirect('login')

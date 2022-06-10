@@ -70,7 +70,8 @@
         <h3 style="text-align: center;">Выберите дату</h3>
             <center>
         <form action="{% url 'food_diary' %}">
-            <input type="date" placeholder="Выберите дату" name="search" value="{{ value }}" id="date-search">
+            <input class="rectangle" type="date" placeholder="Выберите дату" name="search"
+                   value="{{ value }}" id="date-search" style="width: 110px; padding: 14px 10px 10px 10px; cursor: pointer;">
             <button class="search_button" type="submit" onclick="getdetails(this)">Искать</button>
         </form>
         </center>

@@ -28,7 +28,7 @@
                         </li>
 
                         <li class="text">
-                            <a href="#" style="font-weight: bold">Еда</a>
+                            <a href="{% url 'product_selection' %}" style="font-weight: bold">Еда</a>
                         </li>
 
                         {% if request.user.is_authenticated %}
@@ -59,13 +59,13 @@
                     <li><a href="{% url 'bakery' %}">Мучные продукты</a></li>
                     <li><a href="{% url 'drinks' %}">Напитки</a></li>
                     <li><a href="{% url 'herbs_and_spices' %}">Травы и специи</a></li>
+                    <li><a href="{% url 'vegFruit' %}">Овощи и фрукты</a></li>
+                    <li><a href="{% url 'sweets' %}">Сладкое и снеки</a></li>
                 </ul>
             </div>
 
             <div class="rightButtons">
                 <ul>
-                    <li><a href="{% url 'vegFruit' %}">Овощи и фрукты</a></li>
-                    <li><a href="{% url 'sweets' %}">Сладкое и снеки</a></li>
                     <li><a href="{% url 'milk' %}">Молочные продукты</a></li>
                     <li><a href="{% url 'cookedMeals' %}">Готовые блюда</a></li>
                     <li><a href="{% url 'nuts_and_oils' %}">Орехи и масла</a></li>

@@ -140,7 +140,7 @@
             <script>
             function getdetails(clicked_object) {
                 let a = clicked_object.getAttribute('name');
-                if (document.getElementById(a).value > 0)
+                if (document.getElementById(a).value > 0 && document.getElementById(a).value < 3001)
                     alert("Продукт успешно записан")
                 else
                     alert("Некорректно введен вес продукта")

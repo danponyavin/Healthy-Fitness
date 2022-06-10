@@ -1,8 +1,19 @@
 import datetime
+
+from dateutil import parser
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from calculator.models import Profile
 from food_diary.models import Food, Diary_of_food
+
+
+def valid_data(test_str):
+    res = True
+    try:
+        res = bool(parser.parse(test_str))
+    except ValueError:
+        res = False
+    return res
 
 
 def UserFood(request):
@@ -15,19 +26,27 @@ def UserFood(request):
             record = Diary_of_food.objects.get(id=record_id)
             record.delete()
         search_query = request.GET.get('search', '')
-        if search_query:
+        flag = 0
+        if search_query and valid_data(search_query):
             mealsToday = Diary_of_food.objects.filter(day_create=search_query, id_users=currentUser)
-        else:
+            flag = 1
+        elif search_query and not valid_data(search_query):
+            error = "Некорректно указана дата!"
+        elif not search_query:
             today = datetime.date.today()
             mealsToday = Diary_of_food.objects.filter(day_create=today, id_users=currentUser)
-        for i in range(len(mealsToday)):
-            totalAmount['weight'] = round(totalAmount['weight'] + mealsToday[i].grams, 2)
-            totalAmount['calories'] = round(totalAmount['calories'] + mealsToday[i].consumed_kkal, 2)
-            totalAmount['proteins'] = round(totalAmount['proteins'] + mealsToday[i].consumed_proteins, 2)
-            totalAmount['fats'] = round(totalAmount['fats'] + mealsToday[i].consumed_fats, 2)
-            totalAmount['carbohydrates'] = round(totalAmount['carbohydrates'] + mealsToday[i].consumed_carbohydrates, 2)
-        return render(request, 'food_diary/user_food.html',
-                      {'data': mealsToday, 'value': search_query, 'total': totalAmount, 'error': error})
+            flag = 1
+        if flag == 1:
+            for i in range(len(mealsToday)):
+                totalAmount['weight'] = round(totalAmount['weight'] + mealsToday[i].grams, 2)
+                totalAmount['calories'] = round(totalAmount['calories'] + mealsToday[i].consumed_kkal, 2)
+                totalAmount['proteins'] = round(totalAmount['proteins'] + mealsToday[i].consumed_proteins, 2)
+                totalAmount['fats'] = round(totalAmount['fats'] + mealsToday[i].consumed_fats, 2)
+                totalAmount['carbohydrates'] = round(
+                    totalAmount['carbohydrates'] + mealsToday[i].consumed_carbohydrates, 2)
+            return render(request, 'food_diary/user_food.html',
+                          {'data': mealsToday, 'value': search_query, 'total': totalAmount, 'error': error})
+        return render(request, 'food_diary/user_food.html', {'value': search_query, 'error': error})
     else:
         return redirect('login')
 
@@ -39,9 +58,11 @@ def ProductSelection(request):
 def Bakery(request):
     search_query = request.GET.get('search', '')
     error = "К сожалению, по Вашему запросу ничего не найдено..."
-    if search_query:
+    if search_query and '*' not in search_query:
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=6)
-    else:
+    elif search_query and '*' in search_query:
+        return render(request, 'food_diary/product_selection_bakery.html', {'error': error, 'value': search_query})
+    elif not search_query:
         data = Food.objects.filter(type_of_food=6)
     return render(request, 'food_diary/product_selection_bakery.html',
                   {'data': data, 'error': error, 'value': search_query})
@@ -50,9 +71,11 @@ def Bakery(request):
 def Cereals(request):
     search_query = request.GET.get('search', '')
     error = "К сожалению, по Вашему запросу ничего не найдено..."
-    if search_query:
+    if search_query and '*' not in search_query:
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=3)
-    else:
+    elif search_query and '*' in search_query:
+        return render(request, 'food_diary/product_selection_cereals.html', {'error': error, 'value': search_query})
+    elif not search_query:
         data = Food.objects.filter(type_of_food=3)
     return render(request, 'food_diary/product_selection_cereals.html',
                   {'data': data, 'error': error, 'value': search_query})
@@ -61,9 +84,11 @@ def Cereals(request):
 def Meat(request):
     search_query = request.GET.get('search', '')
     error = "К сожалению, по Вашему запросу ничего не найдено..."
-    if search_query:
+    if search_query and '*' not in search_query:
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=1)
-    else:
+    elif search_query and '*' in search_query:
+        return render(request, 'food_diary/product_selection_meat.html', {'error': error, 'value': search_query})
+    elif not search_query:
         data = Food.objects.filter(type_of_food=1)
     return render(request, 'food_diary/product_selection_meat.html',
                   {'data': data, 'error': error, 'value': search_query})
@@ -72,9 +97,11 @@ def Meat(request):
 def VegFruit(request):
     search_query = request.GET.get('search', '')
     error = "К сожалению, по Вашему запросу ничего не найдено..."
-    if search_query:
+    if search_query and '*' not in search_query:
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=7)
-    else:
+    elif search_query and '*' in search_query:
+        return render(request, 'food_diary/product_selection_veg&fruit.html', {'error': error, 'value': search_query})
+    elif not search_query:
         data = Food.objects.filter(type_of_food=7)
     return render(request, 'food_diary/product_selection_veg&fruit.html',
                   {'data': data, 'error': error, 'value': search_query})
@@ -83,9 +110,11 @@ def VegFruit(request):
 def CookedMeals(request):
     search_query = request.GET.get('search', '')
     error = "К сожалению, по Вашему запросу ничего не найдено..."
-    if search_query:
+    if search_query and '*' not in search_query:
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=10)
-    else:
+    elif search_query and '*' in search_query:
+        return render(request, 'food_diary/product_selection_cookedMeals.html', {'error': error, 'value': search_query})
+    elif not search_query:
         data = Food.objects.filter(type_of_food=10)
     return render(request, 'food_diary/product_selection_cookedMeals.html',
                   {'data': data, 'error': error, 'value': search_query})
@@ -94,9 +123,11 @@ def CookedMeals(request):
 def Seafood(request):
     search_query = request.GET.get('search', '')
     error = "К сожалению, по Вашему запросу ничего не найдено..."
-    if search_query:
+    if search_query and '*' not in search_query:
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=2)
-    else:
+    elif search_query and '*' in search_query:
+        return render(request, 'food_diary/product_selection_seafood.html', {'error': error, 'value': search_query})
+    elif not search_query:
         data = Food.objects.filter(type_of_food=2)
     return render(request, 'food_diary/product_selection_seafood.html',
                   {'data': data, 'error': error, 'value': search_query})
@@ -105,9 +136,11 @@ def Seafood(request):
 def Sweets(request):
     search_query = request.GET.get('search', '')
     error = "К сожалению, по Вашему запросу ничего не найдено..."
-    if search_query:
+    if search_query and '*' not in search_query:
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=5)
-    else:
+    elif search_query and '*' in search_query:
+        return render(request, 'food_diary/product_selection_sweets.html', {'error': error, 'value': search_query})
+    elif not search_query:
         data = Food.objects.filter(type_of_food=5)
     return render(request, 'food_diary/product_selection_sweets.html',
                   {'data': data, 'error': error, 'value': search_query})
@@ -116,9 +149,11 @@ def Sweets(request):
 def Milk(request):
     search_query = request.GET.get('search', '')
     error = "К сожалению, по Вашему запросу ничего не найдено..."
-    if search_query:
+    if search_query and '*' not in search_query:
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=4)
-    else:
+    elif search_query and '*' in search_query:
+        return render(request, 'food_diary/product_selection_milk.html', {'error': error, 'value': search_query})
+    elif not search_query:
         data = Food.objects.filter(type_of_food=4)
     return render(request, 'food_diary/product_selection_milk.html',
                   {'data': data, 'error': error, 'value': search_query})
@@ -127,9 +162,11 @@ def Milk(request):
 def Drinks(request):
     search_query = request.GET.get('search', '')
     error = "К сожалению, по Вашему запросу ничего не найдено..."
-    if search_query:
+    if search_query and '*' not in search_query:
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=8)
-    else:
+    elif search_query and '*' in search_query:
+        return render(request, 'food_diary/product_selection_drinks.html', {'error': error, 'value': search_query})
+    elif not search_query:
         data = Food.objects.filter(type_of_food=8)
     return render(request, 'food_diary/product_selection_drinks.html',
                   {'data': data, 'error': error, 'value': search_query})
@@ -138,9 +175,11 @@ def Drinks(request):
 def Nuts_and_oils(request):
     search_query = request.GET.get('search', '')
     error = "К сожалению, по Вашему запросу ничего не найдено..."
-    if search_query:
+    if search_query and '*' not in search_query:
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=9)
-    else:
+    elif search_query and '*' in search_query:
+        return render(request, 'food_diary/product_selection_nuts&oils.html', {'error': error, 'value': search_query})
+    elif not search_query:
         data = Food.objects.filter(type_of_food=9)
     return render(request, 'food_diary/product_selection_nuts&oils.html',
                   {'data': data, 'error': error, 'value': search_query})
@@ -149,9 +188,11 @@ def Nuts_and_oils(request):
 def Herbs_and_spices(request):
     search_query = request.GET.get('search', '')
     error = "К сожалению, по Вашему запросу ничего не найдено..."
-    if search_query:
+    if search_query and '*' not in search_query:
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=11)
-    else:
+    elif search_query and '*' in search_query:
+        return render(request, 'food_diary/product_selection_herbs&spices.html', {'error': error, 'value': search_query})
+    elif not search_query:
         data = Food.objects.filter(type_of_food=11)
     return render(request, 'food_diary/product_selection_herbs&spices.html',
                   {'data': data, 'error': error, 'value': search_query})
@@ -160,9 +201,11 @@ def Herbs_and_spices(request):
 def Fast_food(request):
     search_query = request.GET.get('search', '')
     error = "К сожалению, по Вашему запросу ничего не найдено..."
-    if search_query:
+    if search_query and '*' not in search_query:
         data = Food.objects.filter(name_of_product__iregex=search_query, type_of_food=12)
-    else:
+    elif search_query and '*' in search_query:
+        return render(request, 'food_diary/product_selection_fast_food.html', {'error': error, 'value': search_query})
+    elif not search_query:
         data = Food.objects.filter(type_of_food=12)
     return render(request, 'food_diary/product_selection_fast_food.html',
                   {'data': data, 'error': error, 'value': search_query})
@@ -174,7 +217,7 @@ def Search(request):
         error = "К сожалению, по Вашему запросу ничего не найдено..."
         if request.POST.get('product_weight'):
             product_weight = request.POST.get('product_weight')
-            if int(product_weight) > 0:
+            if 0 < int(product_weight) < 3001:
                 product = request.POST.get('id')
                 info = Food.objects.filter(id=product)
                 product_info = {'id': product, 'product_name': info[0].name_of_product, 'weight': int(product_weight),
@@ -193,10 +236,12 @@ def Search(request):
     else:
         return redirect('login')
 
-    if search_query:
+    if search_query and '*' not in search_query:
         data = Food.objects.filter(name_of_product__iregex=search_query)
         return render(request, 'food_diary/product_search.html', {'data': data, 'error': error, 'value': search_query})
-    else:
+    elif search_query and '*' in search_query:
+        return render(request, 'food_diary/product_search.html', {'error': error, 'value': search_query})
+    elif not search_query:
         return render(request, 'food_diary/product_search.html')
 
 

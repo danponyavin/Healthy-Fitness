@@ -15,7 +15,7 @@ def image_upload_view(request):
     if request.user.is_authenticated:
         if request.method == "POST":
             form = ImageForm(request.POST, request.FILES)
-            if form.is_valid():
+            if form.is_valid() and request.FILES:
                 request.user.profile.photo = request.FILES['photo']
                 request.user.save()
                 return redirect('personalArea')

@@ -69,7 +69,7 @@
             <h3 align="center">Поиск тренировки</h3>
             <center>
                 <form action="{% url 'add_sport' %}">
-                    <input class="searchProducts" minlength="2" placeholder="Введите название тренировки" name="search" value="{{ value }}" style="width: 300px; padding: 5px; border: 1px solid #EB7272; border-radius: 5px">
+                    <input class="searchProducts" minlength="2" placeholder="Введите название тренировки" name="search" value="{{ value }}" style="width: 300px; padding: 6px; border: 1px solid #EB7272; border-radius: 5px">
                     <button class="search_button" type="submit" style="background-color: #EB7272; cursor: pointer; border: none; border-radius: 5px; padding: 6px">
                         <img src="{% static 'food_diary/img/lupa.png'%}" class="lupa" style="height: 20px; width: auto">Искать
                     </button>
@@ -129,7 +129,7 @@
         <script>
         function getdetails(clicked_object) {
             let a = clicked_object.getAttribute('name');
-            if (document.getElementById(a).value > 0)
+            if (document.getElementById(a).value > 0 && document.getElementById(a).value < 721)
                 alert("Тренировка успешно записана")
             else
                 alert("Некорректно введено время тренировки")

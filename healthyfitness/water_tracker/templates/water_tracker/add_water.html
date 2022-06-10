@@ -84,11 +84,11 @@
             </div>
             <p class="advice">Рекомендуемая норма потребления воды - 2 литра (8 стаканов) в сутки</p>
         </div>
-
         <script>
           var inp = document.getElementById('add_water_inp'),
           plus = document.getElementById("plus");
           plus.addEventListener("click", function() {
+            if (inp.valueAsNumber < 15)
             inp.valueAsNumber = inp.valueAsNumber + 1;
           });
           var minus = document.getElementById("minus");
@@ -100,7 +100,7 @@
 
         <script>
         function getdetails(clicked_object) {
-            if (document.getElementById("add_water_inp").value >= 0)
+            if (document.getElementById("add_water_inp").value >= 0 && document.getElementById("add_water_inp").value <= 15)
                 alert("Результат успешно записан")
             else
                 alert("Некорректно введено количество стаканов")
