@@ -1,6 +1,6 @@
+from django.forms import ModelForm, TextInput
 
 from .models import Calculator
-from django.forms import ModelForm, TextInput
 
 
 class CalculatorForm(ModelForm):
@@ -12,4 +12,3 @@ class CalculatorForm(ModelForm):
             'weight': TextInput(attrs={'placeholder': 'Укажите вес'}),
             'growth': TextInput(attrs={'placeholder': 'Укажите рост'}),
         }
-

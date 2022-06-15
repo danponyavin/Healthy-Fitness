@@ -18,7 +18,8 @@ class FoodAdmin(admin.ModelAdmin):
 
 
 class Diary_of_foodAdmin(admin.ModelAdmin):
-    list_display = ('id', 'id_users', 'id_food', 'day_create', 'grams', 'consumed_kkal', 'consumed_proteins', 'consumed_fats', 'consumed_carbohydrates')
+    list_display = ('id', 'id_users', 'id_food', 'day_create', 'grams', 'consumed_kkal', 'consumed_proteins',
+                    'consumed_fats', 'consumed_carbohydrates')
     list_display_links = ('id', 'id_users', 'day_create')
     search_fields = ('id_users', 'day_create')
 
@@ -26,4 +27,3 @@ class Diary_of_foodAdmin(admin.ModelAdmin):
 admin.site.register(Type_of_food, Type_of_foodAdmin)
 admin.site.register(Food, FoodAdmin)
 admin.site.register(Diary_of_food, Diary_of_foodAdmin)
-

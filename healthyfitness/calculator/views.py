@@ -69,7 +69,8 @@ def calculator(request):
                                    'weight': float(temp["weight"]),
                                    'activity': int(temp["user_activity"]), 'aim': int(temp["user_aim"]),
                                    'gender': int(temp["gender"])}
-                if 59 < userDataNumbers['growth'] < 231 and 9 < userDataNumbers['age'] < 101 and 25 < userDataNumbers['weight'] < 210:
+                if 59 < userDataNumbers['growth'] < 231 and 9 < userDataNumbers['age'] < 101 and \
+                        25 < userDataNumbers['weight'] < 210:
                     dbUserData = {'age': userDataNumbers['age'], 'growth': userDataNumbers['growth'],
                                   'weight': userDataNumbers['weight']}
                     userDataResults = calcUserData(userDataNumbers)

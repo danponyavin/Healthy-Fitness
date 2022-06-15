@@ -1,7 +1,9 @@
 from django.urls import path
-from . import views
-from healthyfitness import settings
 from django.conf.urls.static import static
+
+from healthyfitness import settings
+from . import views
+
 
 urlpatterns = [
     path('calculator', views.calculator, name='calculator'),

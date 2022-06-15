@@ -157,8 +157,19 @@ disable=raw-checker-failed,
 		missing-function-docstring,
 		no-member,
 		missing-class-docstring,
-		import-error
-
+		import-error,
+		invalid-name,
+		no-name-in-module,
+		ungrouped-imports,
+		import-outside-toplevel,
+		unused-import,
+		protected-access,
+		no-self-argument,
+		unused-argument,
+		global-statement,
+		too-many-ancestors
+		
+		
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
@@ -393,7 +404,7 @@ indent-after-paren=4
 indent-string='    '
 
 # Maximum number of characters on a single line.
-max-line-length=100
+max-line-length=120
 
 # Maximum number of lines in a module.
 max-module-lines=1000
