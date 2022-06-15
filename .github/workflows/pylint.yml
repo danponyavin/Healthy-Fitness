@@ -20,5 +20,4 @@ jobs:
         pip install pylint
     - name: Analysing the code with pylint
       run: |
-        pylint database_download.py
-        pylint healthyfitness
+        pylint $(git ls-files ':!:tests/*' '*.py')

@@ -4,14 +4,15 @@ dbUserData = {'age': 0, 'weight': 0, 'gender': "", 'growth': 0, 'activity_level'
 
 
 def data_valid(userDataNumbers: dict) -> bool:
-    return 59 < userDataNumbers['growth'] < 231 and 9 < userDataNumbers['age'] < 101 and 25 < userDataNumbers['weight'] < 210
+    return 59 < userDataNumbers['growth'] < 231 and 9 < userDataNumbers['age'] < 101 \
+           and 25 < userDataNumbers['weight'] < 210
 
 
 def calcIMT(growth, weight):
     res = ""
     try:
         res = str(round(weight / (0.0001 * growth * growth), 1))
-    except ZeroDivisionError as err:
+    except ZeroDivisionError:
         res = "Wrong weight or growth"
     return res
 

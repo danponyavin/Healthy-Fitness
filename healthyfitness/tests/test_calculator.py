@@ -4,7 +4,7 @@ Tests for calculator
 
 import pytest
 
-from calculator.calculator_functions import calcUserData, calcIMT
+from ..calculator.calculator_functions import calcUserData, calcIMT
 
 
 @pytest.mark.parametrize("data, cpfc", [({"gender": 1, "weight": 70, "growth": 177, "age": 18, "activity": 3, "aim": 3},
