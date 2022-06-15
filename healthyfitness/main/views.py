@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from articles.models import *
+from articles.models import Article
 
 
 def main_page(request):

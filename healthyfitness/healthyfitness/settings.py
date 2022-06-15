@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ltffys44-(_89wuj8g!pifhvhv%=1cj#i)znxxfy1eui(#c++)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -123,13 +123,16 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    'main/static',
-    'registration/static',
-    'calculator/static',
-    'articles/static',
-    'food_diary/static',
-    'personal_area/static',
-    'registration/static',
+    BASE_DIR / 'main/static',
+    BASE_DIR / 'registration/static',
+    BASE_DIR / 'calculator/static',
+    BASE_DIR / 'articles/static',
+    BASE_DIR / 'food_diary/static',
+    BASE_DIR / 'personal_area/static',
+    BASE_DIR / 'registration/static',
+    BASE_DIR / 'water_tracker/static',
+    BASE_DIR / 'weight/static',
+    BASE_DIR / 'sport/static',
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")

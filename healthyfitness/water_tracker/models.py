@@ -14,4 +14,3 @@ class Water_tracker(models.Model):
         verbose_name = 'Трекер воды'
         verbose_name_plural = 'Трекер воды'
         ordering = ['day_create']
-

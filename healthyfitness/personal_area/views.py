@@ -7,8 +7,7 @@ def PersonalArea(request):
     if request.user.is_authenticated:
         profile = Profile.objects.all().filter(user=request.user)
         return render(request, 'personal_area/personal_area.html', {'profile': profile})
-    else:
-        return redirect('login')
+    return redirect('login')
 
 
 def image_upload_view(request):
@@ -22,5 +21,4 @@ def image_upload_view(request):
         else:
             form = ImageForm()
         return render(request, 'personal_area/change_information.html', {'form': form})
-    else:
-        return redirect('login')
+    return redirect('login')

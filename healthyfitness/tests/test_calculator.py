@@ -4,7 +4,7 @@ Tests for calculator
 
 import pytest
 
-from calculator.calculator_functions import calcUserData, calcIMT
+from ..calculator.calculator_functions import calcUserData, calcIMT
 
 
 @pytest.mark.parametrize("data, cpfc", [({"gender": 1, "weight": 70, "growth": 177, "age": 18, "activity": 3, "aim": 3},
@@ -13,9 +13,11 @@ from calculator.calculator_functions import calcUserData, calcIMT
                                          {'calories': 2419, 'proteins': 242, 'fats': 81, 'carbohydrates': 181}),
                                         ({"gender": 1, "weight": 80, "growth": 193, "age": 37, "activity": 5, "aim": 2},
                                          {'calories': 3470, 'proteins': 260, 'fats': 116, 'carbohydrates': 347}),
-                                        ({"gender": 1, "weight": 150, "growth": 200, "age": 45, "activity": 1, "aim": 1},
+                                        ({"gender": 1, "weight": 150, "growth": 200, "age": 45, "activity": 1,
+                                          "aim": 1},
                                          {'calories': 2732, 'proteins': 273, 'fats': 91, 'carbohydrates': 205}),
-                                        ({"gender": 1, "weight": -100, "growth": 15, "age": 10, "activity": 2, "aim": 3},
+                                        ({"gender": 1, "weight": -100, "growth": 15, "age": 10, "activity": 2,
+                                          "aim": 3},
                                          {'calories': 0, 'proteins': 0, 'fats': 0, 'carbohydrates': 0}),
                                         ({"gender": 2, "weight": 40, "growth": 155, "age": 16, "activity": 2, "aim": 3},
                                          {'calories': 1706, 'proteins': 149, 'fats': 38, 'carbohydrates': 192}),

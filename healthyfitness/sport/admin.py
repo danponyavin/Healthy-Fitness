@@ -18,4 +18,3 @@ class Training_treckerAdmin(admin.ModelAdmin):
 
 admin.site.register(Type_of_training, Type_of_trainingAdmin)
 admin.site.register(Training_trecker, Training_treckerAdmin)
-

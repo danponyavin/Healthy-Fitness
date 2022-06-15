@@ -1,5 +1,3 @@
-from django import forms
-from audioop import reverse
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save, pre_save
@@ -48,7 +46,8 @@ class Profile(models.Model):
     needed_proteins = models.IntegerField(null=True)
     needed_fats = models.IntegerField(null=True)
     needed_carbohydrates = models.IntegerField(null=True)
-    photo = models.ImageField(upload_to="photos_profile/%Y/%m/%d", null=True, blank=True, default="iconForPersonalarea.png")
+    photo = models.ImageField(upload_to="photos_profile/%Y/%m/%d", null=True, blank=True,
+                              default="iconForPersonalarea.png")
 
     def __str__(self):
         return self.user.username

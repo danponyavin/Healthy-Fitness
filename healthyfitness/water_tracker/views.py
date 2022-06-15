@@ -27,8 +27,7 @@ def AddWater(request):
             amount = info[0].number_of_glasses
             glasses = print_amount_of_glasses(info[0])
         return render(request, 'water_tracker/add_water.html', {'glasses': glasses, 'amount': amount})
-    else:
-        return redirect('login')
+    return redirect('login')
 
 
 def WaterTracker(request):
@@ -44,15 +43,14 @@ def WaterTracker(request):
                 values.append([get_time(current_date), 0])
         values = values[::-1]
         return render(request, 'water_tracker/water_tracker.html', {'values': values})
-    else:
-        return redirect('login')
+    return redirect('login')
 
 
 def get_time(o):
-    return "%d.%d.%d" % (o.day, o.month, o.year)
+    return f'{o.day}.{o.month}.{o.year}'
 
 
-def print_amount_of_glasses(info):
+def print_amount_of_glasses(info) -> str:
     if int(info.number_of_glasses) % 10 == 0:
         return f'{int(info.number_of_glasses)} стаканов'
     if int(info.number_of_glasses) in (11, 12, 13, 14, 15, 16, 17, 18, 19):
@@ -63,3 +61,4 @@ def print_amount_of_glasses(info):
         return f'{int(info.number_of_glasses)} стаканов'
     if int(info.number_of_glasses) % 10 == 1:
         return f'{int(info.number_of_glasses)} стакан'
+    return ''
